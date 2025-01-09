@@ -321,6 +321,12 @@ python manage.py runserver
 <image (2) src = https://github.com/user-attachments/assets/6ad73f79-c7a4-4ce6-9bff-8bda5e604938>
 </details>
 
+<details>
+<summary>ERD 1.2 </summary>
+<image src = https://github.com/user-attachments/assets/8d41b55d-07e2-4182-bf5d-dafb6ff5e124>
+
+</details>
+
 ### 레퍼런스 
 <details>
 <summary>레퍼런스 출처</summary>
