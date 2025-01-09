@@ -306,6 +306,10 @@ python manage.py runserver
 
 
 ### ERD
+
+<details>
+<summary>ERD</summary>
+
 <details>
 <summary>ERD 1.0 </summary>
 <img src = https://github.com/user-attachments/assets/0fffd09e-036f-426a-ac29-901c0dbfdca1>
@@ -324,6 +328,7 @@ python manage.py runserver
 <details>
 <summary>ERD 1.2 </summary>
 <image src = https://github.com/user-attachments/assets/8d41b55d-07e2-4182-bf5d-dafb6ff5e124>
+</details>
 
 </details>
 
