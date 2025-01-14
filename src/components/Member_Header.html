@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/Main.css">
+    <link rel="stylesheet" href="../assets/styles/Member_Header.css">
+    <title>Member_Header</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="#" class="logo">Always-Inclusive</a>
+        <div class="buttons">
+            <button class="button signout" id="logoutButton">로그아웃</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            fetch('/api/logout/', { // DRF 로그아웃 엔드포인트
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + localStorage.getItem('token') // 토큰 인증 사용 시
+                },
+                body: JSON.stringify({})
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('로그아웃 되었습니다.');
+                    localStorage.removeItem('token'); // 토큰 삭제
+                    // 로그아웃 후 리디렉션
+                    window.location.href = '/login';
+                } else {
+                    alert('로그아웃에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('로그아웃 중 오류 발생:', error);
+                alert('로그아웃 중 오류가 발생했습니다.');
+            });
+        });
+    </script>
+</body>
+</html>
