@@ -107,11 +107,14 @@
         document.getElementById('signupButton').addEventListener('click', function() {
             const userData = {
                 username: document.getElementById('username').value, // 사용자 이름
+                email: document.getElementById('email').value, // 이메일
                 password: document.getElementById('password').value, // 비밀번호
-                email: document.getElementById('email').value // 이메일
+                password2: document.getElementById('password').value, // 비밀번호 재확인
+                gender: document.getElementById('gender').value, // 성별
+                age: document.getElementById('age').value // 나이대
             };
 
-            fetch('/api/signup/', { // DRF 회원가입 엔드포인트
+            fetch('http://127.0.0.1:8000/accounts/api/signup/', { // DRF 회원가입 엔드포인트
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
