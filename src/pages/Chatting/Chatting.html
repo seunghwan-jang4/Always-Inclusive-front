@@ -16,15 +16,7 @@
             padding: 0;
             color: var(--text-color); /* 텍스트 색상도 변수로 설정 */
         }
-        /* 채팅 컨테이너 스타일 설정 */
-        .chat-container {
-            display: flex;
-            height: 100vh;
-            width: 100vw;
-            justify-content: center;
-            align-items: center;
-            background-color: #212121;
-        }
+
         /* 노트북 프레임 스타일 설정 */
         .laptop-frame {
             width: 70%;
@@ -47,11 +39,13 @@
             padding: 1rem;
             border-right: 1px solid #333;
         }
+
         .conversation {
             width: 75%;
             display: flex;
             flex-direction: column;
         }
+
         .conversation-header {
             padding: 0.5rem 1rem;
             border-bottom: 1px solid #333;
@@ -59,45 +53,54 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .conversation-messages {
             flex-grow: 1;
             padding: 1rem;
             overflow-y: auto;
         }
+
         .message {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
         }
+
         .message.bot {
             flex-direction: row;
         }
+
         .message.user {
             flex-direction: row-reverse;
         }
+
         .message img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             margin: 0 0.5rem;
         }
+
         .message-content {
             background-color: #333;
             color: #fff;
             padding: 0.5rem 1rem;
             border-radius: 5px;
         }
+
         .message-time {
             font-size: 0.75rem;
             color: #aaa;
             margin-top: 0.25rem;
         }
+
         .input-container {
             padding: 0.5rem 1rem;
             border-top: 1px solid #333;
             display: flex;
             align-items: center;
         }
+
         .input-container input {
             flex-grow: 1;
             border: none;
@@ -107,6 +110,7 @@
             background-color: #333;
             color: #fff;
         }
+        
         .input-container button {
             background-color: #444;
             border: none;
@@ -141,16 +145,16 @@
         });
     </script>
 </head>
-<body>
+<body class="Main">
     <!-- 헤더 추가 -->
-    <div class="header">
+    <div class="header Member_Header">
         <div class="nav">
             <a href="#" class="logo">Always-Inclusive</a>
             <ul>
             </ul>
             <div class="buttons">
-                <button class="explore">회원가입</button>
-                <button class="signin">로그인</button>
+                <button class="button explore">회원가입</button>
+                <button class="button signin">로그인</button>
             </div>
         </div>
     </div>
