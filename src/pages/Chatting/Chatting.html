@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatting</title>
+    <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
+    <style>
+        /* 페이지 배경색, 글꼴, 여백 및 패딩 설정 */
+        body {
+            background-color: var(--background-color); /* 배경색을 변수로 설정 */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color); /* 텍스트 색상도 변수로 설정 */
+        }
+        /* 채팅 컨테이너 스타일 설정 */
+        .chat-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            background-color: #212121;
+        }
+        /* 노트북 프레임 스타일 설정 */
+        .laptop-frame {
+            width: 70%;
+            background-color: var(--background-color); /* 배경색을 변수로 설정 */
+            border-radius: 15px;
+            padding: 10px;
+        }
+        /* 채팅 창 스타일 설정 */
+        .chat-window {
+            display: flex;
+            height: 60vh;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        /* 사이드바 스타일 설정 */
+        .sidebar {
+            width: 25%;
+            background-color: var(--background-color); /* 배경색을 변수로 설정 */
+            padding: 1rem;
+            border-right: 1px solid #333;
+        }
+        .conversation {
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+        }
+        .conversation-header {
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .conversation-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        .message {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .message.bot {
+            flex-direction: row;
+        }
+        .message.user {
+            flex-direction: row-reverse;
+        }
+        .message img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 0.5rem;
+        }
+        .message-content {
+            background-color: #333;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        .message-time {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-top: 0.25rem;
+        }
+        .input-container {
+            padding: 0.5rem 1rem;
+            border-top: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+        .input-container input {
+            flex-grow: 1;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            background-color: #333;
+            color: #fff;
+        }
+        .input-container button {
+            background-color: #444;
+            border: none;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-container button:hover {
+            background-color: #555;
+        }
+        /* 클릭 가능한 텍스트 스타일 */
+        .clickable-text {
+            color: #fff;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .clickable-text:hover {
+            color: #aaa;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var logoLink = document.querySelector(".logo");
+            var isLoggedIn = false; // 로그인 상태를 확인하는 로직 추가 필요.
+
+            if (isLoggedIn) {
+                logoLink.href = "Member_Home.html";
+            } else {
+                logoLink.href = "Guest_Home.html";
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- 헤더 추가 -->
+    <div class="header">
+        <div class="nav">
+            <a href="#" class="logo">Always-Inclusive</a>
+            <ul>
+            </ul>
+            <div class="buttons">
+                <button class="explore">회원가입</button>
+                <button class="signin">로그인</button>
+            </div>
+        </div>
+    </div>
+    <!-- 채팅 컨테이너 -->
+    <div class="chat-container">
+        <!-- 노트북 프레임 -->
+        <div class="laptop-frame">
+            <!-- 채팅 창 -->
+            <div class="chat-window">
+                <!-- 사이드바 -->
+                <div class="sidebar">
+                    <div class="horizontal-group">
+                        <div class="clickable-text">채팅 검색하기</div>
+                        <div class="clickable-text">새 채팅</div>
+                    </div>
+                    <div class="clickable-text" style="margin-bottom: 20px;">추천 목록</div>
+                    <div>최근 기록</div>
+                </div>
+                <!-- 대화 내용 -->
+                <div class="conversation">
+                    <div class="conversation-header">
+                        <div>사용자의 질문에 대한 주제</div>
+                    </div>
+                    <div class="conversation-messages">
+                        <div class="message bot">
+                            <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
+                            <div class="message-content">챗봇: 안녕하세요! 원하시는 장르를 말씀해 주시면 각 OTT플랫폼을 구분하지 않고 추천해 드릴게요!</div>
+                        </div>
+                        <div class="message user">
+                            <img src="../../assets/images/User_images/default_profile.png" alt="User Profile">
+                            <div class="message-content">유저 이름: 응</div>
+                        </div>
+                        <div class="message bot">
+                            <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
+                            <div class="message-content">챗봇: 네 어떤 장르의 미디어를 추천해 드릴까요?</div>
+                        </div>
+                        <div class="message user">
+                            <img src="../../assets/images/User_images/default_profile.png" alt="User Profile">
+                            <div class="message-content">유저 이름: 나는 ~~</div>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" placeholder="입력하세요">
+                        <button>확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
