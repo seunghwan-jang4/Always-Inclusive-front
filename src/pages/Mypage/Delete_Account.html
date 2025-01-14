@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 탈퇴</title>
+    <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
+    <link rel="stylesheet" href="../../assets/styles/Main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>회원 탈퇴</h1>
+        <p>정말로 회원 탈퇴를 하시겠습니까? 이 작업은 되돌릴 수 없습니다.</p>
+        <form id="deleteAccountForm" action="/delete_account" method="POST">
+            <label for="password">비밀번호 확인:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">탈퇴하기</button>
+        </form>
+        <button onclick="cancelDelete()">취소</button>
+    </div>
+
+    <script>
+        function cancelDelete() {
+            window.location.href = '/Mypage';
+        }
+
+        document.getElementById('deleteAccountForm').addEventListener('submit', function(event) {
+            if (!confirm('정말로 회원 탈퇴를 하시겠습니까?')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
