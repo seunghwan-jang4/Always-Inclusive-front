@@ -31,7 +31,7 @@ p {
 }
 
 /* 버튼 스타일  */
-.button {
+.Main .button {
     background-color:#DD4E42;
     color: #fff;
     padding: 10px 20px;
@@ -42,12 +42,12 @@ p {
 }
 
 /* 버튼 호버 */
-.nav .buttons button:hover {
+.Main .nav .buttons button:hover {
     opacity: 0.8; /* 호버 효과 추가 */
 }
 
 /* 홈페이지 로고 버튼 수정 */
-.top-left-button {
+.Main .top-left-button {
     position: absolute; /* 요소를 페이지 내의 특정 위치에 배치 */
     top: 20px;          /* 페이지 상단에서 20px 떨어진 위치 */
     left: 20px;         /* 페이지 왼쪽에서 20px 떨어진 위치 */
@@ -60,7 +60,7 @@ p {
 }
 
 /* 창에 스타일 추가 */
-.container {
+.Main .container {
     width: 500px; /* 너비를 500px로 늘림 */
     background-color: #555;
     padding: 30px; /* 내부 여백을 30px로 늘림 */
@@ -69,11 +69,11 @@ p {
     margin: 0 auto; /* 중앙 정렬 */
 }
 
-.input-group {
+.Main .input-group {
     margin-bottom: 10px;
 }
 
-.button2 {
+.Main .button2 {
     background-color: #DD4E42;
     margin-top: 20px;
     display: inline-block;
