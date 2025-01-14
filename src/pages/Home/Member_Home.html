@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member_Home.html</title>
+    <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #333333;
+            color: #ffffff;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header, section, nav, main, footer {
+            padding: 10px;
+            margin: 5px;
+            background-color: #4d4d4d;
+            border-radius: 5px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #ff6633;
+        }
+        nav {
+            display: flex;
+            flex-direction: column;
+            width: 150px;
+            background-color: #ff6633;
+        }
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-box {
+            flex-grow: 1;
+            background-color: #777777;
+            text-align: center;
+        }
+        .message-input {
+            display: flex;
+            justify-content: space-between;
+        }
+        .message-input input {
+            flex-grow: 1;
+            padding: 5px;
+        }
+        .message-input button {
+            background-color: #ff6633;
+            border: none;
+            color: white;
+            padding: 10px;
+        }
+        .content-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .content-item {
+            background-color: #999999;
+            padding: 20px;
+            flex-basis: 30%;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .section-title {
+            background-color: #ff6633;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex;">
+            <main>
+                <div class="chat-box">응답 창</div>
+                <div class="message-input">
+                    <input type="text" placeholder="메시지 입력창">
+                    <button>확인</button>
+                </div>
+                <section>
+                    <div class="section-title">넷플릭스</div>
+                    <div class="content-grid">
+                        <div class="content-item">장르별 컨텐츠들</div>
+                        <div class="content-item">장르별 컨텐츠들</div>
+                        <div class="content-item">장르별 컨텐츠들</div>
+                        <button>더 보기</button>
+                    </div>
+                </section>
+                <section>
+                    <div class="section-title">디즈니 플러스</div>
+                    <div class="content-grid">
+                        <div class="content-item">장르별 컨텐츠들</div>
+                        <div class="content-item">장르별 컨텐츠들</div>
+                        <div class="content-item">장르별 컨텐츠들</div>
+                        <button>더 보기</button>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
