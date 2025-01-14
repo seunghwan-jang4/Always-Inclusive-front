@@ -1,0 +1,80 @@
+/* 색상테마, 전역적으로 사용할 변수를 정의 */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #2b2b2b; /* 배경색을 #2b2b2b로 통일 */
+    --text-color: #e0e0e0;
+}
+
+/* 글꼴설정, 배경색상 설정, 여백 및 페딩 제거 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color); /* 배경색을 변수로 설정 */
+    margin: 0;
+    padding: 0;
+    color: var(--text-color); /* 텍스트 색상도 변수로 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* 제목 스타일 설정 */
+h1 {
+    color: #222;
+}
+
+/* 단락 스타일 설정 */
+p {
+    line-height: 1.6;
+}
+
+/* 버튼 스타일  */
+.button {
+    background-color:#DD4E42;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* 버튼 호버 */
+.nav .buttons button:hover {
+    opacity: 0.8; /* 호버 효과 추가 */
+}
+
+/* 홈페이지 로고 버튼 수정 */
+.top-left-button {
+    position: absolute; /* 요소를 페이지 내의 특정 위치에 배치 */
+    top: 20px;          /* 페이지 상단에서 20px 떨어진 위치 */
+    left: 20px;         /* 페이지 왼쪽에서 20px 떨어진 위치 */
+    background-color: #DD4E42; /* 버튼 색상 */
+    color: white;             /* 텍스트 색상 */
+    padding: 10px 20px;       /* 버튼 크기 */
+    border: none;             /* 테두리 제거 */
+    border-radius: 5px;       /* 버튼 모서리 둥글게 */
+    cursor: pointer;          /* 마우스 포인터 변경 */
+}
+
+/* 창에 스타일 추가 */
+.container {
+    width: 500px; /* 너비를 500px로 늘림 */
+    background-color: #555;
+    padding: 30px; /* 내부 여백을 30px로 늘림 */
+    border-radius: 5px;
+    text-align: left; /* 텍스트 정렬을 왼쪽으로 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.button2 {
+    background-color: #DD4E42;
+    margin-top: 20px;
+    display: inline-block;
+}
