@@ -1,0 +1,48 @@
+/* 기본 스타일 */
+html, body {
+    height: 100%; /* html과 body의 높이를 100%로 설정 */
+    margin: 0; /* 기본 여백 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+}
+
+body {
+    display: flex; /* Flexbox 레이아웃 사용 */
+    flex-direction: column; /* 수직 정렬 */
+    min-height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
+    margin: 0; /* 불필요한 여백 제거 */
+}
+
+/* Wrapper 스타일 */
+#wrapper {
+    flex: 1; /* 남은 공간을 차지하도록 설정 */
+    padding-bottom: 100px; /* footer 높이와 동일하게 설정 */
+}
+
+/* Footer 스타일 */
+footer {
+    height: 100px; /* footer 높이 설정 */
+    position: relative;
+    width: 100%; /* Footer가 전체 화면 너비를 차지하도록 설정 */
+    background-color: #333; /* 배경 색상 */
+    color: #fff; /* 텍스트 색상 */
+}
+
+/* Footer Container */
+.footer-container {
+    display: flex; /* Footer 내부를 Flexbox로 배치 */
+    justify-content: space-between; /* 각 섹션을 좌우로 균등 분배 */
+    padding: 20px; /* 내부 여백 */
+}
+
+/* Footer Sections */
+.footer-section {
+    flex: 1; /* 모든 섹션이 동일한 너비를 차지 */
+    padding: 10px; /* 내부 여백 */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    padding: 10px; /* 내부 여백 */
+    background-color: #444; /* 배경 색상 */
+}

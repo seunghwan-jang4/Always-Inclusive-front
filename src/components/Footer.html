@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/Footer.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .footer {
+            background-color: #a0a0a0;
+            color: #333;
+            padding: 20px;
+            width: 80%;
+            max-width: 1200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+        }
+        .footer-left {
+            max-width: 600px;
+        }
+        .footer-left h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .footer-left p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+        .footer-support {
+            text-align: right;
+        }
+        .language-selector {
+            margin-top: 10px;
+        }
+        .language-selector select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="footer">
+    <div class="footer-left">
+        <h4>팀 정보</h4>
+        <h1>Always-inclusive</h1>
+        <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
+        <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
+        <div class="language-selector">
+            <label for="language">언어 설정:</label>
+            <select id="language">
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="jp">日本語</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+    </div>
+    <div class="footer-support">
+        <h1>고객지원</h1>
+        <p>FAQ</p>
+        <p>고객센터</p>
+        <p>문의하기</p>
+    </div>
+</div>
+
+</body>
+</html>
