@@ -28,20 +28,20 @@ footer {
 }
 
 /* Footer Container */
-.footer-container {
+.Footer-container {
     display: flex; /* Footer 내부를 Flexbox로 배치 */
     justify-content: space-between; /* 각 섹션을 좌우로 균등 분배 */
     padding: 20px; /* 내부 여백 */
 }
 
 /* Footer Sections */
-.footer-section {
+.Footer-section {
     flex: 1; /* 모든 섹션이 동일한 너비를 차지 */
     padding: 10px; /* 내부 여백 */
 }
 
 /* Footer Bottom */
-.footer-bottom {
+.Footer-bottom {
     text-align: center; /* 텍스트 가운데 정렬 */
     padding: 10px; /* 내부 여백 */
     background-color: #444; /* 배경 색상 */
