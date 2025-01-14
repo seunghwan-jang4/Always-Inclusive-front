@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: #1C1C1C;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #333;
+            border: 4px solid #999;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            width: 300px;
+        }
+        .button {
+            background-color: #FF5722;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .header-button {
+            position: absolute;
+            top: 10px;
+            font-size: 12px;
+        }
+        .header-button.left {
+            left: 10px;
+        }
+        .header-button.right {
+            right: 10px;
+        }
+        .profile-box {
+            border: 3px solid #999;
+            border-radius: 5px;
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .change-button {
+            background-color: #B3B3B3;
+            color: black;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 3px;
+            position: absolute;
+            left: 50%;
+            top: 155px;
+            transform: translateX(-50%);
+            border: none;
+            cursor: pointer;
+        }
+        .circle {
+            background-color: #FF9800;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            position: absolute;
+            top: 75px;
+            right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .history-box {
+            background-color: #666;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .history-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .history-button {
+            background-color: #999;
+            color: black;
+            margin: 0 5px;
+            padding: 3px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+        }
+        .content-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .content-checkbox {
+            margin-right: 5px;
+        }
+        .bottom-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .bottom-light-button {
+            background-color: #E0E0E0;
+            color: black;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+        }
+        .bottom-red-button {
+            background-color: #FF5722;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="button header-button left">홈페이지</button>
+        <button class="button header-button right">언어 설정</button>
+        <div class="profile-box">
+            <span>프로필 이미지</span>
+        </div>
+        <button class="change-button">변경</button>
+        <div class="circle">
+            <span>시청패턴</span>
+        </div>
+        <div class="history-box">
+            <div class="history-buttons">
+                <button class="history-button">검색</button>
+                <button class="history-button">뉴챗</button>
+                <button class="history-button">최신순</button>
+            </div>
+            <div>과거 히스토리</div>
+        </div>
+        <div class="content-toggle">
+            <input type="checkbox" class="content-checkbox">
+            <span>성인 콘텐츠 표시</span>
+        </div>
+        <div class="bottom-buttons">
+            <button class="bottom-light-button">저장</button>
+            <button class="bottom-light-button">취소</button>
+            <button class="bottom-red-button">홈페이지</button>
+        </div>
+        <div class="bottom-buttons">
+            <button class="bottom-light-button">히스토리 초기화</button>
+            <button class="bottom-light-button">회원 탈퇴하기</button>
+        </div>
+    </div>
+</body>
+</html>
