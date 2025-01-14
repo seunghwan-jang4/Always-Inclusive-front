@@ -49,17 +49,53 @@
 </head>
 <body style="background-color: #222;">
     <div class="container">
-        <input type="id" placeholder="아이디 / 이메일형식">
-        <input type="password" placeholder="비밀번호">
+        <input type="id" id="userId" placeholder="아이디 / 이메일형식">
+        <input type="password" id="password" placeholder="비밀번호">
         <div class="options">
             <button>계정 찾기</button>  
             <label>
                 <input type="checkbox"> 로그인 저장
             </label>
         </div>
-        <button>로그인</button>
+        <button onclick="login()">로그인</button>
         <button>회원가입</button>
         <button class="button-home">홈페이지</button>
     </div>
+    <script>
+        function login() {
+            const userId = document.getElementById('userId').value; // 입력한 아이디
+            const password = document.getElementById('password').value; // 입력한 비밀번호
+
+            if (!userId || !password) {
+                alert('아이디와 비밀번호를 입력해주세요.');
+                return;
+            }
+
+            // 서버로 로그인 요청 보내기
+            fetch('http://127.0.0.1:8000/accounts/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('로그인 성공');
+                    // 로그인 성공 시, My page로 리다이렉트
+                    window.location.href = '/path/to/mypage.html';
+                } else {
+                    alert('로그인 실패: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('로그인 중 오류가 발생했습니다.');
+            });
+        }
+    </script>
+</body>
+</html>
 </body>
 </html>
