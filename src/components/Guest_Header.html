@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/Main.css">
+    <link rel="stylesheet" href="../assets/styles/Guest_Header.css">
+    <title>Guest_Header</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="#" class="logo">Always-Inclusive</a>
+        <div class="buttons">
+            <button class="button explore" id="signupButton">회원가입</button>
+            <button class="button signin" id="loginButton">로그인</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('signupButton').addEventListener('click', function() {
+            window.location.href = '/path/to/Register.html'; // Register.html 페이지로 이동
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const loginData = {
+                username: 'yourUsername', // 사용자 이름
+                password: 'yourPassword'  // 비밀번호
+            };
+
+            fetch('/api/login/', { // DRF 로그인 엔드포인트
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loginData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.token) {
+                    alert('로그인 되었습니다.');
+                    localStorage.setItem('token', data.token); // 토큰 저장
+                    // 로그인 후 리디렉션
+                    window.location.href = '/member';
+                } else {
+                    alert('로그인에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('로그인 중 오류 발생:', error);
+                alert('로그인 중 오류가 발생했습니다.');
+            });
+        });
+    </script>
+</body>
+</html>
