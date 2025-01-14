@@ -338,7 +338,12 @@ python manage.py runserver
 ### 레퍼런스 
 <details>
 <summary>레퍼런스 출처</summary>
-https://teamsparta.notion.site/SA-97b05811e819459db6bfd1cd79ae6c1a
+- https://teamsparta.notion.site/SA-97b05811e819459db6bfd1cd79ae6c1a
+- [TVING](https://www.tving.com/onboarding)
+- https://www.netflix.com/kr/
+- https://watcha.com/browse/video
+- [https://teamsparta.notion.site/SA-97b05811e819459db6bfd1cd79ae6c1a](https://www.notion.so/SA-97b05811e819459db6bfd1cd79ae6c1a?pvs=21)
+- [https://velog.io/@anjaekk/python절대경로상대경로-상대경로-import-에러이유와-해결](https://velog.io/@anjaekk/python%EC%A0%88%EB%8C%80%EA%B2%BD%EB%A1%9C%EC%83%81%EB%8C%80%EA%B2%BD%EB%A1%9C-%EC%83%81%EB%8C%80%EA%B2%BD%EB%A1%9C-import-%EC%97%90%EB%9F%AC%EC%9D%B4%EC%9C%A0%EC%99%80-%ED%95%B4%EA%B2%B0)
 
 </details>
 
