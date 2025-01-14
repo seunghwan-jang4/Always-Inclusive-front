@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register.html</title>
+    <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
+    <link rel="stylesheet" href="../../assets/styles/Footer.css">
+    <style>
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            margin-right: 10px;
+            width: 30%;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 65%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .input-group.select-group {
+            margin-top: 30px; /* 위 항목과의 간격을 늘림 */
+        }
+
+        .input-group.select-group select {
+            width: 30%; /* 입력칸 너비를 줄임 */
+        }
+        
+        .button:hover {
+            opacity: 0.8; /* 불투명도 20% 낮춤 */
+        }
+
+        .button2:hover {
+            opacity: 0.8; /* 불투명도 20% 낮춤 */
+        }
+        
+        .button-container {
+            display: flex;  
+            flex-direction: column; /* 세로로 배치 */
+            align-items: center;
+            gap: 10px; /* 버튼 사이의 유격 */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <a href="#" class="logo">Always-Inclusive</a>
+        <div class="buttons">
+            <button class="explore">회원가입</button>
+            <button class="signin">로그인</button>
+        </div>
+    </header>
+    <div class="container">
+        <h1 style="color: white; text-align: center;">회원가입</h2>
+        <div class="input-group">
+            <label for="username">이름:</label>
+            <input type="text" id="username" placeholder="이름을 입력하세요">
+        </div>
+        <div class="input-group">
+            <label for="email">아이디 / 이메일 형식:</label>
+            <input type="text" id="email" placeholder="아이디 또는 이메일을 입력하세요">
+        </div>
+        <div class="input-group">
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" placeholder="비밀번호를 입력하세요">
+        </div>
+        <div class="input-group">
+            <label for="confirmPassword">비밀번호 재확인:</label>
+            <input type="password" id="confirmPassword" placeholder="비밀번호를 다시 입력하세요">
+        </div>
+        <div class="input-group select-group">
+            <label for="gender">성별:</label>
+            <select id="gender" name="gender">
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+            </select>
+        </div>
+        <div class="input-group select-group">
+            <label for="age">나이대:</label>
+            <select id="age" name="age">
+                <option value="10s">10대 (13~19세)</option>
+                <option value="20s">20대 (20~29세)</option>
+                <option value="30s">30대 (30~39세)</option>
+                <option value="40s">40대 (40~49세)</option>
+                <option value="50s">50대 이상 (50세~)</option>
+            </select>
+        </div>
+        <button class="button" id="signupButton">가입하기</button>
+        <div class="button button2">홈페이지</div>
+    </div>
+
+    <script>
+        document.getElementById('signupButton').addEventListener('click', function() {
+            const userData = {
+                username: document.getElementById('username').value, // 사용자 이름
+                password: document.getElementById('password').value, // 비밀번호
+                email: document.getElementById('email').value // 이메일
+            };
+
+            fetch('/api/signup/', { // DRF 회원가입 엔드포인트
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('회원가입이 완료되었습니다.');
+                    // 회원가입 후 리디렉션
+                    window.location.href = '/login';
+                } else {
+                    alert('회원가입에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('회원가입 중 오류 발생:', error);
+                alert('회원가입 중 오류가 발생했습니다.');
+            });
+        });
+    </script>
+</body>
+
+</html>
