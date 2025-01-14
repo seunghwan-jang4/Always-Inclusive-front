@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login.html</title>
+    <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        input[type="id"],
+        input[type="password"] {
+            display: block; 
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+        .button-home {
+            background-color: #E94E77;
+            color: #fff;
+        }
+    </style>
+</head>
+<body style="background-color: #222;">
+    <div class="container">
+        <input type="id" placeholder="아이디 / 이메일형식">
+        <input type="password" placeholder="비밀번호">
+        <div class="options">
+            <button>계정 찾기</button>  
+            <label>
+                <input type="checkbox"> 로그인 저장
+            </label>
+        </div>
+        <button>로그인</button>
+        <button>회원가입</button>
+        <button class="button-home">홈페이지</button>
+    </div>
+</body>
+</html>
