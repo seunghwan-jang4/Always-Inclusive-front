@@ -1,4 +1,4 @@
-.Member_Header .nav {
+.Member_Header .member-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,7 +12,7 @@
 }
 
 /* 로고 스타일 설정 */
-.Member_Header .nav .logo {
+.Member_Header .member-nav .member-logo {
     font-size: 1.5rem; /* 크기 조정 */
     font-weight: bold;  
     color: #fff;
@@ -20,13 +20,13 @@
 }
 
 /* 버튼 끼리 간격 */
-.Member_Header .nav .buttons {
+.Member_Header .member-nav .member-buttons {
     display: flex;
     gap: 1rem;
 }
 
 /* 버튼 스타일 */
-.Member_Header .nav .buttons button {  
+.Member_Header .member-nav .member-buttons button {  
     padding: 0.5rem 1rem; /* 버튼 크기 및 너비 */
     border: none;    /* 테두리 제거 */
     border-radius: 5px; /* 버튼 모서리 둥글게 */
@@ -35,18 +35,43 @@
 }
 
 /* 회원가입 버튼 */
-.Member_Header .nav .buttons .explore {
+.Member_Header .member-nav .member-buttons .member-explore {
     background-color: #f5f5f5;
     color: #333;
 }
 
 /* 로그아웃 버튼 */
-.Member_Header .nav .buttons .signin {
+.Member_Header .member-nav .member-buttons .member-signin {
     background-color: white;
     color: #333;
 }
 
 /* 버튼 호버 */
-.Member_Header .nav .buttons button:hover {
+.Member_Header .member-nav .member-buttons button:hover {
     opacity: 0.8; /* 호버 효과 추가 */
+}
+/* 프로필 이미지 설정 */
+.profile-container {
+    position: relative;
+    width: 200px; /* 원하는 너비 설정 */
+    height: 200px; /* 원하는 높이 설정 */
+}
+
+.profile-image {
+    width: 100%; 
+    height: auto;
+    border-radius: 50%; /* 원형 이미지 */
+}
+/* 프로필 변경 버튼 */
+.change-profile-button {
+    position: absolute;
+    bottom: 10px; /* 프로필 이미지 하단에서 10px 위로 */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FF5722;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
