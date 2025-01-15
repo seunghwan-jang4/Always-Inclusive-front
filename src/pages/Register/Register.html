@@ -67,8 +67,7 @@
     <div class="container">
         <h1 style="color: white; text-align: center;">회원가입</h2>
         <div class="input-group">
-            <label for="username">이름:</label>
-            <input type="text" id="username" placeholder="이름을 입력하세요">
+
         </div>
         <div class="input-group">
             <label for="email">아이디 / 이메일 형식:</label>
@@ -108,25 +107,37 @@
             const userData = {
                 email: document.getElementById('email').value, // 이메일
                 password: document.getElementById('password').value, // 비밀번호
-                password2: document.getElementById('password').value, // 비밀번호 재확인
+                password2: document.getElementById('confirmPassword').value, // 비밀번호 재확인
                 gender: document.getElementById('gender').value, // 성별
-                age: document.getElementById('age').value // 나이대
+                age_group: document.getElementById('age').value // 나이대
             };
 
-            fetch('http://127.0.0.1:8000/accounts/api/signup/', { // DRF 회원가입 엔드포인트
+            // 필수 필드 확인
+            if (!userData.email || !userData.password || !userData.password2 || !userData.gender || !userData.age_group) {
+                alert('모든 필드를 입력해 주세요.');
+                return;
+            }
+
+            if (userData.password !== userData.password2) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+
+            fetch('http://127.0.0.1:8000/accounts/signup/', { // DRF 회원가입 엔드포인트
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(userData)
             })
-            .then(response => {
-                if (response.ok) {
+            .then(response => response.json().then(data => ({ status: response.status, body: data })))
+            .then(({ status, body }) => {
+                if (status >= 200 && status < 300) {
                     alert('회원가입이 완료되었습니다.');
                     // 회원가입 후 리디렉션
-                    window.location.href = '/login';
+                    window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html';
                 } else {
-                    alert('회원가입에 실패했습니다.');
+                    alert('회원가입에 실패했습니다: ' + (body.detail || '알 수 없는 오류'));
                 }
             })
             .catch(error => {
