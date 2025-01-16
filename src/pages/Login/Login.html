@@ -83,6 +83,7 @@
             .then(data => {
                 if (data.success) {
                     alert('로그인 성공');
+                    localStorage.setItem('token', data.token);
                     // 로그인 성공 시, My page로 리다이렉트
                     window.location.href = '/path/to/mypage.html';
                 } else {
