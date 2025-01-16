@@ -109,21 +109,15 @@
                 password: document.getElementById('password').value, // 비밀번호
                 password2: document.getElementById('confirmPassword').value, // 비밀번호 재확인
                 gender: document.getElementById('gender').value, // 성별
-                age_group: document.getElementById('age').value // 나이대
+                age_group: document.getElementById('age').value // 나이대    
             };
-
-            // 필수 필드 확인
-            if (!userData.email || !userData.password || !userData.password2 || !userData.gender || !userData.age_group) {
-                alert('모든 필드를 입력해 주세요.');
-                return;
-            }
 
             if (userData.password !== userData.password2) {
                 alert('비밀번호가 일치하지 않습니다.');
                 return;
             }
 
-            fetch('http://127.0.0.1:8000/accounts/signup/', { // DRF 회원가입 엔드포인트
+            fetch('http://127.0.0.1:8000/api/accounts/signup/', { // DRF 회원가입 엔드포인트
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
