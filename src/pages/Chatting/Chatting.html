@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatting</title>
-    <!-- 외부 CSS 파일 연결 -->
+    <title>Chatting.html</title>
     <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <style>
@@ -135,13 +134,55 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var logoLink = document.querySelector(".logo");
-            var isLoggedIn = false; // 로그인 상태를 확인하는 로직 추가 필요.
+            var isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; // 로그인 상태를 localStorage에서 확인
 
             if (isLoggedIn) {
                 logoLink.href = "Member_Home.html";
             } else {
                 logoLink.href = "Guest_Home.html";
             }
+
+            var chatForm = document.querySelector("#chatForm");
+            var chatInput = document.querySelector("#chatInput");
+            var chatContainer = document.querySelector("#chatContainer");
+
+            chatForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+                var message = chatInput.value;
+                if (message.trim() === "") return;
+
+                // 사용자 메시지 표시
+                var userMessage = document.createElement("div");
+                userMessage.className = "user_message";
+                userMessage.textContent = message;
+                chatContainer.appendChild(userMessage);
+
+                // 서버로 메시지 전송
+                fetch('http://127.0.0.1:8000/api/chatbot/chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: localStorage.getItem("email"),
+                        message: message,
+                        timestamp: new Date().toISOString(),
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 서버 응답 메시지 표시
+                    var serverMessage = document.createElement("div");
+                    serverMessage.className = "server_message";
+                    serverMessage.textContent = data.responseMessage;
+                    chatContainer.appendChild(serverMessage);
+                })
+                .catch(error => {
+                    console.error('채팅 전송 중 오류 발생:', error);
+                });
+
+                chatInput.value = "";
+            });
         });
     </script>
 </head>
@@ -159,7 +200,7 @@
         </div>
     </div>
     <!-- 채팅 컨테이너 -->
-    <div class="chat-container">
+    <div id="chatContainer" class="chat-container">
         <!-- 노트북 프레임 -->
         <div class="laptop-frame">
             <!-- 채팅 창 -->
@@ -197,12 +238,16 @@
                         </div>
                     </div>
                     <div class="input-container">
-                        <input type="text" placeholder="입력하세요">
-                        <button>확인</button>
+                        <input type="text" id="chatInput" placeholder="입력하세요">
+                        <button type="submit" form="chatForm">확인</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <form id="chatForm" class="chat-form">
+        <input type="text" id="chatInput" class="chat-input" placeholder="메시지를 입력하세요">
+        <button type="submit" class="chat-submit">전송</button>
+    </form>
 </body>
 </html>
