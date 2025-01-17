@@ -58,8 +58,8 @@
             </label>
         </div>
         <button onclick="login()">로그인</button>
-        <button>회원가입</button>
-        <button class="button-home">홈페이지</button>
+        <button onclick="goRegister()">회원가입</button>
+        <button class="button-home" onclick="goHome()">홈페이지</button>
     </div>
     <script>
         function login() {
@@ -94,6 +94,16 @@
                 console.error('Error:', error);
                 alert('로그인 중 오류가 발생했습니다.');
             });
+        }
+
+        // 회원가입 페이지로 이동
+        function goRegister() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html';
+        }
+
+        // 홈페이지(게스트 홈)로 이동
+        function goHome() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Home/Guest_Home.html';
         }
     </script>
 </body>
