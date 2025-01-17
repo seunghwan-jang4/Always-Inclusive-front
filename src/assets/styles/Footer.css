@@ -19,29 +19,29 @@ body {
 }
 
 /* Footer 스타일 */
-.Footer {
+.footer {
     height: 100%; /* footer 높이 설정 */
-    width: 100%; /* Footer가 전체 화면 너비를 차지하도록 설정 */
+    width: 100%; /* footer가 전체 화면 너비를 차지하도록 설정 */
     background-color: #444; /* 배경 색상 */
     color: #fff; /* 텍스트 색상 */
 }
 
 /* Footer Container */
-.Footer__container {
-    display: flex; /* Footer 내부를 Flexbox로 배치 */
+.footer__container {
+    display: flex; /* footer 내부를 Flexbox로 배치 */
     justify-content: space-between; /* 각 섹션을 좌우로 균등 분배 */
     padding: 0 20px 20px; /* 위쪽에는 패딩이 없고, 왼쪽/오른쪽/아래쪽만 20px씩 내부 여백 */
     align-items: flex-start; /* 상단 정렬 */
 }
 
 /* Footer Sections */
-.Footer__section {
+.footer__section {
     flex: 1; /* 모든 섹션이 동일한 너비를 차지 */
     padding: 10px; /* 내부 여백 */
 }
 
 /* Footer Bottom */
-.Footer-bottom {
+.footer__bottom {
     text-align: center; /* 텍스트 가운데 정렬 */
     padding: 10px; /* 내부 여백 */
     background-color: #444; /* 배경 색상 */

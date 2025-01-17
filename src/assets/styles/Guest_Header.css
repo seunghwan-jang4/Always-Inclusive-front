@@ -1,4 +1,5 @@
-.Guest_Header__nav {
+/* 헤더 스타일 */
+.guest-header__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,7 +12,8 @@
     z-index: 1000; /* 다른 요소들보다 위에 표시 */
 }
 
-.Guest_Header__logo {
+/* 로고 스타일 설정 */
+.guest-header__logo {
     font-size: 1.5rem; /* 크기 조정 */
     font-weight: bold;  
     color: #fff;
@@ -19,12 +21,13 @@
 }
 
 /* 버튼 끼리 간격 */
-.Guest_Header__buttons {
+.guest-header__buttons {
     display: flex;
     gap: 1rem;
 }
 
-.Guest_Header__buttons button {
+/* 버튼 스타일 */
+.guest-header__buttons button {
     padding: 0.5rem 1rem; /* 버튼 크기 및 너비 */
     border: none;    /* 테두리 제거 */
     border-radius: 5px; /* 버튼 모서리 둥글게 */
@@ -33,18 +36,18 @@
 }
 
 /* 회원가입 버튼 */
-.Guest_Header__buttons--explore {
+.guest-header__buttons--explore {
     background-color: #f5f5f5;
     color: #333;
 }
 
 /* 로그인 버튼 */
-.Guest_Header__buttons--signin {
+.guest-header__buttons--signin {
     background-color: #fff;
     color: #333;
 }
 
 /* 버튼 호버 */
-.Guest_Header__buttons button:hover {
+.guest-header__buttons button:hover {
     opacity: 0.8; /* 호버 효과 추가 */
 }

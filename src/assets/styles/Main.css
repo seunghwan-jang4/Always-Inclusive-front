@@ -21,17 +21,17 @@ body {
 }
 
 /* 제목 스타일 설정 */
-h1 {
+.main__title {
     color: #222;
 }
 
 /* 단락 스타일 설정 */
-p {
+.main__paragraph {
     line-height: 1.6;
 }
 
 /* 버튼 스타일 */
-.Main__button {
+.main__button {
     background-color: #DD4E42;
     color: #fff;
     padding: 10px 20px;
@@ -42,12 +42,12 @@ p {
 }
 
 /* 버튼 호버 */
-.Main__nav .Main__buttons button:hover {
+.main__nav .main__buttons button:hover {
     opacity: 0.8; /* 호버 효과 추가 */
 }
 
 /* 홈페이지 로고 버튼 수정 */
-.Main__top-left-button {
+.main__top-left-button {
     position: absolute; /* 요소를 페이지 내의 특정 위치에 배치 */
     top: 20px;          /* 페이지 상단에서 20px 떨어진 위치 */
     left: 20px;         /* 페이지 왼쪽에서 20px 떨어진 위치 */
@@ -60,7 +60,7 @@ p {
 }
 
 /* 창에 스타일 추가 */
-.Main__container {
+.main__container {
     width: 500px; /* 너비를 500px로 늘림 */
     background-color: #555;
     padding: 30px; /* 내부 여백을 30px로 늘림 */
@@ -69,11 +69,11 @@ p {
     margin: 0 auto; /* 중앙 정렬 */
 }
 
-.Main .input-group {
+.main__input-group {
     margin-bottom: 10px;
 }
 
-.Main .button2 {
+.main__button2 {
     background-color: #DD4E42;
     margin-top: 20px;
     display: inline-block;
