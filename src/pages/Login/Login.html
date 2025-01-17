@@ -54,7 +54,7 @@
         <div class="options">
             <button>계정 찾기</button>  
             <label>
-                <input type="checkbox"> 로그인 저장
+                <input type="checkbox" id="rememberId"> 아이디 저장
             </label>
         </div>
         <button onclick="login()">로그인</button>
@@ -62,9 +62,22 @@
         <button class="button-home" onclick="goHome()">홈페이지</button>
     </div>
     <script>
+        // 페이지 로드 시, localStorage에 저장된 아이디/비번이 있으면 자동 입력
+        // 페이지가 로드되면 localStorage에 저장된 이메일이 있으면 자동 입력
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedEmail = localStorage.getItem('savedEmail');
+            if (savedEmail) {
+                document.getElementById('email').value = savedEmail;
+            // 아이디가 저장되어 있으면, 체크박스도 체크 상태로 만들기
+            // document.getElementById('rememberId').checked = true;
+            }
+        });
+
         function login() {
             const email = document.getElementById('email').value; // 입력한 아이디
             const password = document.getElementById('password').value; // 입력한 비밀번호
+            // 여기서 체크박스 상태를 읽어와야 함
+            const rememberId = document.getElementById('rememberId').checked;
 
             if (!email || !password) {
                 alert('아이디와 비밀번호를 입력해주세요.');
@@ -83,6 +96,14 @@
             .then(data => {
                 if (data.success) {
                     alert('로그인 성공');
+                    // 아이디 저장 체크된 경우, localStorage에 email 저장
+                    if (rememberId) {
+                        localStorage.setItem('savedEmail', email);
+                    } else {
+                        // 체크 해제되면 email 삭제
+                        localStorage.removeItem('savedEmail');
+                    }
+
                     localStorage.setItem('token', data.token);
                     // 로그인 성공 시, My page로 리다이렉트
                     window.location.href = 'http://127.0.0.1:5500/src/pages/Mypage/Mypage.html';
