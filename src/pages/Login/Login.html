@@ -72,7 +72,7 @@
             }
 
             // 서버로 로그인 요청 보내기
-            fetch('http://127.0.0.1:8000/accounts/api/login/', {
+            fetch('http://127.0.0.1:8000/api/accounts/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -83,8 +83,9 @@
             .then(data => {
                 if (data.success) {
                     alert('로그인 성공');
+                    localStorage.setItem('token', data.token);
                     // 로그인 성공 시, My page로 리다이렉트
-                    window.location.href = '/path/to/mypage.html';
+                    window.location.href = 'http://127.0.0.1:5500/src/pages/Mypage/Mypage.html';
                 } else {
                     alert('로그인 실패: ' + data.message);
                 }
