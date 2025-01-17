@@ -11,11 +11,14 @@
     <div class="container">
         <h1>회원 탈퇴</h1>
         <p>정말로 회원 탈퇴를 하시겠습니까? 이 작업은 되돌릴 수 없습니다.</p>
-        <form id="deleteAccountForm" action="/delete_account" method="POST">
+        
+        <!-- 기존 form -->
+        <form id="deleteAccountForm">
             <label for="password">비밀번호 확인:</label>
             <input type="password" id="password" name="password" required>
             <button type="submit">탈퇴하기</button>
         </form>
+        
         <button onclick="cancelDelete()">취소</button>
     </div>
 
@@ -25,9 +28,51 @@
         }
 
         document.getElementById('deleteAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
             if (!confirm('정말로 회원 탈퇴를 하시겠습니까?')) {
-                event.preventDefault();
+                return;
             }
+
+            // 비밀번호 읽기
+            const password = document.getElementById('password').value.trim();
+            if (!password) {
+                alert('비밀번호를 입력해주세요.');
+                return;
+            }
+
+            // 사용자 인증(로그인) 시 받은 토큰(또는 JWT)을 localStorage나 sessionStorage에서 불러온다고 가정
+            const token = localStorage.getItem('token'); 
+            if (!token) {
+                alert('로그인이 필요합니다.');
+                return;
+            }
+
+            // DRF 회원탈퇴 API 호출
+            fetch('http://127.0.0.1:8000/api/accounts/delete/', {
+                method: 'POST',   // DRF 쪽 구현에 따라 DELETE 또는 POST
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + token  // 혹은 'Bearer <JWT>' 등
+                },
+                body: JSON.stringify({ password: password })
+            })
+            .then(response => response.json().then(data => ({ status: response.status, body: data })))
+            .then(({ status, body }) => {
+                if (status >= 200 && status < 300) {
+                    alert('회원 탈퇴가 완료되었습니다.');
+                    // 토큰 삭제
+                    localStorage.removeItem('token');
+                    // 메인 페이지나 로그인 페이지로 이동
+                    window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html';
+                } else {
+                    alert('회원 탈퇴 실패: ' + (body.message || body.detail || '알 수 없는 오류'));
+                }
+            })
+            .catch(error => {
+                console.error('회원탈퇴 중 오류:', error);
+                alert('오류가 발생했습니다.');
+            });
         });
     </script>
 </body>
