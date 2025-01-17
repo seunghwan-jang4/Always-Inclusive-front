@@ -69,7 +69,15 @@
             if (savedEmail) {
                 document.getElementById('email').value = savedEmail;
             // 아이디가 저장되어 있으면, 체크박스도 체크 상태로 만들기
-            // document.getElementById('rememberId').checked = true;
+                document.getElementById('rememberId').checked = true;
+            }
+        });
+
+        // 2) Enter 키를 누르면 로그인 함수 호출
+        document.addEventListener('keydown', function(event) {
+            // focus가 input 위에 있을 때 Enter를 누르면 로그인 시도
+            if (event.key === 'Enter') {
+                login();
             }
         });
 
