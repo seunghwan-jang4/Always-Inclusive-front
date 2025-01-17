@@ -52,7 +52,7 @@
         <input type="id" id="email" placeholder="아이디 / 이메일형식">
         <input type="password" id="password" placeholder="비밀번호">
         <div class="options">
-            <button>계정 찾기</button>  
+            <button id="findPasswordButton">비밀번호 찾기</button>  
             <label>
                 <input type="checkbox" id="rememberId"> 아이디 저장
             </label>
@@ -79,6 +79,10 @@
             if (event.key === 'Enter') {
                 login();
             }
+        });
+
+        document.getElementById('findPasswordButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Mypage/Change_password.html';
         });
 
         function login() {
