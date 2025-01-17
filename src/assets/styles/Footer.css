@@ -20,10 +20,9 @@ body {
 
 /* Footer 스타일 */
 .Footer {
-    height: 100px; /* footer 높이 설정 */
-    position: relative;
+    height: 100%; /* footer 높이 설정 */
     width: 100%; /* Footer가 전체 화면 너비를 차지하도록 설정 */
-    background-color: #333; /* 배경 색상 */
+    background-color: #444; /* 배경 색상 */
     color: #fff; /* 텍스트 색상 */
 }
 
@@ -31,7 +30,8 @@ body {
 .Footer__container {
     display: flex; /* Footer 내부를 Flexbox로 배치 */
     justify-content: space-between; /* 각 섹션을 좌우로 균등 분배 */
-    padding: 20px; /* 내부 여백 */
+    padding: 0 20px 20px; /* 위쪽에는 패딩이 없고, 왼쪽/오른쪽/아래쪽만 20px씩 내부 여백 */
+    align-items: flex-start; /* 상단 정렬 */
 }
 
 /* Footer Sections */
