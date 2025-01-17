@@ -19,7 +19,7 @@ body {
 }
 
 /* Footer 스타일 */
-footer {
+.Footer {
     height: 100px; /* footer 높이 설정 */
     position: relative;
     width: 100%; /* Footer가 전체 화면 너비를 차지하도록 설정 */
@@ -28,14 +28,14 @@ footer {
 }
 
 /* Footer Container */
-.Footer-container {
+.Footer__container {
     display: flex; /* Footer 내부를 Flexbox로 배치 */
     justify-content: space-between; /* 각 섹션을 좌우로 균등 분배 */
     padding: 20px; /* 내부 여백 */
 }
 
 /* Footer Sections */
-.Footer-section {
+.Footer__section {
     flex: 1; /* 모든 섹션이 동일한 너비를 차지 */
     padding: 10px; /* 내부 여백 */
 }
