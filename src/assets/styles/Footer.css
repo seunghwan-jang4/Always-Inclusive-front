@@ -1,29 +1,56 @@
 /* 기본 스타일 */
-html, body {
-    height: 100%; /* html과 body의 높이를 100%로 설정 */
-    margin: 0; /* 기본 여백 제거 */
-    padding: 0; /* 기본 패딩 제거 */
-}
-
 body {
-    display: flex; /* Flexbox 레이아웃 사용 */
-    flex-direction: column; /* 수직 정렬 */
-    min-height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
-    margin: 0; /* 불필요한 여백 제거 */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
 }
-
-/* Wrapper 스타일 */
-#wrapper {
-    flex: 1; /* 남은 공간을 차지하도록 설정 */
-    padding-bottom: 100px; /* footer 높이와 동일하게 설정 */
-}
-
-/* Footer 스타일 */
 .footer {
-    height: 100%; /* footer 높이 설정 */
-    width: 100%; /* footer가 전체 화면 너비를 차지하도록 설정 */
-    background-color: #444; /* 배경 색상 */
-    color: #fff; /* 텍스트 색상 */
+    position: fixed; /* 최하단에 고정 */
+    bottom: 0; /* 최하단에 위치 */
+    background-color: transparent; /* 배경을 투명하게 설정 */
+    color: #fff; /* 글자 색상을 흰색으로 설정 */
+    padding: 20px;
+    width: 100%; /* 화면 전체 너비 */
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-left {
+    max-width: 600px;
+    padding-left: 20px; /* 왼쪽 여백 추가 */
+    padding-right: 20px; /* 오른쪽 여백 추가 */
+}
+.footer-left h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+.footer-left p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+.footer-support {
+    text-align: right;
+    padding-left: 20px; /* 왼쪽 여백 추가 */
+    padding-right: 20px; /* 오른쪽 여백 추가 */
+}
+.language-selector {
+    margin-top: 10px;
+}
+.language-selector select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+/* Footer Sections */
+.footer__section {
+    flex: 1; /* 모든 섹션이 동일한 너비를 차지 */
+    padding: 10px; /* 내부 여백 */
 }
 
 /* Footer Container */
@@ -34,15 +61,15 @@ body {
     align-items: flex-start; /* 상단 정렬 */
 }
 
-/* Footer Sections */
-.footer__section {
-    flex: 1; /* 모든 섹션이 동일한 너비를 차지 */
-    padding: 10px; /* 내부 여백 */
-}
-
 /* Footer Bottom */
 .footer__bottom {
     text-align: center; /* 텍스트 가운데 정렬 */
     padding: 10px; /* 내부 여백 */
     background-color: #444; /* 배경 색상 */
+}
+
+/* Wrapper 스타일 */
+#wrapper {
+    flex: 1; /* 남은 공간을 차지하도록 설정 */
+    padding-bottom: 100px; /* footer 높이와 동일하게 설정 */
 }
