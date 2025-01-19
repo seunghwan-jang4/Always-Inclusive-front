@@ -1,15 +1,15 @@
 /* 색상테마, 전역적으로 사용할 변수를 정의 */
 :root {
     --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --background-color: #2b2b2b; /* 배경색을 #2b2b2b로 통일 */
-    --text-color: #e0e0e0;
+    --secondary-color: #DD4E42;
+    --background-color: #333; /* 배경색을 #333로 통일 */
+    --text-color: #fff;
 }
 
 /* 글꼴설정, 배경색상 설정, 여백 및 페딩 제거 */
-body {
+.body {
     font-family: Arial, sans-serif;
-    background-color: var(--background-color); /* 배경색을 변수로 설정 */
+    background-color: #333; /* 배경색을 #333으로 변경 */
     margin: 0;
     padding: 0;
     color: var(--text-color); /* 텍스트 색상도 변수로 설정 */
@@ -22,7 +22,7 @@ body {
 
 /* 제목 스타일 설정 */
 .main__title {
-    color: #222;
+    color: #DD4E42;
 }
 
 /* 단락 스타일 설정 */
@@ -35,21 +35,34 @@ body {
     background-color: #DD4E42;
     color: #fff;
     padding: 10px 20px;
+    margin: 10px 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
+}
+
+.main__button2 {
+    background-color: #282626;
+    color: #fff;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 10px 0; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 /* 버튼 호버 */
-.main__nav .main__buttons button:hover {
+.main__buttons button:hover {
     opacity: 0.8; /* 호버 효과 추가 */
 }
 
 /* 창에 스타일 추가 */
 .main__container {
     width: 500px; /* 너비를 500px로 늘림 */
-    background-color: #555;
+    background-color: rgba(0, 0, 0, 0.5); /* 검정색 반투명 배경 */
     padding: 30px; /* 내부 여백을 30px로 늘림 */
     border-radius: 5px;
     text-align: left; /* 텍스트 정렬을 왼쪽으로 */
@@ -57,11 +70,43 @@ body {
 }
 
 .main__input-group {
+    position: relative;
     margin-bottom: 10px;
 }
 
-.main__button2 {
-    background-color: #DD4E42;
-    margin-top: 20px;
-    display: inline-block;
+.input__email,
+.input__password {
+    display: block; 
+    width: 55%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.floating-label {
+    position: absolute;
+    top: 20%;
+    left: 10px;
+    transform: translateY(-10%);
+    transition: 0.2s ease all;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.input__email:focus + .floating-label,
+.input__password:focus + .floating-label,
+.input__email:not(:placeholder-shown) + .floating-label,
+.input__password:not(:placeholder-shown) + .floating-label {
+    top: 0;
+    left: 10px;
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
 }
