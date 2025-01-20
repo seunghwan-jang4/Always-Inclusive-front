@@ -8,12 +8,19 @@
     <title>Member_Header</title>
 </head>
 <body>
-    <div class="Member_Header_nav">
-        <a href="#" class="Member_Header_logo">Always-Inclusive</a>
-        <div class="Member_Header_buttons">
-            <button class="Member_Header_button Member_Header_signout" id="logoutButton">로그아웃</button>
+    <div class="member-header__nav">
+        <!-- 로고 클릭 시 홈페이지로 이동 -->
+        <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <div class="member-header__buttons">
+            <!-- 프로필 이미지 클래스 수정 -->
+            <div class="member-header__profile-container">
+                <img src="../assets/images/User_images/default_profile.png" alt="프로필 이미지">
+            </div>            
+            <button class="member-header__buttons--mypage" id="mypageButton">마이 페이지</button>
+            <button class="member-header__buttons--logout" id="logoutButton">로그아웃</button>
         </div>
     </div>
+</body>
     <script>
         document.getElementById('logoutButton').addEventListener('click', function() {
             fetch('/api/logout/', { // DRF 로그아웃 엔드포인트
@@ -39,6 +46,9 @@
                 alert('로그아웃 중 오류가 발생했습니다.');
             });
         });
+
+        document.getElementById('mypageButton').addEventListener('click', function() {
+            window.location.href = '/src/pages/Mypage/Mypage.html'; // 마이페이지로 이동
+        });
     </script>
-</body>
 </html>
