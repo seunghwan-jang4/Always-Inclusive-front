@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 탈퇴</title>
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
+    <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
 </head>
 <body>
+    <div class="member-header__nav">
+        <!-- 로고 클릭 시 홈페이지로 이동 -->
+        <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <div class="member-header__buttons">
+            <!-- 프로필 이미지 클래스 수정 -->
+            <div class="member-header__profile-container">
+                <img src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
+            </div>
+            <button class="member-header__button member-header__buttons--mypage" id="mypageButton">마이 페이지</button>
+            <button class="member-header__button member-header__buttons--logout" id="logoutButton">로그아웃</button>
+        </div>
+    </div>
     <div class="container">
         <h1>회원 탈퇴</h1>
         <p>정말로 회원 탈퇴를 하시겠습니까? 이 작업은 되돌릴 수 없습니다.</p>
@@ -21,7 +34,34 @@
         
         <button onclick="cancelDelete()">취소</button>
     </div>
-
+    <!-- ===== Footer 시작 ===== -->
+    <div class="footer">
+        <div class="footer-left">
+            <!-- 왼쪽 영역 -->
+            <div class="footer__section">
+                <h4>팀 정보</h4>
+                <h1>Always-inclusive</h1>
+                <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
+                <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
+                <div class="language-selector">
+                    <label for="language">언어 설정:</label>
+                    <select id="language">
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="jp">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- 오른쪽 영역 -->
+        <div class="footer-support">
+            <h1>고객지원</h1>
+            <p>FAQ</p>
+            <p>고객센터</p>
+            <p>문의하기</p>
+        </div>
+    </div>
     <script>
         function cancelDelete() {
             window.location.href = 'http://127.0.0.1:5500/src/pages/Mypage/Mypage.html';
