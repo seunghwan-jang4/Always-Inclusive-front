@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Home</title>
-    <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
+    <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
-    <style>
+    <!-- <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -91,15 +91,22 @@
             padding: 10px;
             margin-bottom: 10px;
         }
-    </style>
+    </style> -->
 </head>
 <body>
-    <div class="Member_Header_nav">
-        <a href="#" class="Member_Header_logo">Always-Inclusive</a>
-        <div class="Member_Header_buttons">
-            <button class="Member_Header_button Member_Header_signout" id="logoutButton">로그아웃</button>
+    <div class="member-header__nav">
+        <!-- 로고 클릭 시 홈페이지로 이동 -->
+        <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <div class="member-header__buttons">
+            <!-- 프로필 이미지 클래스 수정 -->
+            <div class="member-header__profile-container">
+                <img src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
+            </div>
+            <button class="member-header__button member-header__buttons--mypage" id="mypageButton">마이 페이지</button>
+            <button class="member-header__button member-header__buttons--logout" id="logoutButton">로그아웃</button>
         </div>
     </div>
+</body>
     <div class="container" style="margin-top: 60px;">
         <main>
             <div class="chat-box">응답 창</div>
@@ -146,15 +153,15 @@
         </main>
     </div>
     <!-- ===== Footer 시작 ===== -->
-    <div class="Footer">
-        <div class="Footer__container">
+    <div class="footer">
+        <div class="footer-left">
             <!-- 왼쪽 영역 -->
-            <div class="Footer__section">
+            <div class="footer__section">
                 <h4>팀 정보</h4>
                 <h1>Always-inclusive</h1>
                 <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
                 <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
-                <div class="Footer__language-selector">
+                <div class="language-selector">
                     <label for="language">언어 설정:</label>
                     <select id="language">
                         <option value="ko">한국어</option>
@@ -164,18 +171,23 @@
                     </select>
                 </div>
             </div>
-            <!-- 오른쪽 영역 -->
-            <div class="Footer__section">
-                <h1>고객지원</h1>
-                <p>FAQ</p>
-                <p>고객센터</p>
-                <p>문의하기</p>
+        </div>
+        <!-- 오른쪽 영역 -->
+        <div class="footer-support">
+            <h1>고객지원</h1>
+            <p>FAQ</p>
+            <p>고객센터</p>
+            <p>문의하기</p>
             </div>
         </div>
     </div>
     <script>
+        document.getElementById('mypageButton').addEventListener('click', function() {
+            window.location.href = '/src/pages/Mypage/Mypage.html';
+        });
+        
         document.getElementById('logoutButton').addEventListener('click', function() {
-            fetch('/api/logout/', { // DRF 로그아웃 엔드포인트
+            fetch('http://127.0.0.1:8000/api/accounts/logout/', { // DRF 로그아웃 엔드포인트
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -188,7 +200,7 @@
                     alert('로그아웃 되었습니다.');
                     localStorage.removeItem('token'); // 토큰 삭제
                     // 로그아웃 후 리디렉션
-                    window.location.href = '/login';
+                    window.location.href = '/src/pages/Login/Login.html';
                 } else {
                     alert('로그아웃에 실패했습니다.');
                 }
@@ -196,6 +208,7 @@
             .catch(error => {
                 console.error('로그아웃 중 오류 발생:', error);
                 alert('로그아웃 중 오류가 발생했습니다.');
+                
             });
         });
     </script>
