@@ -4,244 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
+    <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
-    <style>
-        body {
-            background-color: #1C1C1C;
-            font-family: Arial, sans-serif;
-            color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column; /* 세로 중앙 정렬 */
-        }
 
-        .button {
-            background-color: #FF5722;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            font-size: 14px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .header-button {
-            position: absolute;
-            top: 10px;
-            font-size: 12px;
-        }
-        .header-button.left {
-            left: 10px;
-        }
-        .header-button.right {
-            right: 10px;
-        }
-        .profile-box {
-            border: 3px solid #999;
-            border-radius: 5px;
-            width: 80px;
-            height: 80px;
-            margin: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        .profile-box img {
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-        }
-        .change-button {    
-            background-color: #B3B3B3;
-            color: black;
-            padding: 3px 8px;
-            font-size: 12px;
-            border-radius: 3px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .circle {
-            background-color: #FF9800;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-        .history-box {
-            background-color: #666;
-            border-radius: 5px;
-            padding: 10px;
-            margin-top: 50px;
-            text-align: center;
-        }
-        .history-buttons {
-            display: flex;
-            justify-content: center;
-            margin: 10px 0;
-        }
-        .history-button {
-            background-color: #999;
-            color: black;
-            margin: 0 5px;
-            padding: 3px 10px;
-            font-size: 12px;
-            border-radius: 3px;
-            border: none;
-            cursor: pointer;
-        }
-        .content-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px 0;
-        }
-        .content-checkbox {
-            margin-right: 5px;
-        }
-        .bottom-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .bottom-light-button {
-            background-color: #E0E0E0;
-            color: black;
-            padding: 3px 10px;
-            border-radius: 3px;
-            font-size: 12px;
-            border: none;
-            cursor: pointer;
-        }
-        .bottom-red-button {
-            background-color: #FF5722;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 3px;
-            font-size: 12px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .laptop-frame {
-            width: 100%;
-            background-color: var(--background-color);
-            border-radius: 15px;
-            padding: 10px;
-        }
-        .chat-window {
-            display: flex;
-            height: 100%;
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .sidebar {
-            width: 25%;
-            background-color: var(--background-color);
-            padding: 1rem;
-            border-right: 1px solid #333;
-        }
-        .conversation {
-            width: 75%;
-            display: flex;  
-            flex-direction: column;
-        }
-        .conversation-header {
-            padding: 0.5rem 1rem;
-            border-bottom: 1px solid #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .conversation-messages {
-            flex-grow: 1;
-            padding: 1rem;
-            overflow-y: auto;
-        }
-        .message {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        .message.bot {
-            flex-direction: row;
-        }
-        .message.user {
-            flex-direction: row-reverse;
-        }
-        .message img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin: 0 0.5rem;
-        }
-        .message-content {
-            background-color: #333;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
-        .message-time {
-            font-size: 0.75rem;
-            color: #aaa;
-            margin-top: 0.25rem;
-        }
-        .input-container {
-            padding: 0.5rem 1rem;
-            border-top: 1px solid #333;
-            display: flex;
-            align-items: center;
-        }
-        .input-container input {
-            flex-grow: 1;
-            border: none;
-            border-radius: 5px;
-            padding: 0.5rem;
-            margin-right: 0.5rem;
-            background-color: #333;
-            color: #fff;
-        }
-        .input-container button {
-            background-color: #444;
-            border: none;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .input-container button:hover {
-            background-color: #555;
-        }
-        .clickable-text {
-            color: #fff;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        .clickable-text:hover {
-            color: #aaa;
-        }
-        .bottom-right {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-    </style>
 </head>
 <body>
-    <div class="Member_Header_nav" style="position: fixed; top: 0; width: 100%;">
-        <a href="#" class="Member_Header_logo">Always-Inclusive</a>
-        <div class="Member_Header_buttons">
+    <div class="member_header_nav" style="position: fixed; top: 0; width: 100%;">
+        <a href="#" class="member_header_logo">Always-Inclusive</a>
+        <div class="member_header_buttons">
             <button class="Member_Header_button Member_Header_signout" id="logoutButton">로그아웃</button>
         </div>
     </div>
@@ -288,7 +58,6 @@
                 <input type="checkbox" class="content-checkbox">
                 <span>성인 콘텐츠 표시</span>
             </div>
-            <button class="bottom-light-button">히스토리 초기화</button>
             <button class="bottom-light-button" id="deleteAccountButton">회원 탈퇴하기</button>
         </div>
     </div>
@@ -318,6 +87,8 @@
             <p>FAQ</p>
             <p>고객센터</p>
             <p>문의하기</p>
+            </div>
+        </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
