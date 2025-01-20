@@ -1,6 +1,6 @@
 /* 색상테마, 전역적으로 사용할 변수를 정의 */
 :root {
-    --primary-color: #3498db;
+    --primary-color: #333;
     --secondary-color: #DD4E42;
     --background-color: #333; /* 배경색을 #333로 통일 */
     --text-color: #fff;
