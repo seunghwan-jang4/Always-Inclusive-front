@@ -25,6 +25,16 @@
     color: #DD4E42;
 }
 
+.main__container h1 {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    color: var(--text-color); /* 글자 색상을 흰색으로 설정 */
+}
+.main__input-group label {
+    color: var(--text-color); /* 성별, 나이 글자의 색상을 흰색으로 설정 */
+}
+
 /* 단락 스타일 설정 */
 .main__paragraph {
     line-height: 1.6;
@@ -72,6 +82,7 @@
     flex-direction: column; /* 세로 방향 정렬 */
     justify-content: center; /* 세로 가운데 정렬 */
     align-items: center; /* 가로 가운데 정렬 */
+    position: relative; /* h1 위치 조정을 위해 position을 relative로 변경 */
 }
 
 .main__input-group {
@@ -91,7 +102,7 @@
 }
 
 .floating-label {
-    position: absolute;
+    position: absolute; 
     top: 10%;
     left: 10px;
     transform: translateY(80%); /* 레이블을 위로 이동 */
@@ -115,4 +126,16 @@
     justify-content: space-between;
     align-items: center;
     margin: 10px 0;
+}
+
+/* 스타일 추가 */
+#gender, #age {
+    width: 200px; /* 셀렉트 박스의 너비를 키움 */
+    height: 40px; /* 셀렉트 박스의 높이를 키움 */
+}
+
+/* 체크박스 스타일 */
+.checkbox-label {
+    display: flex;
+    align-items: center;
 }
