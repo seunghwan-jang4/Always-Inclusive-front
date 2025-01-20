@@ -3,7 +3,7 @@
     --primary-color: #333;
     --secondary-color: #DD4E42;
     --background-color: #333; /* 배경색을 #333로 통일 */
-    --text-color: #fff;
+    --text-color: black;
 }
 
 /* 글꼴설정, 배경색상 설정, 여백 및 페딩 제거 */
@@ -22,14 +22,14 @@
 
 /* 제목 스타일 설정 */
 .main__title {
-    color: #DD4E42;
+    color: var(--text-color); /* 제목 색상을 흰색으로 설정 */
 }
 
 .main__container h1 {
     position: absolute;
     top: 10px;
     left: 30px;
-    color: var(--text-color); /* 글자 색상을 흰색으로 설정 */
+    color: #fff; /* 글자 색상을 흰색으로 설정 */
 }
 .main__input-group label {
     color: var(--text-color); /* 성별, 나이 글자의 색상을 흰색으로 설정 */
@@ -86,17 +86,18 @@
 }
 
 .main__input-group {
+    width: 60%; /* 그룹 너비를 60%로 */
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .input__email,
 .input__password {
-    display: block; 
+    display: block;
     width: 100%;
     height: 35px;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px -10px 0;
     border: none;
     border-radius: 5px;
 }
@@ -164,3 +165,4 @@
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
 }
+
