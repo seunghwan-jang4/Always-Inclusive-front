@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Always-Inclusive</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .toolbar {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 0.5rem 1rem;
+            color: #fff;
+        }
+        .toolbar-item {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+        .toolbar-item.dropdown::after {
+            content: '\25BC';
+            margin-left: 0.5rem;
+            font-size: 0.75rem;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #444;
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.2rem;
+            flex-grow: 1;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: #ccc;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        .search-icon {
+            margin-right: 0.5rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <div class="toolbar-item">Always-Inclusive</div>
+        <div class="toolbar-item dropdown">Always-Inclusive</div>
+        <div class="search-bar">
+            <span class="search-icon">&#128269;</span>
+            <input type="text" placeholder="검색하세요" />
+        </div>
+    </div>
+</body>
+</html>

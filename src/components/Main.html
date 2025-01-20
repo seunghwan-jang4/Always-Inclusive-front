@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main CSS 적용 예제</title>
+    <!-- main.css 파일 링크 -->
+    <link rel="stylesheet" href="../assets/styles/Main.css">
+</head>
+<body class="body">
+    <header>
+        <h1 class="main__title">헤더 제목</h1>
+    </header>
+    <main class="main__container">
+        <p class="main__paragraph">이것은 단락입니다. main.css 파일의 스타일이 적용됩니다.</p>
+        <button class="main__button2">기본 버튼</button>
+        <button class="main__button">메인 색깔 버튼</button>
+        <div class="main__input-group">
+            <input type="text" id="email" class="input__email" placeholder=" ">
+            <label for="email" class="floating-label">아이디 / 이메일 형식</label>
+        </div>
+        <div class="main__input-group">
+            <input type="password" id="password" class="input__password" placeholder=" ">
+            <label for="password" class="floating-label">비밀번호</label>
+        </div>
+        <div class="main__input-group">
+            <input type="password" id="confirmPassword" class="input__password" placeholder=" ">
+            <label for="confirmPassword" class="floating-label">비밀번호 재확인</label>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var inputs = document.querySelectorAll('.input__id, .input__password');
+            inputs.forEach(function(input) {
+                input.addEventListener('focus', function() {
+                    this.nextElementSibling.classList.add('active');
+                });
+                input.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.nextElementSibling.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

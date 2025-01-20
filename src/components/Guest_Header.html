@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/Main.css">
+    <link rel="stylesheet" href="../assets/styles/Guest_Header.css">
+    <title>Guest_Header</title>
+</head>
+<body>
+    <div class="guest-header__nav">
+         <!-- 로고 클릭 시 홈페이지로 이동 -->
+         <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
+        <div class="guest-header__buttons">
+            <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
+            <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('signupButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+        });
+    </script>
+</body>
+</html>
