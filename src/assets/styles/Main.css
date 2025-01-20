@@ -136,6 +136,7 @@
 
 /* 체크박스 스타일 */
 .checkbox-label {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    white-space: nowrap; /* 줄바꿈 방지 */
 }
