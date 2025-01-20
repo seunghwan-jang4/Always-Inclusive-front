@@ -14,8 +14,8 @@
     <header class="guest-header__nav">
         <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
         <div class="guest-header__buttons">
-            <button class="guest-button guest-header__buttons--explore">회원가입</button>
-            <button class="guest-button guest-header__buttons--login">로그인</button>
+            <button class="guest-button guest-header__buttons--explore" id="headerSignupButton">회원가입</button>
+            <button class="guest-button guest-header__buttons--login" id="headerLoginButton">로그인</button>
         </div>
     </header>
     <div class="main__container">
@@ -74,6 +74,18 @@
         </div>
     </footer>
     <script>
+        // 헤더에서 회원가입 페이지로 이동
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('headerSignupButton').addEventListener('click', function() {
+                window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+            });
+
+            document.getElementById('headerLoginButton').addEventListener('click', function() {
+                window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+            });
+        });
+
+        // 회원가입 요청
         document.getElementById('signupButton').addEventListener('click', function() {
             const userData = {
                 email: document.getElementById('email').value, // 이메일
