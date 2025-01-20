@@ -140,3 +140,27 @@
     align-items: center;
     white-space: nowrap; /* 줄바꿈 방지 */
 }
+
+/* 게스트 홈페이지 배경 */
+.guest-homepage {
+    background-image: url('../images/Guest_background/Guest_background.jpg'); /* 게스트 홈페이지 배경 이미지 경로 */
+    background-size: cover; /* 배경 이미지 크기 조정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    background-position: center; /* 배경 이미지 중앙 정렬 */
+}
+
+/* 회원 홈페이지 배경 */
+.member-homepage {
+    background-image: url('../images/Member_background/Member_background.jpg'); /* 회원 홈페이지 배경 이미지 경로 */
+    background-size: cover; /* 배경 이미지 크기 조정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    background-position: center; /* 배경 이미지 중앙 정렬 */
+}
+
+/* 마이 페이지 배경 */
+.my-page {
+    background-image: url('../images/Member_background/Member_background.jpg'); /* 마이 페이지 배경 이미지 경로 */
+    background-size: cover; /* 배경 이미지 크기 조정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    background-position: center; /* 배경 이미지 중앙 정렬 */
+}
