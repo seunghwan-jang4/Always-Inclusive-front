@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register.html</title>
+    <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
+    <link rel="stylesheet" href="../../assets/styles/Footer.css">
+</head>
+<body>
+    <header class="guest-header__nav">
+        <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
+        <div class="guest-header__buttons">
+            <button class="guest-button guest-header__buttons--explore" id="headerSignupButton">회원가입</button>
+            <button class="guest-button guest-header__buttons--login" id="headerLoginButton">로그인</button>
+        </div>
+    </header>
+    <div class="main__container">
+        <h1>회원 가입</h1>
+        <div class="main__input-group">
+            <input type="text" id="email" class="input__email" placeholder="">
+            <label for="email" class="floating-label">아이디 / 이메일 형식</label>
+        </div>
+        <div class="main__input-group">
+            <input type="password" id="password" class="input__password" placeholder="">
+            <label for="password" class="floating-label">비밀번호</label>
+        </div>
+        <div class="main__input-group">
+            <input type="password" id="confirmPassword" class="input__password" placeholder="">
+            <label for="confirmPassword" class="floating-label">비밀번호 재확인</label>
+        </div>
+        <div class="main__input-group select-group">
+            <label for="gender">성별</label>
+            <select id="gender" name="gender">
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+            </select>
+        </div>
+        <div class="main__input-group select-group">
+            <label for="age">나이</label>
+            <select id="age" name="age">
+                <option value="10s">10대 (13~19세)</option>
+                <option value="20s">20대 (20~29세)</option>
+                <option value="30s">30대 (30~39세)</option>
+                <option value="40s">40대 (40~49세)</option>
+                <option value="50s">50대 이상 (50세~)</option>
+            </select>
+        </div>
+        <button class="main__button" id="signupButton">가입하기</button>
+    </div>
+    <footer class="footer">
+        <div class="footer-left">
+            <h4>팀 정보</h4>
+            <h1>Always-inclusive</h4>
+            <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
+            <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
+            <div class="language-selector">
+                <label for="language">언어 설정:</label>
+                <select id="language">
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                    <option value="jp">日本語</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+        </div>
+        <div class="footer-support">
+            <h1>고객지원</h1>
+            <p>FAQ</p>
+            <p>고객센터</p>
+            <p>문의하기</p>
+        </div>
+    </footer>
+    <script>
+        // 헤더에서 회원가입 페이지로 이동
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('headerSignupButton').addEventListener('click', function() {
+                window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+            });
+
+            document.getElementById('headerLoginButton').addEventListener('click', function() {
+                window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+            });
+        });
+
+        // 회원가입 요청
+        document.getElementById('signupButton').addEventListener('click', function() {
+            const userData = {
+                email: document.getElementById('email').value, // 이메일
+                password: document.getElementById('password').value, // 비밀번호
+                password2: document.getElementById('confirmPassword').value, // 비밀번호 재확인
+                gender: document.getElementById('gender').value, // 성별
+                age_group: document.getElementById('age').value // 나이대    
+            };
+
+            if (userData.password !== userData.password2) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+
+            fetch('http://127.0.0.1:8000/api/accounts/signup/', { // DRF 회원가입 엔드포인트
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json().then(data => ({ status: response.status, body: data })))
+            .then(({ status, body }) => {
+                if (status >= 200 && status < 300) {
+                    alert('회원가입이 완료되었습니다.');
+                    // 회원가입 후 리디렉션
+                    window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html';
+                } else {
+                    let errorMessage = '회원가입에 실패했습니다: ';
+                    if (body.email) {
+                        errorMessage += '이메일 오류: ' + body.email.join(', ');
+                    } else if (body.non_field_errors) {
+                        errorMessage += body.non_field_errors.join(', ');
+                    } else if (body.password) {
+                        errorMessage += '비밀번호 오류: ' + body.password.join(', ');
+                    } else if (body.detail) {
+                        errorMessage += body.detail;
+                    } else if (status === 400) {
+                        errorMessage += '필수 입력 항목이 누락되었습니다.';
+                    } else if (status === 409) {
+                        errorMessage += '이미 존재하는 이메일입니다.';
+                    } else if (status === 500) {
+                        errorMessage += '서버 오류가 발생했습니다.';
+                    } else if (status === 503) {
+                        errorMessage += '네트워크 오류가 발생했습니다.';
+                    } else {
+                        errorMessage += '알 수 없는 오류';
+                    }
+                    alert(errorMessage);
+                }
+            })
+            .catch(error => {
+                console.error('회원가입 중 오류 발생:', error);
+                alert('회원가입 중 오류가 발생했습니다.');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var inputs = document.querySelectorAll('.input__id, .input__password');
+            inputs.forEach(function(input) {
+                input.addEventListener('focus', function() {
+                    this.nextElementSibling.classList.add('active');
+                });
+                input.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.nextElementSibling.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+/* 헤더 스타일 */
+.guest-header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* 로고 스타일 설정 */
+.guest-header__logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #DD4E42;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 20px; /* 왼쪽 여백 */
+}
+
+/* 버튼 스타일 통합 */
+.guest-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: opacity 0.3s ease;
+}
+
+/* 버튼 호버 */
+.guest-button:hover,
+.guest-button:focus {
+    opacity: 0.8; /* 호버 및 포커스 효과 */
+}
+
+/* 버튼 끼리 간격 */
+.guest-header__buttons {
+    display: flex;
+    gap: 0.01rem;
+}
+
+/* 회원가입 버튼 */
+.guest-header__buttons--explore {
+    margin-right: 20px;
+    background-color: white;
+    color: #333;
+    padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
+    font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+}
+
+/* 로그인 버튼 */
+.guest-header__buttons--login {
+    margin-right: 20px;
+    background-color: #DD4E42;
+    color: white;
+    padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
+    font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+}

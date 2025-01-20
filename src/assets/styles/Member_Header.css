@@ -1,0 +1,98 @@
+/* 헤더 스타일 */
+.member-header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* 로고 스타일 설정 */
+.member-header__logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #DD4E42;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 20px; /* 왼쪽 여백 */
+}
+
+
+/* 버튼 스타일 통합 */
+.member-header__button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: opacity 0.3s ease;
+}
+
+/* 로그아웃 버튼 */
+.member-header__buttons--logout {
+    margin-right: 20px;
+    background-color: white;
+    color: #333;
+    padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
+    font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+}
+
+/* 마이페이지 버튼 */
+.member-header__buttons--mypage {
+    background-color: white;
+    color: #333;
+    margin-right: 10px;
+    padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
+    font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+}
+
+/* 버튼 호버 */
+button:hover,
+button:focus {
+    opacity: 0.8; /* 호버 및 포커스 효과 */
+}
+
+/* 버튼 끼리 간격 */
+.member-header__buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* 프로필 이미지 설정 */
+.member-header__profile-container {
+    position: relative;
+    width: 50px; /* 프로필 이미지의 너비를 50px로 설정 */
+    height: 50px; /* 프로필 이미지의 높이를 50px로 설정 */
+    overflow: hidden; /* 이미지가 컨테이너를 벗어나지 않도록 */
+}
+/* 프로필 컨테이너 안에 들어갈 이미지 */
+.member-header__profile-container img {
+    width: 100%;
+    height: 100%;
+    display: block; /* 이미지가 블록 요소로 표시되도록 */
+    transition: opacity 0.3s ease; /* 이미지 전환 효과 */
+}
+
+/* 프로필 변경 버튼
+.member-header__change-profile-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #DD4E42;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.member-header__change-profile-button:hover {
+    opacity: 0.8;
+} */
