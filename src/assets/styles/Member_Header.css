@@ -11,7 +11,6 @@
     width: 100%;
     margin: 0 auto;    /* 중앙 정렬 */
     z-index: 1000;
-    box-sizing: border-box;
 }
 
 /* 로고 스타일 설정 */
@@ -36,26 +35,22 @@
 
 /* 로그아웃 버튼 */
 .member-header__buttons--logout {
-    padding: 0.8em 1.2rem; /* 내부 여백 */
-    font-size: 0.9rem; /* 텍스트 크기 */
-    border-radius: 8px; /* 둥근 모서리 */
-    background-color: #ff4444; /* 배경색 */
-    color: white; /* 텍스트 색상 */
-    height: 50px; /* 버튼 높이 설정 */
-    line-height: 1.5; /* 텍스트 세로 정렬 */
-    min-width: 120px; /* 최소 너비 */
+    margin-right: 20px;
+    background-color: #DD4E42;
+    color: white;
+    padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
+    font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+    height: 25px; /* 버튼의 높이를 설정 */
 }
 
 /* 마이페이지 버튼 */
 .member-header__buttons--mypage {
-    padding: 0.8rem 1.2rem; /* 내부 여백 (높이에 영향을 줌) */
-    font-size: 1rem; /* 텍스트 크기 */
-    border-radius: 8px; /* 둥근 모서리 */
-    background-color: #007bff; /* 배경색 */
-    color: white; /* 텍스트 색상 */
-    height: 50px; /* 버튼 높이 설정 */
-    line-height: 1.5; /* 텍스트 세로 정렬 */
-    min-width: 100px; /* 최소 너비 */
+    margin-right: 10px;
+    background-color: white;
+    color: #333;
+    padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
+    font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+    height: 25px; /* 버튼의 높이를 설정 */
 }
 
 /* 버튼 호버 */
@@ -67,13 +62,13 @@ button:focus {
 /* 버튼 끼리 간격 */
 .member-header__buttons {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 /* 프로필 이미지 설정 */
 .member-header__profile-container {
-    width: 60px; /* 너비 */
-    height: 60px; /* 높이 */
+    width: 30px; /* 너비 */
+    height: 30px; /* 높이 */
     display: flex;
     justify-content: center;
     align-items: center;
