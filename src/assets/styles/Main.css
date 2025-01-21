@@ -76,9 +76,15 @@
     font-size: 14px;
 }
 
+.main__button--large {
+    padding: 15px 30px; /* 버튼 크기 키우기 */
+    display: block;
+    margin: 20px auto; /* 가운데 정렬 */
+}
+
 /* 버튼 호버 */
-.main__buttons button:hover {
-    opacity: 0.8; /* 호버 효과 추가 */
+.main__button:hover {
+    opacity: 0.8;
 }
 
 /* 창에 스타일 추가 */
@@ -198,4 +204,11 @@
 .content-item {
     min-width: 200px;
     text-align: center;
+}
+
+/* 각 섹션간의 간격 */
+.vertical-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 섹션 간의 간격 */
 }
