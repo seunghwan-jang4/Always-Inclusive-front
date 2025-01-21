@@ -7,17 +7,13 @@
 }
 
 /* 글꼴설정, 배경색상 설정, 여백 및 페딩 제거 */
-.body {
+html, body {
     font-family: Arial, sans-serif;
     background-color: #333; /* 배경색을 #333으로 변경 */
     margin: 0;
     padding: 0;
     color: var(--text-color); /* 텍스트 색상도 변수로 설정 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+    height: 100%; /* html과 body의 높이를 100%로 설정 */
 }
 
 /* 제목 스타일 설정 */
@@ -91,7 +87,7 @@
 .main__container {
     width: 450px; /* 너비를 450px로 설정 */
     height: 600px; /* 높이를 600px로 설정 */
-    background-color: rgba(0, 0, 0, 0.5); /* 검정색 반투명 배경 */
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검정색 배경 추가 */
     padding: 30px; /* 내부 여백을 30px로 설정 */
     border-radius: 5px;
     text-align: center; /* 텍스트 정렬을 가운데로 */
@@ -101,6 +97,7 @@
     justify-content: center; /* 세로 가운데 정렬 */
     align-items: center; /* 가로 가운데 정렬 */
     position: relative; /* h1 위치 조정을 위해 position을 relative로 변경 */
+    z-index: 1; /* 배경 이미지 위에 표시되도록 z-index 설정 */
 }
 
 .main__input-group {
@@ -166,6 +163,8 @@
     background-size: cover; /* 배경 이미지 크기 조정 */
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
+    position: relative;
+    z-index: 0;
 }
 
 /* 회원 홈페이지 배경 */
