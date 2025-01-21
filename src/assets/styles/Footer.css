@@ -11,6 +11,7 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
 }
+
 .footer {
     background-color: transparent; /* 배경을 투명하게 설정 */
     color: #fff; /* 글자 색상을 흰색으로 설정 */
@@ -71,5 +72,5 @@ body {
 /* Wrapper 스타일 */
 #wrapper {
     flex: 1; /* 남은 공간을 차지하도록 설정 */
-    padding-bottom: 100px; /* footer 높이와 동일하게 설정 */
+    padding-bottom: 165px; /* footer 높이와 동일하게 설정 */
 }
