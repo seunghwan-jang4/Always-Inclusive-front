@@ -1,151 +1,95 @@
+/* 페이지 배경색, 글꼴, 여백 및 패딩 설정 */
 body {
-    background-color: #1C1C1C;
+    background-color: var(--background-color); /* 배경색을 변수로 설정 */
     font-family: Arial, sans-serif;
-    color: white;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column; /* 세로 중앙 정렬 */
+    color: var(--text-color); /* 텍스트 색상도 변수로 설정 */
 }
 
-.button {
-    background-color: #FF5722;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.header-button {
-    position: absolute;
-    top: 10px;
-    font-size: 12px;
-}
-.header-button.left {
-    left: 10px;
-}
-.header-button.right {
-    right: 10px;
-}
-.profile-box {
-    border: 3px solid #999;
-    border-radius: 5px;
-    width: 80px;
-    height: 80px;
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-.profile-box img {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-}
-.change-button {    
-    background-color: #B3B3B3;
-    color: black;
-    padding: 3px 8px;
-    font-size: 12px;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-.circle {
-    background-color: #FF9800;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-.history-box {
-    background-color: #666;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 50px;
-    text-align: center;
-}
-.history-buttons {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-}
-.history-button {
-    background-color: #999;
-    color: black;
-    margin: 0 5px;
-    padding: 3px 10px;
-    font-size: 12px;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-}
-.content-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
-}
-.content-checkbox {
-    margin-right: 5px;
-}
-.bottom-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-.bottom-light-button {
-    background-color: #E0E0E0;
-    color: black;
-    padding: 3px 10px;
-    border-radius: 3px;
-    font-size: 12px;
-    border: none;
-    cursor: pointer;
-}
-.bottom-red-button {
-    background-color: #FF5722;
-    color: white;
-    padding: 3px 10px;
-    border-radius: 3px;
-    font-size: 12px;
-    border: none;
-    cursor: pointer;
-}
-
+/* 노트북 프레임 스타일 설정 */
 .laptop-frame {
-    width: 100%;
-    background-color: var(--background-color);
+    width: 120%;
+    background-color: var(--background-color); /* 배경색을 변수로 설정 */
     border-radius: 15px;
     padding: 10px;
 }
+
+/* 채팅 창 스타일 설정 */
 .chat-window {
     display: flex;
-    height: 100%;
+    height: 80vh;
     background-color: #1e1e1e;
     border-radius: 10px;
     overflow: hidden;
 }
-.sidebar {
-    width: 25%;
-    background-color: var(--background-color);
-    padding: 1rem;
-    border-right: 1px solid #333;
-}
-.conversation {
+
+/* 채팅 대화 영역 스타일 설정 */
+.chat-window__conversation {
     width: 75%;
-    display: flex;  
+    display: flex;
     flex-direction: column;
 }
+
+/* 채팅 대화 헤더 스타일 설정 */
+.chat-window__conversation-header {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 채팅 메시지 영역 스타일 설정 */
+.chat-window__conversation-messages {
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+/* 사용자 목록 스타일 설정 */
+.chat-window__user-list {
+    width: 25%;
+    border-left: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 사용자 목록 헤더 스타일 설정 */
+.chat-window__user-list-header {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 사용자 목록 아이템 스타일 설정 */
+.chat-window__user-list-items {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* 사용자 목록 개별 아이템 스타일 설정 */
+.chat-window__user-list-item {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+}
+
+
+.chat-window__user-list-item:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+
+/* 대화 컨테이너 스타일 설정 */
+.conversation {
+    width: 100%; /* 너비를 100%로 설정하여 부모 컨테이너에 맞춤 */
+    display: flex;
+    flex-direction: column;
+}
+
 .conversation-header {
     padding: 0.5rem 1rem;
     border-bottom: 1px solid #333;
@@ -153,45 +97,55 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .conversation-messages {
     flex-grow: 1;
     padding: 1rem;
     overflow-y: auto;
 }
+
 .message {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
 }
+
 .message.bot {
     flex-direction: row;
 }
+
 .message.user {
     flex-direction: row-reverse;
 }
+
 .message img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin: 0 0.5rem;
 }
+
 .message-content {
     background-color: #333;
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 5px;
 }
+
 .message-time {
     font-size: 0.75rem;
     color: #aaa;
     margin-top: 0.25rem;
 }
+/* 입력 컨테이너 스타일 설정 */
 .input-container {
+    width: 100%; /* 너비를 100%로 설정하여 부모 컨테이너에 맞춤 */
     padding: 0.5rem 1rem;
     border-top: 1px solid #333;
     display: flex;
     align-items: center;
 }
+/* 입력 필드 스타일 설정 */
 .input-container input {
     flex-grow: 1;
     border: none;
@@ -201,6 +155,7 @@ body {
     background-color: #333;
     color: #fff;
 }
+/* 입력 버튼 스타일 설정 */
 .input-container button {
     background-color: #444;
     border: none;
@@ -209,59 +164,18 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+/* 입력 버튼 호버 스타일 설정 */
 .input-container button:hover {
     background-color: #555;
 }
+
+/* 클릭 가능한 텍스트 스타일 */
 .clickable-text {
     color: #fff;
     cursor: pointer;
     text-decoration: underline;
 }
+/* 클릭 가능한 텍스트 호버 스타일 */
 .clickable-text:hover {
     color: #aaa;
-}
-.bottom-right {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.chatting__input-container__input {
-    flex-grow: 1;
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem;
-    margin-right: 0.5rem;
-    background-color: #333;
-    color: #fff;
-}
-.chatting__input-container__button {
-    background-color: #444;
-    border: none;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.chatting__input-container__button:hover {
-    background-color: #555;
-}
-.chatting__clickable-text {
-    color: #fff;
-    cursor: pointer;
-    text-decoration: underline;
-}
-.chatting__clickable-text:hover {
-    color: #aaa;
-}
-.chatting__bottom-right {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
 }

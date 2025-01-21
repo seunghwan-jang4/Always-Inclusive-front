@@ -5,74 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guest_Home.html</title>
     <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
-    <style>
-  
-        .main-content {
-            background-color: #555;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        .login-btn {
-            background-color: #ff4f3e;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 10px 0;
-        }
-        .content-section {
-            margin-bottom: 20px;
-        }
-        .section-title {
-            background-color: #ff4f3e;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .content-items {
-            display: flex;
-            gap: 10px;
-        }
-        .content-item {
-            background-color: #777;
-            padding: 20px;
-            flex: 1;
-            border-radius: 10px;
-        }
-        .more-btn {
-            text-align: center;
-            margin-top: 10px;
-            background-color: #888;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-    </style>
+    <link rel="stylesheet" href="../../assets/styles/Chatting.css"> <!-- Chatting.css 추가 -->
+</head>
 <body>
-    <div class="container">
-        <div class="main-content">
-            기능 소개 및 비회원 대상 테스트?
-            <div class="login-btn">로그인</div>
-        </div>
-        <div class="content-section">
-            <div class="section-title">넷플릭스</div>
-            <div class="content-items">
-                <div class="content-item">장르별 컨텐츠들</div>
-                <div class="content-item">장르별 컨텐츠들</div>
-                <div class="content-item">장르별 컨텐츠들</div>
-            </div>
-            <button>더 보기</button>
-        </div>
-        <div class="content-section">
-            <div class="section-title">티빙</div>
-            <div class="content-items">
-                <div class="content-item">장르별 컨텐츠들</div>
-                <div class="content-item">장르별 컨텐츠들</div>
-                <div class="content-item">장르별 컨텐츠들</div>
-            </div>
-            <button>더 보기</button>
+    <div class="guest-header__nav">
+         <!-- 로고 클릭 시 홈페이지로 이동 -->
+         <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
+        <div class="guest-header__buttons">
+            <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
+            <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
         </div>
     </div>
+    <script>
+        document.getElementById('signupButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+        });
+    </script>
+    <main>
+        <div class="chat-window">
+            <div class="chat-window__conversation">
+                <div class="chat-window__conversation-header">
+                    <h2>채팅</h2>
+                </div>
+                <div class="chat-window__conversation-messages">
+                    <div class="message bot">
+                        <img src="https://picsum.photos/40" alt="bot">
+                        <div class="message-content">안녕하세요! 무엇을 도와드릴까요?</div>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <input type="text" placeholder="메시지를 입력하세요">
+                    <button>전송</button>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="section-title">넷플릭스</div>
+            <div class="content-grid">
+                <div class="content-item">
+                    <img src="https://picsum.photos/200" alt="더미 이미지">
+                    장르별 컨텐츠들
+                </div>
+                <div class="content-item">
+                    <img src="https://picsum.photos/200" alt="더미 이미지">
+                    장르별 컨텐츠들
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="section-title">디즈니 플러스</div>
+            <div class="content-grid">
+                <div class="content-item">
+                    <img src="https://picsum.photos/200" alt="더미 이미지">
+                    장르별 컨텐츠들
+                </div>
+                <div class="content-item">
+                    <img src="https://picsum.photos/200" alt="더미 이미지">
+                    장르별 컨텐츠들
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-left">
+            <div class="footer__section">
+                <h4>팀 정보</h4>
+                <h1>Always-inclusive</h1>
+                <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
+                <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
+                <div class="language-selector">
+                    <label for="language">언어 설정:</label>
+                    <select id="language">
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="jp">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="footer-support">
+            <h1>고객지원</h1>
+            <p>FAQ</p>
+            <p>고객센터</p>
+            <p>문의하기</p>
+        </div>
+    </footer>
 </body>
 </html>
