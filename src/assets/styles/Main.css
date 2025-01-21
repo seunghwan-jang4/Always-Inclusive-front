@@ -64,9 +64,27 @@
     font-size: 14px;
 }
 
+.main__button3 {
+    background-color: #282626;
+    color: #fff;
+    width: 35%;
+    padding: 10px 20px;
+    margin: 10px 0 0 0; /* 위쪽 여백을 10px로 설정 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.main__button--large {
+    padding: 15px 30px; /* 버튼 크기 키우기 */
+    display: block;
+    margin: 20px auto; /* 가운데 정렬 */
+}
+
 /* 버튼 호버 */
-.main__buttons button:hover {
-    opacity: 0.8; /* 호버 효과 추가 */
+.main__button:hover {
+    opacity: 0.8;
 }
 
 /* 창에 스타일 추가 */
@@ -88,7 +106,7 @@
 .main__input-group {
     width: 60%; /* 그룹 너비를 60%로 */
     position: relative;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .input__email,
@@ -165,4 +183,32 @@
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
 }
+/* 게스트 홈의 제목 컨테이너 */
+.section-title-container {
+    background-color: var(--primary-color);
+    padding: 10px;
+    text-align: center;
+}
 
+.section-title-container a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.content-grid {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.content-item {
+    min-width: 200px;
+    text-align: center;
+}
+
+/* 각 섹션간의 간격 */
+.vertical-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 섹션 간의 간격 */
+}
