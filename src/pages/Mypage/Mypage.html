@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mypage.html</title>
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
@@ -37,83 +38,125 @@
         <button class="change-button" id="changeProfileButton">변경</button>
     </div>
     <script>
-        document.getElementById('logoutButton').addEventListener('click', function() {
-            fetch('/api/logout/', { // DRF 로그아웃 엔드포인트
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Token ' + localStorage.getItem('token') // 토큰 인증 사용 시
-                },
-                body: JSON.stringify({})
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('로그아웃 되었습니다.');
-                    localStorage.removeItem('token'); // 토큰 삭제
-                    // 로그아웃 후 리디렉션
-                    window.location.href = '/src/pages/Logout/Logout.html';
-                } else {
-                    alert('로그아웃에 실패했습니다.');
-                }
-            })
-            .catch(error => {
-                console.error('로그아웃 중 오류 발생:', error);
-                alert('로그아웃 중 오류가 발생했습니다.');
+        document.addEventListener("DOMContentLoaded", function() {
+            // 채팅 관련 요소
+            const chatForm = document.querySelector("#chatForm");
+            const chatInput = document.querySelector("#chatInput");
+            const conversationMessages = document.querySelector(".conversation-messages");
+    
+            // 사용자 메시지를 오른쪽 말풍선으로 추가
+            function appendUserMessage(userText) {
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.classList.add('message', 'user');
+    
+                const userImg = document.createElement('img');
+                userImg.src = '../../assets/images/User_images/default_profile.png';
+                userImg.alt = 'User Profile';
+    
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('message-content');
+                messageContent.textContent = userText;
+    
+                // user: row-reverse (이미 CSS에서 설정)
+                userMessageDiv.appendChild(userImg);
+                userMessageDiv.appendChild(messageContent);
+    
+                conversationMessages.appendChild(userMessageDiv);
+    
+                // 스크롤 하단으로 이동
+                conversationMessages.scrollTop = conversationMessages.scrollHeight;
+            }
+    
+            // 챗봇(서버) 메시지를 왼쪽 말풍선으로 추가
+            function appendBotMessage(botText) {
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('message', 'bot');
+    
+                const botImg = document.createElement('img');
+                botImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+                botImg.alt = 'Bot Profile';
+    
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('message-content');
+                messageContent.textContent = botText;
+    
+                botMessageDiv.appendChild(botImg);
+                botMessageDiv.appendChild(messageContent);
+    
+                conversationMessages.appendChild(botMessageDiv);
+    
+                // 스크롤 하단으로 이동
+                conversationMessages.scrollTop = conversationMessages.scrollHeight;
+            }
+    
+            // 폼 submit(Enter 또는 버튼 클릭) 시 채팅 전송
+            chatForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+                const message = chatInput.value.trim();
+                if (!message) return;
+    
+                // 1) 사용자 메시지 출력
+                appendUserMessage(message);
+    
+                // 2) 서버로 메시지 전송
+                fetch('http://127.0.0.1:8000/api/chatbot/chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: localStorage.getItem("email"),  // 예: 로그인 시 저장한 이메일
+                        message: message,
+                        timestamp: new Date().toISOString(),
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 3) 서버 응답(챗봇 메시지) 출력
+                    appendBotMessage(data.responseMessage || "응답이 없습니다.");
+                })
+                .catch(error => {
+                    console.error('채팅 전송 중 오류 발생:', error);
+                    // 필요 시 에러 메시지 표시
+                    appendBotMessage("에러가 발생했습니다.");
+                });
+    
+                // 4) 입력창 비우기
+                chatInput.value = "";
             });
         });
-
-        document.getElementById('mypageButton').addEventListener('click', function() {
-            window.location.href = '/src/pages/Mypage/Mypage.html'; // 마이페이지로 이동
-        });
-
-        document.getElementById('changeProfileButton').addEventListener('click', function() {
-            document.getElementById('profileImageInput').click();
-        });
-
-        document.getElementById('profileImageInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('profileImage').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-                alert('프로필 이미지가 업로드되었습니다.');
-            }
-        });
-    </script>
-    <!-- 노트북 프레임 -->
-    <div class="laptop-frame">
-        <!-- 채팅 창 -->
-        <div class="chat-window">
-            <!-- 대화 내용 -->
-            <div class="conversation">
-                <div class="conversation-header">
-                    <div>채팅창</div>
-                </div>
-                <!-- 대화 메시지가 쌓일 영역 -->
-                <div class="conversation-messages">
-                    <!-- 예시 메시지(기본) -->
-                    <div class="message bot">
-                        <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
-                        <div class="message-content">
-                            챗봇: 안녕하세요! 원하시는 장르를 말씀해 주시면 각 OTT플랫폼을 구분하지 않고 추천해 드릴게요!
+    </script>   
+        <!-- 노트북 프레임 -->
+        <!-- <div class="laptop-frame"> -->
+            <!-- 채팅 창 -->
+            <div class="chat-window">
+                <!-- 대화 내용 -->
+                <div class="conversation">
+                    <div class="conversation-header">
+                        <div>채팅창</div>
+                    </div>
+                    <!-- 대화 메시지가 쌓일 영역 -->
+                    <div class="conversation-messages">
+                        <!-- 예시 메시지(기본) -->
+                        <div class="message bot">
+                            <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
+                            <div class="message-content">
+                                챗봇: 안녕하세요! 원하시는 장르를 말씀해 주시면 각 OTT플랫폼을 구분하지 않고 추천해 드릴게요!
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- 입력 영역 -->
-                <div class="input-container">
-                    <form id="chatForm" style="display: flex; width: 100%;">
-                        <input type="text" id="chatInput" placeholder="입력하세요" style="flex: 1;">
-                        <button type="submit">확인</button>
-                    </form>
+                    <!-- 입력 영역 -->
+                    <div class="input-container">
+                        <form id="chatForm" style="display: flex; width: 100%;">
+                            <input type="text" id="chatInput" placeholder="입력하세요" style="flex: 1;">
+                            <button type="submit">확인</button>
+                        </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
-
 <button onclick="location.href='/src/pages/Mypage/Delete_Account.html'">회원 탈퇴하기</button>
         </div>
     </div>
