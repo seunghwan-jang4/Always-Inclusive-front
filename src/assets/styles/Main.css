@@ -4,6 +4,12 @@
     --secondary-color: #DD4E42;
     --background-color: #333; /* 배경색을 #333로 통일 */
     --text-color: black;
+    --header-height: 300px; /* 헤더 높이 */
+}
+
+/* Wrapper 스타일 */
+#wrapper {
+    padding-top: var(--header-height); /* 헤더 높이만큼 상단 여백 추가 */
 }
 
 /* 글꼴설정, 배경색상 설정, 여백 및 페딩 제거 */
@@ -13,7 +19,9 @@ html, body {
     margin: 0;
     padding: 0;
     color: var(--text-color); /* 텍스트 색상도 변수로 설정 */
-    height: 100%; /* html과 body의 높이를 100%로 설정 */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /* 제목 스타일 설정 */

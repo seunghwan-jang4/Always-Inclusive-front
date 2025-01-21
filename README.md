@@ -1,11 +1,9 @@
-# Always-Inclusive-front
-
-# OTT 성향에 맞는 드라마/애니/영화 추천 AI 챗봇
+# AIO (Always-Inclusive-OTT)
 
 ## 📌 프로젝트 소개
 
 <details>
-<summary>프로젝트 개요 및 일정</summary>
+<summary>내용 보기</summary>
 
 ### 프로젝트 개요
 
@@ -18,56 +16,15 @@
 - **버전 관리**: Git
 
 ### 개발 일정
-- **12월 30일 ~ 1월 3일**: 역할 분담 및 아이디어 정리, SA문서, README 작성, 와이어프레임 작성
-- **1월 6일 ~ 1월 10일**: 개발 툴 확정 및 세팅, MVP 개발 시작
-- **1월 7일 ~ 1월 9일**: 로고 및 배경 제작(수정), MVP 기능 개발
-- **1월 10**: 크롤링 시작, 세부 기능 개발, LangChain 마무리, Django 개발 시작 준비 단계
-- **1월 13 ~ 1월 15**: 크롤링 마무리, 와이어 프레임 기준 프론트 및 백엔드 세부 기능 구현 및 수정.
+- **12월 30일 ~ 1월 3일**: 역할 분담 및 아이디어 정리, SA문서, README 작성, 와이어프레임 작성.
+- **1월 6일 ~ 1월 10일**: 개발 툴 확정 및 세팅, MVP 개발 시작.
+- **1월 7일 ~ 1월 9일**: 로고 및 배경 제작(수정), MVP 기능 개발.
+- **1월 10일 ~ 1월 13일**: 크롤링 시작, 세부 기능 개발, LangChain 마무리, Django 개발 시작 준비 단계.
+- **1월 13일 ~ 1월 15일**: 크롤링 마무리, 와이어 프레임 기준 프론트 및 백엔드 세부 기능 구현 및 수정.
+- **1월 15일 ~ 1월 16일**: 백엔드와 프론트 API 연결.
+- **1월 17일 ~ 1월 21일**: 추가 기능 구현, 디자인 고도화, 프롬프트 엔지니어링 고도화.
 - 이후 일정은 추가 예정
   
-</details>
-
-<details>
-<summary>폴더 구조</summary>
-   
-### 폴더 구조 
-
-```bash
-OTTRecommendationSystem/   # (1) repository_root
-├─ .gitignore
-├─ README.md
-├─ requirements.txt
-├─ venv/                    # 가상 환경
-├─ my_project/              # (2) project_root
-│  ├─ apps/
-│  │  └─ myapp/
-│  │     ├─ models/
-│  │     │  ├─ __init__.py
-│  │     │  ├─ profile.py
-│  │     │  └─ instagram.py
-│  │     ├─ views/
-│  │     ├─ forms/
-│  │     ├─ admin.py
-│  │     ├─ models.py
-│  │     └─ tests.py
-│  ├─ config/                # (3) configuration_root
-│  │  ├─ settings/
-│  │  │  ├─ __init__.py
-│  │  │  ├─ base.py
-│  │  │  ├─ dev.py
-│  │  │  └─ prod.py
-│  │  ├─ asgi.py
-│  │  ├─ urls.py
-│  │  └─ wsgi.py
-│  ├─ static/
-│  │  └─ assets/             # 정적 파일
-│  ├─ media/
-│  │  └─ uploads/            # 업로드 파일
-│  ├─ templates/
-│  │  └─ myapp/
-│  └─ manage.py
-```
-
 </details>
 
 ---
@@ -97,6 +54,15 @@ OTT에서 제공하는 콘텐츠를 분석 및 분류하여 **사용자 맞춤�
 
 ![프로젝트구조(12조)_2](https://github.com/user-attachments/assets/0555f520-f07c-4bb7-8327-26f54e4eee52)
 
+
+</details>
+
+<details>
+<summary>백엔드 폴더 구조</summary>
+   
+### 백엔드 폴더 구조 
+
+![벡엔드구조(12조)_1](https://github.com/user-attachments/assets/b83746d9-5b86-497f-bddf-092b06ea35f3)
 
 </details>
 
@@ -273,7 +239,7 @@ python manage.py runserver
 
 ## 🔍 트러블슈팅
 <details>
-<summary>해결된 이슈 목록</summary>
+<summary>내용 보기</summary>
 
 | 문제 발생일   | 이슈 내용   | 해결 방안 | 담당자 |
 |--------------|-------------|-----------|-------|
@@ -310,7 +276,7 @@ python manage.py runserver
   
 ### 역할 분담
 <details>
-<summary>역할 분담</summary>
+<summary>내용 보기</summary>
 
 | 이름     | 역할       | 업무                                       |
 |----------|------------|--------------------------------------------|
@@ -326,7 +292,7 @@ python manage.py runserver
 ### ERD
 
 <details>
-<summary>ERD</summary>
+<summary>내용 보기</summary>
 
 <details>
 <summary>ERD 1.0 </summary>
@@ -352,7 +318,7 @@ python manage.py runserver
 
 ### 레퍼런스 
 <details>
-<summary>레퍼런스 출처</summary>
+<summary>내용 보기</summary>
 - https://teamsparta.notion.site/SA-97b05811e819459db6bfd1cd79ae6c1a
 - [TVING](https://www.tving.com/onboarding)
 - https://www.netflix.com/kr/
