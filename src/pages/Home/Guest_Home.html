@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
-    <link rel="stylesheet" href="../../assets/styles/Chatting.css"> <!-- Chatting.css 추가 -->
 </head>
 <body>
     <div class="guest-header__nav">
@@ -18,60 +17,43 @@
             <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
         </div>
     </div>
-    <script>
-        document.getElementById('signupButton').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
-        });
-
-        document.getElementById('loginButton').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
-        });
-    </script>
-    <main>
-        <div class="chat-window">
-            <div class="chat-window__conversation">
-                <div class="chat-window__conversation-header">
-                    <h2>채팅</h2>
-                </div>
-                <div class="chat-window__conversation-messages">
-                    <div class="message bot">
-                        <img src="https://picsum.photos/40" alt="bot">
-                        <div class="message-content">안녕하세요! 무엇을 도와드릴까요?</div>
-                    </div>
-                </div>
-                <div class="input-container">
-                    <input type="text" placeholder="메시지를 입력하세요">
-                    <button>전송</button>
-                </div>
+    <section>
+        <div class="intro-container">
+            <h2>Always-Inclusive-OTT에 오신 것을 환영합니다!</h2>
+            <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
+                저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
+            </p>
+            <button class="main__button" onclick="window.location.href='/src/pages/Chatting/Chatting.html'">채팅하러 가기</button>
+        </div>
+        <div class="section-title-container">
+            <a href="https://www.netflix.com" target="_blank" class="section-title">넷플릭스</a>
+        </div>
+        <div class="content-grid">
+            <div class="content-item">
+                <img src="https://picsum.photos/200" alt="더미 이미지">
+                장르별 컨텐츠들
+            </div>
+            <div class="content-item">
+                <img src="https://picsum.photos/200" alt="더미 이미지">
+                장르별 컨텐츠들
             </div>
         </div>
-        <section>
-            <div class="section-title">넷플릭스</div>
-            <div class="content-grid">
-                <div class="content-item">
-                    <img src="https://picsum.photos/200" alt="더미 이미지">
-                    장르별 컨텐츠들
-                </div>
-                <div class="content-item">
-                    <img src="https://picsum.photos/200" alt="더미 이미지">
-                    장르별 컨텐츠들
-                </div>
+    </section>
+    <section>
+        <div class="section-title-container">
+            <a href="https://www.disneyplus.com" target="_blank" class="section-title">디즈니 플러스</a>
+        </div>
+        <div class="content-grid">
+            <div class="content-item">
+                <img src="https://picsum.photos/200" alt="더미 이미지">
+                장르별 컨텐츠들
             </div>
-        </section>
-        <section>
-            <div class="section-title">디즈니 플러스</div>
-            <div class="content-grid">
-                <div class="content-item">
-                    <img src="https://picsum.photos/200" alt="더미 이미지">
-                    장르별 컨텐츠들
-                </div>
-                <div class="content-item">
-                    <img src="https://picsum.photos/200" alt="더미 이미지">
-                    장르별 컨텐츠들
-                </div>
+            <div class="content-item">
+                <img src="https://picsum.photos/200" alt="더미 이미지">
+                장르별 컨텐츠들
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
     <footer class="footer">
         <div class="footer-left">
             <div class="footer__section">
@@ -97,5 +79,14 @@
             <p>문의하기</p>
         </div>
     </footer>
+    <script>
+        document.getElementById('signupButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+        });
+    </script>
 </body>
 </html>
