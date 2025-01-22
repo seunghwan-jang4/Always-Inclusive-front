@@ -20,13 +20,13 @@
             <div class="member-header__profile-container">
                 <img id="headerProfileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
             </div>
-            <span class="member-header__nickname" id="nickname">이름</span>님 안녕하세요!
+            <span class="member-header__nickname" id="nickname">'이름'</span>님 안녕하세요!
             <button class="member-header__button member-header__buttons--mypage" id="mypageButton">마이 페이지</button>
             <button class="member-header__button member-header__buttons--logout" id="logoutButton">로그아웃</button>
         </div>
     </div>
-    <div class="main__container" style="margin-top: 60px;">
-        <div class="mypage-info-container">
+    <div class="main__container">
+        <div class="mypage-info-container" >
             <div class="mypage-profile-box">
                 <img id="profileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
                 <button class="main__button2" id="changeProfileButton">변경</button>
@@ -41,15 +41,15 @@
         <button class="main__button3" onclick="location.href='/src/pages/Mypage/Delete_Account.html'">회원 탈퇴하기</button>
     </div>    
     <!-- ===== Footer 시작 ===== -->
-    <div class="footer">
+    <div class="footer" style="color: white; font-size: 12px; display: flex; justify-content: center; align-items: center;">
         <div class="footer-left">
             <!-- 왼쪽 영역 -->
             <div class="footer__section">
                 <h4>팀 정보</h4>
                 <h1>Always-inclusive</h1>
-                <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
-                <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
-                <div class="language-selector">
+                <h4>팀 구성원: 장승환, 김건태, 박수호, 이명혜</h4>
+                <h4>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</h4>
+                <!-- <div class="language-selector">
                     <label for="language">언어 설정:</label>
                     <select id="language">
                         <option value="ko">한국어</option>
@@ -57,7 +57,7 @@
                         <option value="jp">日本語</option>
                         <option value="zh">中文</option>
                     </select>
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- 오른쪽 영역 -->
@@ -72,13 +72,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             const token = localStorage.getItem('token');
             if (!token) {
-                // 토큰이 없다면 (로그인 안 된 상태라면), 로그인 페이지로 이동
                 alert('로그인이 필요합니다.');
-                window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; 
-                // 또는 절대경로/다른 경로 등 프로젝트 구조에 맞게 수정
+                window.location.href = '/src/pages/Login/Login.html';
             }
 
-            const email = "zxc1111@naver.com"; // 회원가입 시 이메일
+            const email = localStorage.getItem('email');
+            if (!email) {
+                alert('이메일 정보가 없습니다.');
+                window.location.href = '/src/pages/Login/Login.html';
+            }
+
             const defaultProfileImage = "../../assets/images/User_images/default_profile.png";
 
             const nicknameInput = document.getElementById('nicknameInput');
@@ -88,8 +91,8 @@
             const profileImageInput = document.getElementById('profileImageInput');
             const profileImage = document.getElementById('profileImage');
             const headerProfileImage = document.getElementById('headerProfileImage');
-
-            // 기본값 설정
+            
+            // 기본값 설정: 닉네임, 프로필 이미지.
             nicknameDisplay.textContent = email;
             profileImage.src = defaultProfileImage;
             headerProfileImage.src = defaultProfileImage;
@@ -134,7 +137,7 @@
         document.getElementById('logoutButton').addEventListener('click', function() {
             const token = localStorage.getItem('token');
             if (!token) {
-                window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html';
+                window.location.href = '/src/pages/Login/Login.html';
                 return;
             }
 
@@ -149,7 +152,7 @@
             .then(response => {
                 if (response.ok) {
                     localStorage.removeItem('token');
-                    window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html';
+                    window.location.href = '/src/pages/Login/Login.html';
                 } else {
                     alert('로그아웃에 실패했습니다.');
                 }
