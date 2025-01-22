@@ -232,7 +232,7 @@ html, body {
     align-items: center;
 }
 
-.nickname-container {
+.main__nickname-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -267,4 +267,35 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 20px; /* 섹션 간의 간격 */
+}
+/* 여백 조절 */
+.main__no-margin {
+    margin-bottom: 50px; /* 원하는 여백 크기로 조정 */
+    padding-bottom: 5px;
+}
+
+/* 홈페이지 컨테이너 설정*/
+.main__intro-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+/* 홈페이지 배경 설정*/
+.main__intro-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../../assets/images/dummy-image.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* 홈페이지 내용 설정*/
+.main__intro-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
 }
