@@ -208,6 +208,37 @@ html, body {
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
 }
+
+.mypage-info-container {
+    background-color: rgba(255, 255, 255, 0.07); /* 반투명 흰색 */
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; /* 섹션 간의 간격 */
+}
+
+.mypage-profile-box img {
+    width: 100px; /* 프로필 이미지 크기 조정 */
+    height: 100px; /* 프로필 이미지 크기 조정 */
+    border-radius: 50%; /* 원형으로 만들기 */
+}
+
+.mypage-profile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nickname-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
 /* 게스트 홈의 제목 컨테이너 */
 .section-title-container {
     background-color: var(--primary-color);
