@@ -8,94 +8,11 @@
     <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Chatting.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 채팅 관련 요소
-            const chatForm = document.querySelector("#chatForm");
-            const chatInput = document.querySelector("#chatInput");
-            const conversationMessages = document.querySelector(".conversation-messages");
-
-            // 사용자 메시지를 오른쪽 말풍선으로 추가
-            function appendUserMessage(userText) {
-                const userMessageDiv = document.createElement('div');
-                userMessageDiv.classList.add('message', 'user');
-
-                const userImg = document.createElement('img');
-                userImg.src = '../../assets/images/User_images/default_profile.png';
-                userImg.alt = 'User Profile';
-
-                const messageContent = document.createElement('div');
-                messageContent.classList.add('message-content');
-                messageContent.textContent = userText;
-
-                userMessageDiv.appendChild(userImg);
-                userMessageDiv.appendChild(messageContent);
-
-                conversationMessages.appendChild(userMessageDiv);
-
-                // 스크롤 하단으로 이동
-                conversationMessages.scrollTop = conversationMessages.scrollHeight;
-            }
-
-            // 챗봇(서버) 메시지를 왼쪽 말풍선으로 추가
-            function appendBotMessage(botText) {
-                const botMessageDiv = document.createElement('div');
-                botMessageDiv.classList.add('message', 'bot');
-
-                const botImg = document.createElement('img');
-                botImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
-                botImg.alt = 'Bot Profile';
-
-                const messageContent = document.createElement('div');
-                messageContent.classList.add('message-content');
-                messageContent.textContent = botText;
-
-                botMessageDiv.appendChild(botImg);
-                botMessageDiv.appendChild(messageContent);
-
-                conversationMessages.appendChild(botMessageDiv);
-
-                // 스크롤 하단으로 이동
-                conversationMessages.scrollTop = conversationMessages.scrollHeight;
-            }
-
-            // 폼 submit(Enter 또는 버튼 클릭) 시 채팅 전송
-            chatForm.addEventListener("submit", function(event) {
-                event.preventDefault();
-                const message = chatInput.value.trim();
-                if (!message) return;
-
-                // 1) 사용자 메시지 출력
-                appendUserMessage(message);
-
-                // 2) 서버로 메시지 전송
-                fetch('http://127.0.0.1:8000/api/chatbot/chat/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: localStorage.getItem("email"),  // 예: 로그인 시 저장한 이메일
-                        message: message,
-                        timestamp: new Date().toISOString(),
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // 3) 서버 응답(챗봇 메시지) 출력
-                    appendBotMessage(data.responseMessage || "응답이 없습니다.");
-                })
-                .catch(error => {
-                    console.error('채팅 전송 중 오류 발생:', error);
-                    // 필요 시 에러 메시지 표시
-                    appendBotMessage("에러가 발생했습니다.");
-                });
-
-                // 4) 입력창 비우기
-                chatInput.value = "";
-            });
-        });
-    </script>
+    
+    <!-- marked.js 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- DOMPurify 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.4/dist/purify.min.js"></script>
 </head>
 <body>
     <!-- 헤더 -->
@@ -171,6 +88,98 @@
     </footer>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 채팅 관련 요소
+            const chatForm = document.querySelector("#chatForm");
+            const chatInput = document.querySelector("#chatInput");
+            const conversationMessages = document.querySelector(".conversation-messages");
+
+            // 사용자 메시지를 오른쪽 말풍선으로 추가
+            function appendUserMessage(userText) {
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.classList.add('message', 'user');
+
+                const userImg = document.createElement('img');
+                userImg.src = '../../assets/images/User_images/default_profile.png';
+                userImg.alt = 'User Profile';
+
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('message-content');
+                messageContent.textContent = userText;
+
+                userMessageDiv.appendChild(userImg);
+                userMessageDiv.appendChild(messageContent);
+
+                conversationMessages.appendChild(userMessageDiv);
+
+                // 스크롤 하단으로 이동
+                conversationMessages.scrollTop = conversationMessages.scrollHeight;
+            }
+
+            // 챗봇(서버) 메시지를 왼쪽 말풍선으로 추가
+            function appendBotMessage(botText) {
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('message', 'bot');
+
+                const botImg = document.createElement('img');
+                botImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+                botImg.alt = 'Bot Profile';
+
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('message-content');
+                
+                // 마크다운을 HTML로 변환
+                const rawHtml = marked.parse(botText);
+                // HTML 정리 (보안)
+                const cleanHtml = DOMPurify.sanitize(rawHtml);
+                messageContent.innerHTML = cleanHtml;
+
+                botMessageDiv.appendChild(botImg);
+                botMessageDiv.appendChild(messageContent);
+
+                conversationMessages.appendChild(botMessageDiv);
+
+                // 스크롤 하단으로 이동
+                conversationMessages.scrollTop = conversationMessages.scrollHeight;
+            }
+
+            // 폼 submit(Enter 또는 버튼 클릭) 시 채팅 전송
+            chatForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+                const message = chatInput.value.trim();
+                if (!message) return;
+
+                // 1) 사용자 메시지 출력
+                appendUserMessage(message);
+
+                // 2) 서버로 메시지 전송
+                fetch('http://127.0.0.1:8000/api/chatbot/chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: localStorage.getItem("email"),  // 예: 로그인 시 저장한 이메일
+                        message: message,
+                        timestamp: new Date().toISOString(),
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 3) 서버 응답(챗봇 메시지) 출력
+                    appendBotMessage(data.responseMessage || "응답이 없습니다.");
+                })
+                .catch(error => {
+                    console.error('채팅 전송 중 오류 발생:', error);
+                    // 필요 시 에러 메시지 표시
+                    appendBotMessage("에러가 발생했습니다.");
+                });
+
+                // 4) 입력창 비우기
+                chatInput.value = "";
+            });
+        });
+
         // 푸터 버튼 스크립트
         document.getElementById('signupButton').addEventListener('click', function() {
             window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
