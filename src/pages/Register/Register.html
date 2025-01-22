@@ -117,8 +117,10 @@
             .then(({ status, body }) => {
                 if (status >= 200 && status < 300) {
                     alert('회원가입이 완료되었습니다.');
-                    // 회원가입 후 리디렉션
-                    window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html';
+                    localStorage.setItem('email', userData.email);
+                    localStorage.setItem('nickname', userData.email);
+                    localStorage.setItem('profileImage', '../../assets/images/User_images/default_profile.png');
+                    window.location.href = '/src/pages/Login/Login.html';
                 } else {
                     let errorMessage = '회원가입에 실패했습니다: ';
                     if (body.email) {
