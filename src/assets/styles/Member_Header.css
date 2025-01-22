@@ -83,6 +83,12 @@ button:focus {
     display: block; /* 이미지가 블록 요소로 표시되도록 */
     transition: opacity 0.3s ease; /* 이미지 전환 효과 */
 }
+/* 헤더 닉네임 스타일 */
+.member-header__nickname {
+    margin-left: 10px;
+    font-size: 1rem;
+    color: #fff;
+}
 
 /* 프로필 변경 버튼
 .member-header__change-profile-button {
