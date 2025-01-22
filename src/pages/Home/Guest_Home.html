@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
 </head>
-<body>
+<body class="member-homepage">
     <div class="guest-header__nav">
          <!-- 로고 클릭 시 홈페이지로 이동 -->
          <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
@@ -17,75 +17,74 @@
             <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
         </div>
     </div>
-    <body class="member-homepage"></body>
     <div id="wrapper_intro">
         <div class="vertical-sections">
             <section>
-                <div class="intro-container" style=color:white;>
+                <div class="main__intro-container" style=color:white;>
                     <h2>Always-Inclusive-OTT에 오신 것을 환영합니다!</h2>
                     <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
                         저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
                     </p>
                     <button class="main__button main__button--large" onclick="window.location.href='/src/pages/Chatting/Chatting.html'">채팅하러 가기</button>
                 </div>
-            </section>
-
-            <section>
-                <div class="section-title-container">
-                    <a href="https://www.netflix.com" target="_blank" class="section-title">넷플릭스</a>
-                </div>
-                <div class="content-grid" style=color:white;>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
+                <section>
+                    <div class="section-title-container">
+                        <a href="https://www.netflix.com" target="_blank" class="section-title">넷플릭스</a>
                     </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
+                    <div class="content-grid" style=color:white;>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image.png" alt="넷플릭스 이미지 1" style="width: 350px; height: auto;">
+                            장르별 컨텐츠들
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (1).png" alt="넷플릭스 이미지 2" style="width: 350px; height: auto;">
+                            장르별 컨텐츠들
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (2).png" alt="넷플릭스 이미지 3" style="width: 350px; height: auto;">
+                            장르별 컨텐츠들
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (3).png" alt="넷플릭스 이미지 4" style="width: 350px; height: auto;">
+                            장르별 컨텐츠들
+                        </div>
                     </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
+                </section>
+                <section>
+                    <div class="section-title-container">
+                        <a href="https://www.disneyplus.com" target="_blank" class="section-title">디즈니 플러스</a>
                     </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
+                    <div class="content-grid" style=color:white;>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image.png" alt="디즈니 플러스 이미지 1" style="width: 350px; height: auto;">
+                            장르별 컨텐츠들
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (1).png" alt="디즈니 플러스 이미지 2" style="width: 350px; height: auto;">
+                            장르별 컨텐츠들
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (2).png" alt="디즈니 플러스 이미지 3" style="width: 350px; height: auto;">
+                            장르별 컨텐츠들
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (3).png" alt="디즈니 플러스 이미지 4" style="width: 350px; height: auto;">
+                            장르별 컨텐츠들
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section>
-                <div class="section-title-container">
-                    <a href="https://www.disneyplus.com" target="_blank" class="section-title">디즈니 플러스</a>
-                </div>
-                <div class="content-grid" style=color:white;>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                </div>
-            </section>
+                </section>
         </div>
     </div> <!-- #wrapper 종료 -->
-    <footer class="footer">
+    <!-- ===== Footer 시작 ===== -->
+    <div class="footer" style="color: white; display: flex;  align-items: center;">
         <div class="footer-left">
+            <!-- 왼쪽 영역 -->
             <div class="footer__section">
                 <h4>팀 정보</h4>
                 <h1>Always-inclusive</h1>
                 <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
                 <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
-                <div class="language-selector">
+                <!-- <div class="language-selector">
                     <label for="language">언어 설정:</label>
                     <select id="language">
                         <option value="ko">한국어</option>
@@ -93,15 +92,17 @@
                         <option value="jp">日本語</option>
                         <option value="zh">中文</option>
                     </select>
-                </div>
+                </div> -->
             </div>
         </div>
+        <!-- 오른쪽 영역 -->
         <div class="footer-support">
             <h1>고객지원</h1>
             <p>FAQ</p>
             <p>고객센터</p>
             <p>문의하기</p>
         </div>
+    </div>
     </footer>
     <script>
         document.getElementById('signupButton').addEventListener('click', function() {
