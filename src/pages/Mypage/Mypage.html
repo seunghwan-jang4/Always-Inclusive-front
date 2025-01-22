@@ -7,16 +7,11 @@
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
-    <style>
-        .profile-box img {
-            width: 100px; /* 프로필 이미지 크기 조정 */
-            height: 100px; /* 프로필 이미지 크기 조정 */
-            border-radius: 50%; /* 원형으로 만들기 */
-        }
-    </style>
 </head>
-<!-- 헤더 -->
-<body>
+<body class="member-homepage">
+    <nav>
+        <!-- 네비게이션 내용 -->
+    </nav>
     <div class="member-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
         <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
@@ -24,21 +19,24 @@
             <!-- 프로필 이미지 클래스 수정 -->
             <div class="member-header__profile-container">
                 <img src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
-            </div>            
-            <button class="member-header__buttons--mypage" id="mypageButton">마이 페이지</button>
-            <button class="member-header__buttons--logout" id="logoutButton">로그아웃</button>
+            </div>
+            <span class="member-header__nickname" id="nickname">닉네임</span>님 안녕하세요!
+            <button class="member-header__button member-header__buttons--mypage" id="mypageButton">마이 페이지</button>
+            <button class="member-header__button member-header__buttons--logout" id="logoutButton">로그아웃</button>
         </div>
     </div>
-    <div class="container" style="margin-top: 60px;">
-        <div class="profile-box">
-            <img id="profileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
-            <input type="file" id="profileImageInput" style="display: none;">
+    <div class="main__container" style="margin-top: 60px;">
+        <div class="mypage-info-container">
+            <div class="mypage-profile-box">
+                <img id="profileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
+                <button class="main__button2" id="changeProfileButton">변경</button>
+            </div>
+            <div class="nickname-container">
+                <input type="text" id="nicknameInput" placeholder="이름 입력">
+                <button class="main__button2" id="saveNicknameButton">이름 저장</button>
+            </div>
         </div>
-        <button class="change-button" id="changeProfileButton">변경</button>
-    </div>
-</body>
-<button onclick="location.href='/src/pages/Mypage/Delete_Account.html'">회원 탈퇴하기</button>
-        </div>
+        <button class="main__button3" onclick="location.href='/src/pages/Mypage/Delete_Account.html'">회원 탈퇴하기</button>
     </div>
     <!-- ===== Footer 시작 ===== -->
     <div class="footer">
@@ -66,7 +64,6 @@
             <p>FAQ</p>
             <p>고객센터</p>
             <p>문의하기</p>
-            </div>
         </div>
     </div>
     <script>
@@ -133,6 +130,26 @@
 
         document.getElementById('viewingPatternButton').addEventListener('click', function() {
             window.location.href = 'viewing_html';
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nicknameInput = document.getElementById('nicknameInput');
+            const saveNicknameButton = document.getElementById('saveNicknameButton');
+            const nicknameDisplay = document.getElementById('nickname');
+
+            saveNicknameButton.addEventListener('click', function() {
+                const nickname = nicknameInput.value;
+                if (nickname) {
+                    nicknameDisplay.textContent = nickname;
+                    localStorage.setItem('nickname', nickname);
+                }
+            });
+
+            const savedNickname = localStorage.getItem('nickname');
+            if (savedNickname) {
+                nicknameDisplay.textContent = savedNickname;
+            }
         });
     </script>
 </body>
