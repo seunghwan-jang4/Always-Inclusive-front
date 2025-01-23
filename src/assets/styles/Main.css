@@ -16,6 +16,7 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    scroll-behavior: smooth; /* 스크롤 부드럽게 */
 }
 
 /* Wrapper 스타일 */
