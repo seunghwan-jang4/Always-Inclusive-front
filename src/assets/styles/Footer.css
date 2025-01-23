@@ -4,14 +4,15 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column; /* 수직 방향으로 배치 */
+    overflow-x: hidden; /* 수평 오버플로우 방지 */
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
 }
+
 .footer {
-    position: fixed; /* 최하단에 고정 */
-    bottom: 0; /* 최하단에 위치 */
     background-color: transparent; /* 배경을 투명하게 설정 */
     color: #fff; /* 글자 색상을 흰색으로 설정 */
     padding: 20px;
@@ -71,5 +72,5 @@ body {
 /* Wrapper 스타일 */
 #wrapper {
     flex: 1; /* 남은 공간을 차지하도록 설정 */
-    padding-bottom: 100px; /* footer 높이와 동일하게 설정 */
+    padding-bottom: 165px; /* footer 높이와 동일하게 설정 */
 }

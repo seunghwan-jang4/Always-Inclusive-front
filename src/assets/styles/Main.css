@@ -3,33 +3,53 @@
     --primary-color: #333;
     --secondary-color: #DD4E42;
     --background-color: #333; /* 배경색을 #333로 통일 */
-    --text-color: #fff;
+    --text-color: black;
 }
 
 /* 글꼴설정, 배경색상 설정, 여백 및 페딩 제거 */
-.body {
+html, body {
     font-family: Arial, sans-serif;
     background-color: #333; /* 배경색을 #333으로 변경 */
     margin: 0;
     padding: 0;
     color: var(--text-color); /* 텍스트 색상도 변수로 설정 */
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column;
 }
 
+/* Wrapper 스타일 */
+#wrapper_intro {
+    padding-top: 250px; /* 헤더 높이만큼 상단 여백 추가 */
+}
+
+.main__container {
+    width: 450px; /* 너비를 450px로 설정 */
+    height: 600px; /* 높이를 600px로 설정 */
+    background-color: rgba(255, 255, 255, 0.07); /* 반투명 흰색 */
+    padding: 30px; /* 내부 여백을 30px로 설정 */
+    padding-top: 100px; /* 상단 여백을 100px로 설정하여 헤더 아래로 이동 */
+    border-radius: 5px;
+    text-align: center; /* 텍스트 정렬을 가운데로 */
+    margin: 100px 0 auto; /* 중앙 정렬 */
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 세로 방향 정렬 */
+    justify-content: center; /* 세로 가운데 정렬 */
+    align-items: center; /* 가로 가운데 정렬 */
+    position: relative; /* h1 위치 조정을 위해 position을 relative로 변경 */
+    z-index: 1; /* 배경 이미지 위에 표시되도록 z-index 설정 */
+    overflow: hidden; /* 스크롤 제거 */
+}
 /* 제목 스타일 설정 */
 .main__title {
-    color: #DD4E42;
+    color: var(--text-color); /* 제목 색상을 흰색으로 설정 */
 }
 
 .main__container h1 {
     position: absolute;
     top: 10px;
     left: 30px;
-    color: var(--text-color); /* 글자 색상을 흰색으로 설정 */
+    color: #fff; /* 글자 색상을 흰색으로 설정 */
 }
 .main__input-group label {
     color: var(--text-color); /* 성별, 나이 글자의 색상을 흰색으로 설정 */
@@ -64,39 +84,61 @@
     font-size: 14px;
 }
 
-/* 버튼 호버 */
-.main__buttons button:hover {
-    opacity: 0.8; /* 호버 효과 추가 */
+.main__button3 {
+    background-color: #282626;
+    color: #fff;
+    width: 35%;
+    padding: 10px 20px;
+    margin: 10px 0 0 0; /* 위쪽 여백을 10px로 설정 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
 }
+
+.main__button--large {
+    padding: 15px 30px; /* 버튼 크기 키우기 */
+    display: block;
+    margin: 20px auto; /* 가운데 정렬 */
+}
+
+/* 버튼 호버 */
+.main__button:hover {
+    opacity: 0.8;
+}
+
 
 /* 창에 스타일 추가 */
 .main__container {
     width: 450px; /* 너비를 450px로 설정 */
     height: 600px; /* 높이를 600px로 설정 */
-    background-color: rgba(0, 0, 0, 0.5); /* 검정색 반투명 배경 */
+    background-color: rgba(255, 255, 255, 0.07); /* 반투명 흰색 */
     padding: 30px; /* 내부 여백을 30px로 설정 */
+    padding-top: 100px; /* 상단 여백을 100px로 설정하여 헤더 아래로 이동 */
     border-radius: 5px;
     text-align: center; /* 텍스트 정렬을 가운데로 */
-    margin: 0 auto; /* 중앙 정렬 */
+    margin: 100px 0 auto; /* 중앙 정렬 */
     display: flex; /* Flexbox 사용 */
     flex-direction: column; /* 세로 방향 정렬 */
     justify-content: center; /* 세로 가운데 정렬 */
     align-items: center; /* 가로 가운데 정렬 */
     position: relative; /* h1 위치 조정을 위해 position을 relative로 변경 */
+    z-index: 1; /* 배경 이미지 위에 표시되도록 z-index 설정 */
 }
 
 .main__input-group {
+    width: 60%; /* 그룹 너비를 60%로 */
     position: relative;
     margin-bottom: 10px;
 }
 
 .input__email,
 .input__password {
-    display: block; 
+    display: block;
     width: 100%;
     height: 35px;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px -10px 0;
     border: none;
     border-radius: 5px;
 }
@@ -141,21 +183,35 @@
     white-space: nowrap; /* 줄바꿈 방지 */
 }
 
-/* 게스트 홈페이지 배경 */
+/* 게스트 홈페이지 배경(일단 사실상 로그인, 회원가입창 등 배경)  */
 .guest-homepage {
     background-image: url('../images/Guest_background/Guest_background.jpg'); /* 게스트 홈페이지 배경 이미지 경로 */
     background-size: cover; /* 배경 이미지 크기 조정 */
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
+    position: relative;
+    z-index: 0;
 }
 
-/* 회원 홈페이지 배경 */
+/* 회원 홈페이지 배경 (일단 사실상 회원, 비회원 홈페이지 배경) */
 .member-homepage {
-    background-image: url('../images/Member_background/Member_background.jpg'); /* 회원 홈페이지 배경 이미지 경로 */
+    background-image: url('../images/test/test.png'); /* 회원 홈페이지 배경 이미지 경로 */
     background-size: cover; /* 배경 이미지 크기 조정 */
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
+    background-color: #f0f0f0; /* 이미지와 조화로운 색상 선택 */
 }
+
+/* 회원 서브 페이지 배경 */
+.member-subpage {
+    background-image: url('../images/Member_background/Member_background.jpg'
+    ); /* 회원 홈페이지 배경 이미지 경로 */
+    background-size: cover; /* 배경 이미지 크기 조정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    background-position: center; /* 배경 이미지 중앙 정렬 */
+    background-color: #f0f0f0; /* 이미지와 조화로운 색상 선택 */
+}
+
 
 /* 마이 페이지 배경 */
 .my-page {
@@ -163,4 +219,132 @@
     background-size: cover; /* 배경 이미지 크기 조정 */
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
+}
+
+.mypage-info-container {
+    background-color: rgba(255, 255, 255, 0.07); /* 반투명 흰색 */
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; /* 섹션 간의 간격 */
+}
+
+.mypage-profile-box img {
+    width: 100px; /* 프로필 이미지 크기 조정 */
+    height: 100px; /* 프로필 이미지 크기 조정 */
+    border-radius: 50%; /* 원형으로 만들기 */
+}
+
+.mypage-profile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main__nickname-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* 게스트 홈의 제목 컨테이너 */
+.section-title-container {
+    background-color: var(--primary-color);
+    padding: 10px;
+    text-align: center;
+}
+
+.section-title-container a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.content-grid {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.content-item {
+    min-width: 200px;
+    text-align: center;
+}
+
+/* 각 섹션간의 간격 */
+.vertical-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 섹션 간의 간격 */
+}
+/* 여백 조절 */
+.main__no-margin {
+    margin-bottom: 50px; /* 원하는 여백 크기로 조정 */
+    padding-bottom: 5px;
+}
+
+/* 홈페이지 컨테이너 설정*/
+.main__intro-container {
+    padding-top: 50%;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+/* 홈페이지 배경 설정*/
+.main__intro-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../../assets/images/dummy-image.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* 홈페이지 내용 설정*/
+.main__intro-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+
+/* 중앙 정렬을 위한 컨테이너 스타일 */
+.main__center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 화면 전체 높이 사용 */
+    text-align: center;
+    color: white; /* 텍스트 색상 흰색 */
+}
+
+.main__center-container h2 {
+    margin-bottom: 20px; /* 제목과 버튼 사이의 간격 */
+}
+
+.main__center-container button {
+    padding: 15px 30px; /* 버튼 크기 키우기 */
+    background-color: #DD4E42; /* 버튼 배경색 */
+    color: #fff; /* 버튼 텍스트 색상 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.main__center-container button:hover {
+    opacity: 0.8; /* 호버 시 투명도 조절 */
+}
+
+/* 스크롤 가능한 콘텐츠 스타일 */
+.main__scrollable-content {
+    max-height: 100vh; /* 화면 전체 높이 사용 */
+    overflow-y: auto; /* 세로 스크롤 추가 */
+    padding-top: 50px; /* 상단 여백 추가 */
 }
