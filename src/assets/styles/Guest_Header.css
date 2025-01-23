@@ -4,11 +4,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #333;
+    background-color: rgba(255, 255, 255, 0.009); /* 반투명 흰색 */
     color: #fff;
     position: fixed;
     top: 0;
     width: 100%;
+    margin: 0 auto;    /* 중앙 정렬 */
     z-index: 1000;
 }
 
@@ -46,11 +47,12 @@
 
 /* 회원가입 버튼 */
 .guest-header__buttons--explore {
-    margin-right: 20px;
-    background-color: white;
-    color: #333;
-    padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
-    font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+        margin-right: 20px;
+        background-color: white;
+        color: #333;
+        padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
+        font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+        height: 25px; /* 버튼의 높이를 설정 */
 }
 
 /* 로그인 버튼 */
@@ -60,4 +62,5 @@
     color: white;
     padding: 0.3rem 0.6rem; /* 버튼의 패딩을 줄여 크기를 조절 */
     font-size: 0.8rem; /* 버튼의 폰트 크기를 조절 */
+    height: 25px; /* 버튼의 높이를 설정 */
 }

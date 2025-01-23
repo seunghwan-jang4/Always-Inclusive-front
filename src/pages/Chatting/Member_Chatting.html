@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatting.html</title>
+    <title>Member_Chatting.html</title>
     <link rel="stylesheet" href="../../assets/styles/Main.css">
-    <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
+    <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Chatting.css">
     
@@ -14,17 +14,24 @@
     <!-- DOMPurify 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.4/dist/purify.min.js"></script>
 </head>
+
 <body>
-    <!-- 헤더 -->
-    <div class="guest-header__nav">
+    <nav>
+        <!-- 네비게이션 내용 -->
+    </nav>
+    <div class="member-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
-        <div class="guest-header__buttons">
-            <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
-            <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
+        <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <div class="member-header__buttons">
+            <!-- 프로필 이미지 클래스 수정 -->
+            <div class="member-header__profile-container">
+                <img id="headerProfileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
+            </div>
+            <span class="member-header__nickname" id="nickname">'이름'</span>
+            <button class="member-header__button member-header__buttons--mypage" id="mypageButton">마이 페이지</button>
+            <button class="member-header__button member-header__buttons--logout" id="logoutButton">로그아웃</button>
         </div>
     </div>
-
     <!-- 메인 콘텐츠 래퍼 -->
     <div id="wrapper_window">
         <!-- 노트북 프레임 -->
@@ -179,15 +186,41 @@
                 // 4) 입력창 비우기
                 chatInput.value = "";
             });
+
+            // 닉네임 및 프로필 이미지 설정
+            const nickname = localStorage.getItem('nickname') || '이름';
+            const profileImage = localStorage.getItem('profileImage') || '../../assets/images/User_images/default_profile.png';
+
+            document.getElementById('nickname').textContent = `${nickname}님 안녕하세요!`;
+            document.getElementById('headerProfileImage').src = profileImage;
         });
 
-        // 푸터 버튼 스크립트
-        document.getElementById('signupButton').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+        // 헤더 버튼 스크립트
+        document.getElementById('mypageButton').addEventListener('click', function() {
+            window.location.href = '/src/pages/Mypage/Mypage.html'; // 마이 페이지로 이동.
         });
 
-        document.getElementById('loginButton').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            fetch('http://127.0.0.1:8000/api/accounts/logout/', { // 게스트 홈페이지로 이동
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Token ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify({})
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('로그아웃 되었습니다.');
+                    localStorage.removeItem('token');
+                    window.location.href = '/src/pages/Login/Login.html';
+                } else {
+                    alert('로그아웃에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('로그아웃 중 오류 발생:', error);
+                alert('로그아웃 중 오류가 발생했습니다.');
+            });
         });
     </script>
 </body>

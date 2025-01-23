@@ -7,93 +7,11 @@
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
-    <!-- <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #333333;
-            color: #ffffff;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header, section, nav, main, footer {
-            padding: 10px;
-            margin: 5px;
-            background-color: #4d4d4d;
-            border-radius: 5px;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            background-color: #ff6633;
-        }
-        nav {
-            display: flex;
-            flex-direction: column;
-            width: 150px;
-            background-color: #ff6633;
-        }
-        main {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .chat-box {
-            flex-grow: 1;
-            background-color: #777777;
-            text-align: center;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .message-input {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .message-input input {
-            flex-grow: 1;
-            padding: 10px;
-            margin-right: 10px;
-        }
-        .message-input button {
-            background-color: #ff6633;
-            border: none;
-            color: white;
-            padding: 10px;
-        }
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .content-item {
-            background-color: #999999;
-            padding: 10px;
-            text-align: center;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .content-item img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto 10px;
-        }
-        .section-title {
-            background-color: #ff6633;
-            text-align: center;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style> -->
 </head>
-<body>
+<body class="member-homepage">
+    <nav>
+        <!-- 네비게이션 내용 -->
+    </nav>
     <div class="member-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
         <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
@@ -102,66 +20,81 @@
             <div class="member-header__profile-container">
                 <img src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
             </div>
+            <span class="member-header__nickname" id="nickname">'이름'</span>
             <button class="member-header__button member-header__buttons--mypage" id="mypageButton">마이 페이지</button>
             <button class="member-header__button member-header__buttons--logout" id="logoutButton">로그아웃</button>
         </div>
     </div>
-</body>
-    <div class="container" style="margin-top: 60px;">
-        <main>
-            <div class="chat-box">응답 창</div>
-            <div class="message-input">
-                <input type="text" placeholder="메시지 입력창">
-                <button>확인</button>
-            </div>
+    <!-- 래퍼 인트로 -->
+    <div id="wrapper_intro">
+        <div class="vertical-sections">
             <section>
-                <div class="section-title">넷플릭스</div>
-                <div class="content-grid">
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <button>더 보기</button>
+                <div class="main__intro-container" style="color:white; padding-bottom: 100px;">
+                    <h2>Always-Inclusive-OTT에 오신 것을 환영합니다!</h2>
+                    <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
+                        저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
+                    </p>
+                    <button class="main__button main__button--large" onclick="window.location.href='/src/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
                 </div>
+                <section>
+                    <div class="main__section-title-container" style="padding-bottom: 20px;">
+                        <button class="main__section-title" onclick="window.open('https://www.netflix.com', '_blank')">넷플릭스</button>
+                    </div>
+                    <div class="content-grid" style="color:white;">
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image.png" alt="넷플릭스 이미지 1" style="width: 350px; height: 280px;">
+                            <h3>고스트버스터즈: 오싹한 뉴욕</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (1).png" alt="넷플릭스 이미지 2" style="width: 350px; height: 280px;">
+                            <h3>그녀가 죽었다</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (2).png" alt="넷플릭스 이미지 3" style="width: 350px; height: 280px;">
+                            <h3>우리가 끝이야</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (3).png" alt="넷플릭스 이미지 4" style="width: 350px; height: 280px;">
+                            <h3>퍼펙트 데이즈</h3>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="main__section-title-container" style="padding-bottom: 20px;">
+                        <button class="main__section-title" onclick="window.open('https://www.disneyplus.com', '_blank')">디즈니 플러스</button>
+                    </div>
+                    <div class="content-grid" style="color:white;">
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image.png" alt="디즈니 플러스 이미지 1" style="width: 350px; height: 280px;">
+                            <h3>범죄도시 4</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (1).png" alt="디즈니 플러스 이미지 2" style="width: 350px; height: 280px;">
+                            <h3>인사이드 아웃 2</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (2).png" alt="디즈니 플러스 이미지 3" style="width: 350px; height: 280px;">
+                            <h3>에이리언: 로물루스</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (3).png" alt="디즈니 플러스 이미지 4" style="width: 350px; height: 280px;">
+                            <h3>데드풀과 울버린</h3>
+                        </div>
+                    </div>
+                </section>
             </section>
-            <section>
-                <div class="section-title">디즈니 플러스</div>
-                <div class="content-grid">
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <div class="content-item">
-                        <img src="https://picsum.photos/200" alt="더미 이미지">
-                        장르별 컨텐츠들
-                    </div>
-                    <button>더 보기</button>
-                </div>
-            </section>
-        </main>
-    </div>
+        </div>
+    </div> <!-- #wrapper 종료 -->
     <!-- ===== Footer 시작 ===== -->
-    <div class="footer">
+    <div class="footer" style="color: white; display: flex;  align-items: center;">
         <div class="footer-left">
             <!-- 왼쪽 영역 -->
             <div class="footer__section">
                 <h4>팀 정보</h4>
-                <h1>Always-inclusive</h1>
+                <h1>Always-inclusive</h4>
                 <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
                 <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
-                <div class="language-selector">
+                <!-- <div class="language-selector">
                     <label for="language">언어 설정:</label>
                     <select id="language">
                         <option value="ko">한국어</option>
@@ -169,7 +102,7 @@
                         <option value="jp">日本語</option>
                         <option value="zh">中文</option>
                     </select>
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- 오른쪽 영역 -->
@@ -178,28 +111,33 @@
             <p>FAQ</p>
             <p>고객센터</p>
             <p>문의하기</p>
-            </div>
         </div>
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nickname = localStorage.getItem('nickname') || '이름';
+            const profileImage = localStorage.getItem('profileImage') || '../../assets/images/User_images/default_profile.png';
+
+            document.getElementById('nickname').textContent = `${nickname}님 안녕하세요!`;
+            document.querySelector('.member-header__profile-container img').src = profileImage;
+        });
+
         document.getElementById('mypageButton').addEventListener('click', function() {
             window.location.href = '/src/pages/Mypage/Mypage.html';
         });
-        
+
         document.getElementById('logoutButton').addEventListener('click', function() {
-            fetch('http://127.0.0.1:8000/api/accounts/logout/', { // DRF 로그아웃 엔드포인트
+            fetch('http://127.0.0.1:8000/api/accounts/logout/', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Token ' + localStorage.getItem('token') // 토큰 인증 사용 시
+                    'Authorization': 'Token ' + localStorage.getItem('token')
                 },
                 body: JSON.stringify({})
             })
             .then(response => {
                 if (response.ok) {
                     alert('로그아웃 되었습니다.');
-                    localStorage.removeItem('token'); // 토큰 삭제
-                    // 로그아웃 후 리디렉션
+                    localStorage.removeItem('token');
                     window.location.href = '/src/pages/Login/Login.html';
                 } else {
                     alert('로그아웃에 실패했습니다.');
@@ -208,7 +146,6 @@
             .catch(error => {
                 console.error('로그아웃 중 오류 발생:', error);
                 alert('로그아웃 중 오류가 발생했습니다.');
-                
             });
         });
     </script>

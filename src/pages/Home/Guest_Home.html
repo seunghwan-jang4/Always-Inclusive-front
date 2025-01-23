@@ -5,74 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guest_Home.html</title>
     <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
-    <style>
-  
-        .main-content {
-            background-color: #555;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        .login-btn {
-            background-color: #ff4f3e;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 10px 0;
-        }
-        .content-section {
-            margin-bottom: 20px;
-        }
-        .section-title {
-            background-color: #ff4f3e;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .content-items {
-            display: flex;
-            gap: 10px;
-        }
-        .content-item {
-            background-color: #777;
-            padding: 20px;
-            flex: 1;
-            border-radius: 10px;
-        }
-        .more-btn {
-            text-align: center;
-            margin-top: 10px;
-            background-color: #888;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-    </style>
-<body>
-    <div class="container">
-        <div class="main-content">
-            기능 소개 및 비회원 대상 테스트?
-            <div class="login-btn">로그인</div>
-        </div>
-        <div class="content-section">
-            <div class="section-title">넷플릭스</div>
-            <div class="content-items">
-                <div class="content-item">장르별 컨텐츠들</div>
-                <div class="content-item">장르별 컨텐츠들</div>
-                <div class="content-item">장르별 컨텐츠들</div>
-            </div>
-            <button>더 보기</button>
-        </div>
-        <div class="content-section">
-            <div class="section-title">티빙</div>
-            <div class="content-items">
-                <div class="content-item">장르별 컨텐츠들</div>
-                <div class="content-item">장르별 컨텐츠들</div>
-                <div class="content-item">장르별 컨텐츠들</div>
-            </div>
-            <button>더 보기</button>
+</head>
+<body class="member-homepage">
+    <nav>
+        <!-- 네비게이션 내용 -->
+    </nav>
+    <div class="guest-header__nav">
+         <!-- 로고 클릭 시 홈페이지로 이동 -->
+         <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
+        <div class="guest-header__buttons">
+            <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
+            <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
         </div>
     </div>
+    <!-- 래퍼 인트로 -->
+    <div id="wrapper_intro">
+        <div class="vertical-sections">
+            <section>
+                <div class="main__intro-container" style="color:white; padding-bottom: 100px;">
+                    <h2>Always-Inclusive-OTT에 오신 것을 환영합니다!</h2>
+                    <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
+                        저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
+                    </p>
+                    <button class="main__button main__button--large" onclick="window.location.href='/src/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
+                </div>
+                <section>
+                    <div class="main__section-title-container" style="padding-bottom: 20px;">
+                        <button class="main__section-title" onclick="window.open('https://www.netflix.com', '_blank')">넷플릭스</button>
+                    </div>
+                    <div class="content-grid" style="color:white;">
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image.png" alt="넷플릭스 이미지 1" style="width: 350px; height: 280px;">
+                            <h3>고스트버스터즈: 오싹한 뉴욕</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (1).png" alt="넷플릭스 이미지 2" style="width: 350px; height: 280px;">
+                            <h3>그녀가 죽었다</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (2).png" alt="넷플릭스 이미지 3" style="width: 350px; height: 280px;">
+                            <h3>우리가 끝이야</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Netflix/image (3).png" alt="넷플릭스 이미지 4" style="width: 350px; height: 280px;">
+                            <h3>퍼펙트 데이즈</h3>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="main__section-title-container" style="padding-bottom: 20px;">
+                        <button class="main__section-title" onclick="window.open('https://www.disneyplus.com', '_blank')">디즈니 플러스</button>
+                    </div>
+                    <div class="content-grid" style="color:white;">
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image.png" alt="디즈니 플러스 이미지 1" style="width: 350px; height: 280px;">
+                            <h3>범죄도시 4</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (1).png" alt="디즈니 플러스 이미지 2" style="width: 350px; height: 280px;">
+                            <h3>인사이드 아웃 2</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (2).png" alt="디즈니 플러스 이미지 3" style="width: 350px; height: 280px;">
+                            <h3>에이리언: 로물루스</h3>
+                        </div>
+                        <div class="content-item">
+                            <img src="../../assets/images/Disneyplus/image (3).png" alt="디즈니 플러스 이미지 4" style="width: 350px; height: 280px;">
+                            <h3>데드풀과 울버린</h3>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div> <!-- #wrapper 종료 -->
+    <!-- ===== Footer 시작 ===== -->
+    <div class="footer" style="color: white; display: flex;  align-items: center;">
+        <div class="footer-left">
+            <!-- 왼쪽 영역 -->
+            <div class="footer__section">
+                <h4>팀 정보</h4>
+                <h1>Always-inclusive</h4>
+                <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
+                <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
+                <!-- <div class="language-selector">
+                    <label for="language">언어 설정:</label>
+                    <select id="language">
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="jp">日本語</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div> -->
+            </div>
+        </div>
+        <!-- 오른쪽 영역 -->
+        <div class="footer-support">
+            <h1>고객지원</h1>
+            <p>FAQ</p>
+            <p>고객센터</p>
+            <p>문의하기</p>
+        </div>
+    </div>
+    </footer>
+    <script>
+        document.getElementById('signupButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+        });
+    </script>
 </body>
 </html>
