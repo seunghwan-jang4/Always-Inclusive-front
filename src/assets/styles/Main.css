@@ -183,7 +183,7 @@ html, body {
     white-space: nowrap; /* 줄바꿈 방지 */
 }
 
-/* 게스트 홈페이지 배경 */
+/* 게스트 홈페이지 배경(일단 사실상 로그인, 회원가입창 등 배경)  */
 .guest-homepage {
     background-image: url('../images/Guest_background/Guest_background.jpg'); /* 게스트 홈페이지 배경 이미지 경로 */
     background-size: cover; /* 배경 이미지 크기 조정 */
@@ -193,13 +193,25 @@ html, body {
     z-index: 0;
 }
 
-/* 회원 홈페이지 배경 */
+/* 회원 홈페이지 배경 (일단 사실상 회원, 비회원 홈페이지 배경) */
 .member-homepage {
-    background-image: url('../images/Member_background/Member_background.jpg'); /* 회원 홈페이지 배경 이미지 경로 */
+    background-image: url('../images/test/test.png'); /* 회원 홈페이지 배경 이미지 경로 */
     background-size: cover; /* 배경 이미지 크기 조정 */
     background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
     background-position: center; /* 배경 이미지 중앙 정렬 */
+    background-color: #f0f0f0; /* 이미지와 조화로운 색상 선택 */
 }
+
+/* 회원 서브 페이지 배경 */
+.member-subpage {
+    background-image: url('../images/Member_background/Member_background.jpg'
+    ); /* 회원 홈페이지 배경 이미지 경로 */
+    background-size: cover; /* 배경 이미지 크기 조정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    background-position: center; /* 배경 이미지 중앙 정렬 */
+    background-color: #f0f0f0; /* 이미지와 조화로운 색상 선택 */
+}
+
 
 /* 마이 페이지 배경 */
 .my-page {
@@ -276,6 +288,7 @@ html, body {
 
 /* 홈페이지 컨테이너 설정*/
 .main__intro-container {
+    padding-top: 50%;
     position: relative;
     text-align: center;
     color: white;
@@ -298,4 +311,40 @@ html, body {
     position: relative;
     z-index: 1;
     padding: 20px;
+}
+
+/* 중앙 정렬을 위한 컨테이너 스타일 */
+.main__center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 화면 전체 높이 사용 */
+    text-align: center;
+    color: white; /* 텍스트 색상 흰색 */
+}
+
+.main__center-container h2 {
+    margin-bottom: 20px; /* 제목과 버튼 사이의 간격 */
+}
+
+.main__center-container button {
+    padding: 15px 30px; /* 버튼 크기 키우기 */
+    background-color: #DD4E42; /* 버튼 배경색 */
+    color: #fff; /* 버튼 텍스트 색상 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.main__center-container button:hover {
+    opacity: 0.8; /* 호버 시 투명도 조절 */
+}
+
+/* 스크롤 가능한 콘텐츠 스타일 */
+.main__scrollable-content {
+    max-height: 100vh; /* 화면 전체 높이 사용 */
+    overflow-y: auto; /* 세로 스크롤 추가 */
+    padding-top: 50px; /* 상단 여백 추가 */
 }
