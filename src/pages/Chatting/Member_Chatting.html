@@ -21,7 +21,7 @@
     </nav>
     <div class="member-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <!-- 프로필 이미지 클래스 수정 -->
             <div class="member-header__profile-container">
@@ -161,7 +161,7 @@
                 appendUserMessage(message);
 
                 // 2) 서버로 메시지 전송
-                fetch('http://127.0.0.1:8000/api/chatbot/chat/', {
+                fetch('/api/chatbot/chat/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -197,11 +197,11 @@
 
         // 헤더 버튼 스크립트
         document.getElementById('mypageButton').addEventListener('click', function() {
-            window.location.href = '/src/pages/Mypage/Mypage.html'; // 마이 페이지로 이동.
+            window.location.href = '/pages/Mypage/Mypage.html'; // 마이 페이지로 이동.
         });
 
         document.getElementById('logoutButton').addEventListener('click', function() {
-            fetch('http://127.0.0.1:8000/api/accounts/logout/', { // 게스트 홈페이지로 이동
+            fetch('/api/accounts/logout/', { // 게스트 홈페이지로 이동
                 method: 'POST',
                 headers: {
                     'Authorization': 'Token ' + localStorage.getItem('token')
@@ -212,7 +212,7 @@
                 if (response.ok) {
                     alert('로그아웃 되었습니다.');
                     localStorage.removeItem('token');
-                    window.location.href = '/src/pages/Login/Login.html';
+                    window.location.href = '/pages/Login/Login.html';
                 } else {
                     alert('로그아웃에 실패했습니다.');
                 }

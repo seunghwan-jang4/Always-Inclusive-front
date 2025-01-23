@@ -14,7 +14,7 @@
     </nav>
     <div class="member-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <!-- 프로필 이미지 클래스 수정 -->
             <div class="member-header__profile-container">
@@ -34,7 +34,7 @@
                     <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
                         저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
                     </p>
-                    <button class="main__button main__button--large" onclick="window.location.href='/src/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
+                    <button class="main__button main__button--large" onclick="window.location.href='/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
                 </div>
                 <section>
                     <div class="main__section-title-container" style="padding-bottom: 20px;">
@@ -123,11 +123,11 @@
         });
 
         document.getElementById('mypageButton').addEventListener('click', function() {
-            window.location.href = '/src/pages/Mypage/Mypage.html';
+            window.location.href = '/pages/Mypage/Mypage.html';
         });
 
         document.getElementById('logoutButton').addEventListener('click', function() {
-            fetch('http://127.0.0.1:8000/api/accounts/logout/', {
+            fetch('/api/accounts/logout/', {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Token ' + localStorage.getItem('token')
@@ -138,7 +138,7 @@
                 if (response.ok) {
                     alert('로그아웃 되었습니다.');
                     localStorage.removeItem('token');
-                    window.location.href = '/src/pages/Login/Login.html';
+                    window.location.href = '/pages/Login/Login.html';
                 } else {
                     alert('로그아웃에 실패했습니다.');
                 }

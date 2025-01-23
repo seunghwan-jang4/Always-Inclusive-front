@@ -14,7 +14,7 @@
     </nav>
     <div class="guest-header__nav">
          <!-- 로고 클릭 시 홈페이지로 이동 -->
-         <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
+         <a href="/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
         <div class="guest-header__buttons">
             <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
             <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
@@ -29,7 +29,7 @@
                     <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
                         저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
                     </p>
-                    <button class="main__button main__button--large" onclick="window.location.href='/src/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
+                    <button class="main__button main__button--large" onclick="window.location.href='/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
                 </div>
                 <section>
                     <div class="main__section-title-container" style="padding-bottom: 20px;">
@@ -111,11 +111,11 @@
     </footer>
     <script>
         document.getElementById('signupButton').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+            window.location.href = '/pages/Register/Register.html'; // 회원가입 페이지로 이동.
         });
 
         document.getElementById('loginButton').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+            window.location.href = '/pages/Login/Login.html'; // 로그인 페이지로 이동.
         });
     </script>
 </body>
