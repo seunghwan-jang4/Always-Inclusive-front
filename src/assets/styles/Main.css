@@ -212,15 +212,6 @@ html, body {
     background-color: #f0f0f0; /* 이미지와 조화로운 색상 선택 */
 }
 
-
-/* 마이 페이지 배경 */
-.my-page {
-    background-image: url('../images/Member_background/Member_background.jpg'); /* 마이 페이지 배경 이미지 경로 */
-    background-size: cover; /* 배경 이미지 크기 조정 */
-    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
-    background-position: center; /* 배경 이미지 중앙 정렬 */
-}
-
 .mypage-info-container {
     background-color: rgba(255, 255, 255, 0.07); /* 반투명 흰색 */
     padding: 20px;
