@@ -35,7 +35,7 @@
     <script>
         function logout() {
             // 서버로 로그아웃 요청 보내기
-            fetch('http://127.0.0.1:8000/accounts/logout/', {
+            fetch('/api/accounts/logout/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
