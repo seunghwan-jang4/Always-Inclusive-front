@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
 </head>
-<body class="member-homepage">
+<body class="guest-homepage">
     <nav>
         <!-- 네비게이션 내용 -->
     </nav>
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="main__container">
-        <div class="mypage-info-container" >
+        <div class="mypage-info-container">
             <div class="mypage-profile-box">
                 <img id="profileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
                 <button class="main__button2" id="changeProfileButton">변경</button>
@@ -39,28 +39,17 @@
             </div>
         </div>
         <button class="main__button3" onclick="location.href='/src/pages/Mypage/Delete_Account.html'">회원 탈퇴하기</button>
-    </div>    
-    <!-- ===== Footer 시작 ===== -->
-    <div class="footer" style="color: white; font-size: 12px; display: flex; justify-content: center; align-items: center;">
+    </div>
+    <div class="footer" style="color: white; display: flex; align-items: center;">
         <div class="footer-left">
             <!-- 왼쪽 영역 -->
             <div class="footer__section">
                 <h4>팀 정보</h4>
                 <h1>Always-inclusive</h1>
-                <h4>팀 구성원: 장승환, 김건태, 박수호, 이명혜</h4>
-                <h4>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</h4>
-                <!-- <div class="language-selector">
-                    <label for="language">언어 설정:</label>
-                    <select id="language">
-                        <option value="ko">한국어</option>
-                        <option value="en">English</option>
-                        <option value="jp">日本語</option>
-                        <option value="zh">中文</option>
-                    </select>
-                </div> -->
+                <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
+                <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
             </div>
         </div>
-        <!-- 오른쪽 영역 -->
         <div class="footer-support">
             <h1>고객지원</h1>
             <p>FAQ</p>
@@ -91,8 +80,7 @@
             const profileImageInput = document.getElementById('profileImageInput');
             const profileImage = document.getElementById('profileImage');
             const headerProfileImage = document.getElementById('headerProfileImage');
-            
-            // 기본값 설정: 닉네임, 프로필 이미지.
+
             nicknameDisplay.textContent = email;
             profileImage.src = defaultProfileImage;
             headerProfileImage.src = defaultProfileImage;
@@ -132,30 +120,28 @@
                 profileImage.src = savedProfileImage;
                 headerProfileImage.src = savedProfileImage;
             }
-        });
 
-        document.getElementById('logoutButton').addEventListener('click', function() {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                window.location.href = '/src/pages/Login/Login.html';
-                return;
-            }
+            document.getElementById('mypageButton').addEventListener('click', function() {
+                window.location.href = '/src/pages/Mypage/Mypage.html';
+            });
 
-            fetch('http://127.0.0.1:8000/api/accounts/logout/', { // DRF 로그아웃 엔드포인트
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Token ' + localStorage.getItem('token') // 토큰 인증 사용 시
-                },
-                body: JSON.stringify({})
-            })
-            .then(response => {
-                if (response.ok) {
-                    localStorage.removeItem('token');
-                    window.location.href = '/src/pages/Login/Login.html';
-                } else {
-                    alert('로그아웃에 실패했습니다.');
-                }
+            document.getElementById('logoutButton').addEventListener('click', function() {
+                fetch('http://127.0.0.1:8000/api/accounts/logout/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Token ' + localStorage.getItem('token')
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => {
+                    if (response.ok) {
+                        localStorage.removeItem('token');
+                        window.location.href = '/src/pages/Login/Login.html';
+                    } else {
+                        alert('로그아웃에 실패했습니다.');
+                    }
+                });
             });
         });
     </script>
