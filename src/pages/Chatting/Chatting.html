@@ -18,7 +18,7 @@
     <!-- 헤더 -->
     <div class="guest-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/src/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
+        <a href="/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
         <div class="guest-header__buttons">
             <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
             <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
@@ -154,7 +154,7 @@
                 appendUserMessage(message);
 
                 // 2) 서버로 메시지 전송
-                fetch('http://127.0.0.1:8000/api/chatbot/chat/', {
+                fetch('/api/chatbot/chat/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -183,11 +183,11 @@
 
         // 푸터 버튼 스크립트
         document.getElementById('signupButton').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5500/src/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+            window.location.href = '/pages/Register/Register.html'; // 회원가입 페이지로 이동.
         });
 
         document.getElementById('loginButton').addEventListener('click', function() {
-            window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html'; // 로그인 페이지로 이동.
+            window.location.href = '/pages/Login/Login.html'; // 로그인 페이지로 이동.
         });
     </script>
 </body>

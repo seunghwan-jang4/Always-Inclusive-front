@@ -11,7 +11,7 @@
 <body class="member-subpage">
     <div class="member-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <!-- 프로필 이미지 클래스 수정 -->
             <div class="member-header__profile-container">
@@ -67,11 +67,11 @@
             document.getElementById('headerProfileImage').src = profileImage;
 
             document.getElementById('mypageButton').addEventListener('click', function() {
-                window.location.href = '/src/pages/Mypage/Mypage.html';
+                window.location.href = '/pages/Mypage/Mypage.html';
             });
 
             document.getElementById('logoutButton').addEventListener('click', function() {
-                fetch('http://127.0.0.1:8000/api/accounts/logout/', {
+                fetch('/api/accounts/logout/', {
                     method: 'POST',
                     headers: {
                         'Authorization': 'Token ' + localStorage.getItem('token')
@@ -82,7 +82,7 @@
                     if (response.ok) {
                         alert('로그아웃 되었습니다.');
                         localStorage.removeItem('token');
-                        window.location.href = '/src/pages/Login/Login.html';
+                        window.location.href = '/pages/Login/Login.html';
                     } else {
                         alert('로그아웃에 실패했습니다.');
                     }
@@ -113,7 +113,7 @@
                     return;
                 }
 
-                fetch('http://127.0.0.1:8000/api/accounts/delete/', {
+                fetch('/api/accounts/delete/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -126,7 +126,7 @@
                     if (status >= 200 && status < 300) {
                         alert('회원 탈퇴가 완료되었습니다.');
                         localStorage.removeItem('token');
-                        window.location.href = '/src/pages/Login/Login.html';
+                        window.location.href = '/pages/Login/Login.html';
                     } else {
                         alert('회원 탈퇴 실패: ' + (body.message || body.detail || '알 수 없는 오류'));
                     }
@@ -139,7 +139,7 @@
         });
 
         function cancelDelete() {
-            window.location.href = '/src/pages/Mypage/Mypage.html';
+            window.location.href = '/pages/Mypage/Mypage.html';
         }
     </script>
 </body>
