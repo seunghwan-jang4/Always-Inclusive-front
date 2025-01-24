@@ -13,8 +13,7 @@
         <!-- 네비게이션 내용 -->
     </nav>
     <div class="member-header__nav">
-        <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href="http://127.0.0.1:5500/src/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <div class="member-header__profile-container">
                 <img id="headerProfileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지" loading="lazy">
@@ -24,6 +23,7 @@
             <button class="member-header__button member-header__buttons--logout" id="logoutButton">로그아웃</button>
         </div>
     </div>
+
     <!-- 래퍼 인트로 -->
     <div id="wrapper_intro">
         <div class="vertical-sections">
@@ -33,7 +33,7 @@
                     <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
                         저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
                     </p>
-                    <button class="main__button main__button--large" onclick="window.location.href='/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
+                    <button class="main__button main__button--large" onclick="window.location.href='http://127.0.0.1:5500/src/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
                 </div>
                 <section>
                     <div class="main__section-title-container" style="padding-bottom: 20px;">
@@ -83,28 +83,18 @@
                 </section>
             </section>
         </div>
-    </div> <!-- #wrapper 종료 -->
+    </div> <!-- #wrapper_intro 종료 -->
+
     <!-- ===== Footer 시작 ===== -->
     <div class="footer" style="color: white; display: flex;  align-items: center;">
         <div class="footer-left">
-            <!-- 왼쪽 영역 -->
             <div class="footer__section">
                 <h4>팀 정보</h4>
-                <h1>Always-inclusive</h4>
+                <h1>Always-inclusive</h1>
                 <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
                 <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
-                <!-- <div class="language-selector">
-                    <label for="language">언어 설정:</label>
-                    <select id="language">
-                        <option value="ko">한국어</option>
-                        <option value="en">English</option>
-                        <option value="jp">日本語</option>
-                        <option value="zh">中文</option>
-                    </select>
-                </div> -->
             </div>
         </div>
-        <!-- 오른쪽 영역 -->
         <div class="footer-support">
             <h1>고객지원</h1>
             <p>FAQ</p>
@@ -112,39 +102,90 @@
             <p>문의하기</p>
         </div>
     </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const nickname = localStorage.getItem('nickname') || '이름';
-            const profileImage = localStorage.getItem('profileImage') || '../../assets/images/User_images/default_profile.png';
+        document.addEventListener('DOMContentLoaded', async function() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('로그인이 필요합니다.');
+                window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html';
+                return;
+            }
 
-            document.getElementById('nickname').textContent = `${nickname}님 안녕하세요!`;
-            document.querySelector('.member-header__profile-container img').src = profileImage;
-        });
+            const nicknameElem = document.getElementById('nickname');
+            const profileImgElem = document.getElementById('headerProfileImage');
+            const defaultImg = '../../assets/images/User_images/default_profile.png';
 
-        document.getElementById('mypageButton').addEventListener('click', function() {
-            window.location.href = '/pages/Mypage/Mypage.html';
-        });
-
-        document.getElementById('logoutButton').addEventListener('click', function() {
-            fetch('/api/accounts/logout/', {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Token ' + localStorage.getItem('token')
-                },
-                body: JSON.stringify({})
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('로그아웃 되었습니다.');
-                    localStorage.removeItem('token');
-                    window.location.href = '/pages/Login/Login.html';
-                } else {
-                    alert('로그아웃에 실패했습니다.');
+            /**
+             * 1) 로컬 캐시에 있는 프로필 정보를 즉시 표시
+             */
+            const cachedUserProfile = localStorage.getItem('cachedUserProfile');
+            if (cachedUserProfile) {
+                try {
+                    const cachedData = JSON.parse(cachedUserProfile);
+                    const nicknameText = cachedData.nickname || cachedData.email || '이름';
+                    nicknameElem.textContent = nicknameText + ' 님 안녕하세요!';
+                    profileImgElem.src = cachedData.profile_image || defaultImg;
+                } catch (err) {
+                    console.warn('cachedUserProfile 파싱 에러:', err);
                 }
-            })
-            .catch(error => {
-                console.error('로그아웃 중 오류 발생:', error);
-                alert('로그아웃 중 오류가 발생했습니다.');
+            }
+
+            /**
+             * 2) 서버에서 최신 데이터 가져와서 갱신
+             */
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/accounts/profile/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Token ' + token
+                    }
+                });
+                if (response.ok) {
+                    const userData = await response.json();
+                    const nicknameText = userData.nickname || userData.email;
+                    nicknameElem.textContent = nicknameText + ' 님 안녕하세요!';
+                    profileImgElem.src = userData.profile_image || defaultImg;
+
+                    // 로컬 스토리지에 최신 정보 캐싱
+                    localStorage.setItem('cachedUserProfile', JSON.stringify(userData));
+                } else {
+                    console.error('프로필 정보를 불러오지 못했습니다.');
+                }
+            } catch (error) {
+                console.error('프로필 정보를 불러오는 중 오류 발생:', error);
+            }
+
+            /**
+             * 3) 마이페이지 버튼
+             */
+            document.getElementById('mypageButton').addEventListener('click', function() {
+                window.location.href = 'http://127.0.0.1:5500/src/pages/Mypage/Mypage.html';
+            });
+
+            /**
+             * 4) 로그아웃
+             */
+            document.getElementById('logoutButton').addEventListener('click', async function() {
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/api/accounts/logout/', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Token ' + token
+                        }
+                    });
+                    if (response.ok) {
+                        alert('로그아웃 되었습니다.');
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('cachedUserProfile');
+                        window.location.href = 'http://127.0.0.1:5500/src/pages/Login/Login.html';
+                    } else {
+                        alert('로그아웃에 실패했습니다.');
+                    }
+                } catch (err) {
+                    console.error('로그아웃 오류:', err);
+                    alert('로그아웃 중 오류가 발생했습니다.');
+                }
             });
         });
     </script>
