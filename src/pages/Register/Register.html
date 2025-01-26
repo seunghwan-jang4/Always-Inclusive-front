@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Always-Inclusive-OTT</title>
+    <title>Register.html</title>
     <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
 </head>
 <body class="guest-homepage">
     <header class="guest-header__nav">
-        <a href="/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
+        <a href="#" class="guest-header__logo" id="guestHomeLink">Always-Inclusive-OTT</a>
         <div class="guest-header__buttons">
             <button class="guest-button guest-header__buttons--explore" id="headerSignupButton">회원가입</button>
             <button class="guest-button guest-header__buttons--login" id="headerLoginButton">로그인</button>
@@ -79,15 +79,23 @@
             <p>문의하기</p>
         </div>
     </div>
+    <script src="/src/utils/config.js"></script>
+
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const homeLink = document.getElementById('guestHomeLink');
+            // config.js에서 세팅한 BASE_FRONT_URL 사용
+            homeLink.href = `${window.config.BASE_FRONT_URL}/pages/Home/Guest_Home.html`;
+        });
+
         // 헤더에서 회원가입 페이지로 이동
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('headerSignupButton').addEventListener('click', function() {
-                window.location.href = '/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Register/Register.html`; // 회원가입 페이지로 이동.
             });
 
             document.getElementById('headerLoginButton').addEventListener('click', function() {
-                window.location.href = '/pages/Login/Login.html'; // 로그인 페이지로 이동.
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`; // 로그인 페이지로 이동.
             });
         });
 
@@ -106,7 +114,7 @@
                 return;
             }
 
-            fetch('/api/accounts/signup/', { // DRF 회원가입 엔드포인트
+            fetch(`${window.config.BASE_API_URL}/api/accounts/signup/`, { // DRF 회원가입 엔드포인트
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -120,7 +128,7 @@
                     localStorage.setItem('email', userData.email);
                     localStorage.setItem('nickname', userData.email);
                     localStorage.setItem('profileImage', '../../assets/images/User_images/default_profile.png');
-                    window.location.href = '/pages/Login/Login.html';
+                    window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                 } else {
                     let errorMessage = '회원가입에 실패했습니다: ';
                     if (body.email) {
@@ -166,7 +174,7 @@
         });
 
         function cancelRegistration() {
-            window.location.href = 'pages/Login/Login.html'; // 취소 버튼 클릭 시 로그인 페이지로 이동
+            window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`; // 취소 버튼 클릭 시 로그인 페이지로 이동
         }
     </script>
 </body>

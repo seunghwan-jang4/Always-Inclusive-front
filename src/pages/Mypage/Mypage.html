@@ -14,7 +14,7 @@
     </nav>
 
     <div class="member-header__nav">
-        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href="#" class="member-header__logo" id="memberHomeLink">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <div class="member-header__profile-container">
                 <!-- 기본 프로필 이미지는 default_profile.png, 
@@ -34,13 +34,19 @@
                 <button class="main__button2" id="changeProfileButton">변경</button>
                 <input type="file" id="profileImageInput" style="display: none;">
             </div>
+            <div class="mypage-profile-box">
+                <img id="profileImage" src="../../assets/images/User_images/default_profile.png" alt="챗봇 이미지">
+                <button class="main__button2" id="changeProfileButton">변경</button>
+                <input type="file" id="profileImageInput" style="display: none;">
+            </div>
             <div class="main__input-group">
                 <input type="text" id="nicknameInput" class="input__password" placeholder="">
                 <label for="nicknameInput" class="floating-label">닉네임</label>
                 <button class="main__button2" id="saveNicknameButton">이름 저장</button>
             </div>
+            
         </div>
-        <button class="main__button3" onclick="location.href='/pages/Mypage/Delete_Account.html'">회원 탈퇴하기</button>
+        <button class="main__button3" onclick="location.href=`${window.config.BASE_FRONT_URL}/pages/Mypage/Delete_Account.html`;">회원 탈퇴하기</button>
     </div>
 
     <!-- ===== Footer 시작 ===== -->
@@ -60,8 +66,16 @@
             <p>문의하기</p>
         </div>
     </div>
-
+    <script src="/src/utils/config.js"></script>
+    
     <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const homeLink = document.getElementById('memberHomeLink');
+            // config.js에서 세팅한 BASE_FRONT_URL 사용
+            homeLink.href = `${window.config.BASE_FRONT_URL}/pages/Home/Member_Home.html`;
+        });
+
+
         document.addEventListener('DOMContentLoaded', async function() {
             /**
              * 1) 로그인 토큰 확인
@@ -69,7 +83,7 @@
             const token = localStorage.getItem('token');
             if (!token) {
                 alert('로그인이 필요합니다.');
-                window.location.href = '/pages/Login/Login.html';
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                 return;
             }
 
@@ -98,7 +112,7 @@
             // (B) 이후 서버에서 최신 정보 가져오기 → 화면 갱신
             let userData = null;
             try {
-                const response = await fetch('/api/accounts/profile/', {
+                const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': 'Token ' + token
@@ -107,7 +121,7 @@
                 if (!response.ok) {
                     console.error('사용자 정보를 불러오지 못했습니다.');
                     // 필요한 경우: alert('다시 로그인해주세요.');
-                    // window.location.href = '/pages/Login/Login.html';
+                    // window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                     return;
                 }
                 userData = await response.json();
@@ -145,7 +159,7 @@
                 }
 
                 try {
-                    const patchRes = await fetch('/api/accounts/profile/update/', {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': 'Token ' + token,
@@ -190,7 +204,7 @@
                 formData.append('profile_image', file);
 
                 try {
-                    const patchRes = await fetch('/api/accounts/profile/update/', {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': 'Token ' + token
@@ -230,7 +244,7 @@
             const logoutButton = document.getElementById('logoutButton');
             logoutButton.addEventListener('click', async function() {
                 try {
-                    const res = await fetch('/api/accounts/logout/', {
+                    const res = await fetch(`${window.config.BASE_API_URL}/api/accounts/logout/`, {
                         method: 'POST',
                         headers: {
                             'Authorization': 'Token ' + token
@@ -240,7 +254,7 @@
                         // 로그아웃 성공
                         localStorage.removeItem('token');
                         localStorage.removeItem('cachedUserProfile');
-                        window.location.href = '/pages/Login/Login.html';
+                        window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                     } else {
                         alert('로그아웃에 실패했습니다.');
                     }
@@ -249,6 +263,8 @@
                     alert('로그아웃 중 오류가 발생했습니다.');
                 }
             });
+
+
         });
     </script>
 </body>

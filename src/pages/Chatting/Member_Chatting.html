@@ -21,7 +21,7 @@
     </nav>
     <div class="member-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href="#" class="member-header__logo" id="memberHomeLink">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <!-- 프로필 이미지 클래스 수정 -->
             <div class="member-header__profile-container">
@@ -94,8 +94,15 @@
         </div>
     </div>
     </footer>
+    <script src="/src/utils/config.js"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const homeLink = document.getElementById('memberHomeLink');
+            // config.js에서 세팅한 BASE_FRONT_URL 사용
+            homeLink.href = `${window.config.BASE_FRONT_URL}/pages/Home/Member_Home.html`;
+        });
+
         document.addEventListener("DOMContentLoaded", function() {
             // 채팅 관련 요소
             const chatForm = document.querySelector("#chatForm");
@@ -161,7 +168,7 @@
                 appendUserMessage(message);
 
                 // 2) 서버로 메시지 전송
-                fetch('/api/chatbot/chat/', {
+                fetch(`${window.config.BASE_API_URL}/api/chatbot/chat/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -197,11 +204,11 @@
 
         // 헤더 버튼 스크립트
         document.getElementById('mypageButton').addEventListener('click', function() {
-            window.location.href = '/pages/Mypage/Mypage.html'; // 마이 페이지로 이동.
+            window.location.href = `${window.config.BASE_FRONT_URL}/pages/Mypage/Mypage.html`; // 마이 페이지로 이동.
         });
 
         document.getElementById('logoutButton').addEventListener('click', function() {
-            fetch('/api/accounts/logout/', { // 게스트 홈페이지로 이동
+            fetch(`${window.config.BASE_API_URL}/api/accounts/logout/`, { // 게스트 홈페이지로 이동
                 method: 'POST',
                 headers: {
                     'Authorization': 'Token ' + localStorage.getItem('token')
@@ -212,7 +219,7 @@
                 if (response.ok) {
                     alert('로그아웃 되었습니다.');
                     localStorage.removeItem('token');
-                    window.location.href = '/pages/Login/Login.html';
+                    window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                 } else {
                     alert('로그아웃에 실패했습니다.');
                 }
