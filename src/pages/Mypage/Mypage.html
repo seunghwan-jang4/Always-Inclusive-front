@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="icon" href="../../assets/images/Favorite_icon/Aio.webp" type="image/webp"> <!-- 파비콘 추가 -->
 </head>
 <body class="guest-homepage">
     <nav>
@@ -52,7 +53,7 @@
             </select>
         </div>
         <div class="main__input-group">
-            <select id="age" name="age">
+            <select id="age_group" name="age">
                 <option value="10s">10대 (13~19세)</option>
                 <option value="20s">20대 (20~29세)</option>
                 <option value="30s">30대 (30~39세)</option>
@@ -330,11 +331,11 @@
         */
         document.addEventListener('DOMContentLoaded', function() {
             const genderSelect = document.getElementById('gender');
-            const ageSelect = document.getElementById('age');
+            const ageSelect = document.getElementById('age_group');
 
             async function saveChanges() {
                 const gender = genderSelect.value;
-                const age = ageSelect.value;
+                const age_group = ageSelect.value;
 
                 try {
                     const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
@@ -343,7 +344,7 @@
                             'Authorization': 'Token ' + localStorage.getItem('token'),
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ gender, age })
+                        body: JSON.stringify({ gender, age_group })
                     });
 
                     if (!response.ok) {
