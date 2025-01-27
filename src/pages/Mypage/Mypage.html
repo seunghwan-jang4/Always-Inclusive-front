@@ -220,7 +220,7 @@
                 formData.append('profile_image', file);
 
                 try {
-                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile_image/update/`, {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': 'Token ' + token
@@ -272,7 +272,7 @@
                 formData.append('chatbot_image', file);
 
                 try {
-                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/chatbot_image/update/`, {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': 'Token ' + token
