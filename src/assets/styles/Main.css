@@ -172,7 +172,7 @@ html, body {
 }
 
 /* 스타일 추가 */
-#gender, #age {
+#gender, #age_group, #age {
     width: 200px; /* 셀렉트 박스의 너비를 키움 */
     height: 40px; /* 셀렉트 박스의 높이를 키움 */
 }
