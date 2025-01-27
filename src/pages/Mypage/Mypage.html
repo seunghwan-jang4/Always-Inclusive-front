@@ -35,20 +35,36 @@
                 <input type="file" id="profileImageInput" style="display: none;">
             </div>
             <div class="mypage-profile-box">
-                <img id="profileImage" src="../../assets/images/User_images/default_profile.png" alt="챗봇 이미지">
-                <button class="main__button2" id="changeProfileButton">변경</button>
-                <input type="file" id="profileImageInput" style="display: none;">
+                <img id="chatbotImage" src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="챗봇 이미지">
+                <button class="main__button2" id="changeChatbotImageButton">변경</button>
+                <input type="file" id="chatbotImageInput" style="display: none;">
             </div>
             <div class="main__input-group">
                 <input type="text" id="nicknameInput" class="input__password" placeholder="">
-                <label for="nicknameInput" class="floating-label">닉네임</label>
+                <label for="nicknameInput" class="floating-label">이름</label>
                 <button class="main__button2" id="saveNicknameButton">이름 저장</button>
             </div>
-            
         </div>
-        <button class="main__button3" onclick="location.href=`${window.config.BASE_FRONT_URL}/pages/Mypage/Delete_Account.html`;">회원 탈퇴하기</button>
+        <div class="main__input-group" style="margin-top: 100px;">
+            <select id="gender" name="gender">
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+            </select>
+        </div>
+        <div class="main__input-group">
+            <select id="age" name="age">
+                <option value="10s">10대 (13~19세)</option>
+                <option value="20s">20대 (20~29세)</option>
+                <option value="30s">30대 (30~39세)</option>
+                <option value="40s">40대 (40~49세)</option>
+                <option value="50s">50대 이상 (50세~)</option>
+            </select>
+        </div>
+            <button class="main__button3" onclick="location.href=`${window.config.BASE_FRONT_URL}/pages/Mypage/Delete_Account.html`;" style="margin-top: 100px;">회원 탈퇴하기</button>
+        </div>
+        
+        
     </div>
-
     <!-- ===== Footer 시작 ===== -->
     <div class="footer" style="color: white; font-size: 12px; display: flex; justify-content: center; align-items: center;">
         <div class="footer-left">
@@ -204,7 +220,7 @@
                 formData.append('profile_image', file);
 
                 try {
-                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile_image/update/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': 'Token ' + token
@@ -239,7 +255,50 @@
             });
 
             /**
-             * 4) 로그아웃 로직
+             * 4) 챗봇 이미지 변경 로직
+             */
+            const changeChatbotImageButton = document.getElementById('changeChatbotImageButton');
+            const chatbotImageInput = document.getElementById('chatbotImageInput');
+
+            changeChatbotImageButton.addEventListener('click', function() {
+                chatbotImageInput.click();
+            });
+
+            chatbotImageInput.addEventListener('change', async function() {
+                const file = chatbotImageInput.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('chatbot_image', file);
+
+                try {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/chatbot_image/update/`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Authorization': 'Token ' + token
+                            // FormData 사용 시 'Content-Type': 'multipart/form-data'를
+                            // 직접 지정하지 않아야 정상 동작(브라우저가 자동으로 헤더 설정)
+                        },
+                        body: formData
+                    });
+                    if (!patchRes.ok) {
+                        alert('챗봇 이미지 수정에 실패했습니다.');
+                        return;
+                    }
+                    const updatedChatbot = await patchRes.json();
+
+                    // 최신 데이터 캐싱
+                    localStorage.setItem('cachedChatbotImage', updatedChatbot.chatbot_image);
+
+                    alert('챗봇 이미지가 변경되었습니다.');
+                } catch (err) {
+                    console.error('챗봇 이미지 변경 중 오류:', err);
+                    alert('서버와 통신 중 오류가 발생했습니다.');
+                }
+            });
+
+            /**
+             * 5) 로그아웃 로직
              */
             const logoutButton = document.getElementById('logoutButton');
             logoutButton.addEventListener('click', async function() {
@@ -265,6 +324,41 @@
             });
 
 
+        });
+        /**
+        * 6) 성별, 나이 저장 로직
+        */
+        document.addEventListener('DOMContentLoaded', function() {
+            const genderSelect = document.getElementById('gender');
+            const ageSelect = document.getElementById('age');
+
+            async function saveChanges() {
+                const gender = genderSelect.value;
+                const age = ageSelect.value;
+
+                try {
+                    const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Authorization': 'Token ' + localStorage.getItem('token'),
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ gender, age })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('변경 사항 저장에 실패했습니다.');
+                    }
+
+                    alert('변경 사항이 저장되었습니다.');
+                } catch (error) {
+                    console.error('변경 사항 저장 중 오류 발생:', error);
+                    alert('변경 사항 저장 중 오류가 발생했습니다.');
+                }
+            }
+
+            genderSelect.addEventListener('change', saveChanges);
+            ageSelect.addEventListener('change', saveChanges);
         });
     </script>
 </body>
