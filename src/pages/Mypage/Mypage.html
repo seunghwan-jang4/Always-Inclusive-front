@@ -110,12 +110,15 @@
             const chatbotImg = document.getElementById('chatbotImage');
             const defaultImagePath = '../../assets/images/User_images/default_profile.png';
 
+            // (A) 먼저 로컬 캐시에 있는 프로필 정보를 즉시 표시 (느린 느낌 완화)
             const cachedUserProfile = localStorage.getItem('cachedUserProfile');
             if (cachedUserProfile) {
                 try {
                     const parsedData = JSON.parse(cachedUserProfile);
+                    // 닉네임 표시 (없으면 email 사용)
                     const nick = parsedData.nickname || parsedData.email || '이름';
                     nicknameElem.textContent = nick;
+                    // 프로필 이미지 표시
                     const imgSrc = parsedData.profile_image || defaultImagePath;
                     headerProfileImg.src = imgSrc;
                     profileImg.src = imgSrc;
@@ -125,6 +128,7 @@
                 }
             }
 
+            // (B) 이후 서버에서 최신 정보 가져오기 → 화면 갱신
             let userData = null;
             try {
                 const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/`, {
