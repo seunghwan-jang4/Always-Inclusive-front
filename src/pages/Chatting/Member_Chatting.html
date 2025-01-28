@@ -123,7 +123,7 @@
                     const parsedData = JSON.parse(cachedUserProfile);
                     // 닉네임 표시 (없으면 email 사용)
                     const nick = parsedData.nickname || parsedData.email || '이름';
-                    nicknameElem.textContent = nick;
+                    nicknameElem.textContent = nick + ' 님 안녕하세요!';
                     // 프로필 이미지 표시
                     const imgSrc = parsedData.profile_image || defaultImagePath;
                     headerProfileImg.src = imgSrc;
@@ -150,7 +150,7 @@
 
                 // 닉네임 / 프로필 이미지 업데이트
                 const nicknameText = userData.nickname || userData.email || '이름';
-                nicknameElem.textContent = nicknameText;
+                nicknameElem.textContent = nicknameText + ' 님 안녕하세요!';
 
                 if (userData.profile_image) {
                     headerProfileImg.src = userData.profile_image;
@@ -360,7 +360,7 @@
             const nickname = localStorage.getItem('nickname') || '이름';
             const profileImage = localStorage.getItem('profileImage') || '../../assets/images/User_images/default_profile.png';
 
-            document.getElementById('nickname').textContent = `${nickname}님 안녕하세요!`;
+            document.getElementById('nickname').textContent = `${nickname}`;
             document.getElementById('headerProfileImage').src = profileImage;
         });
 
