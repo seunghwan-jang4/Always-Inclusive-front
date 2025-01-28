@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
+    <link rel="icon" href="../../assets/images/Favorite_icon/Aio.webp" type="image/webp"> <!-- 파비콘 추가 -->
 </head>
 <body class="guest-homepage">
     <nav>
@@ -14,7 +15,7 @@
     </nav>
 
     <div class="member-header__nav">
-        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href="#" class="member-header__logo" id="memberHomeLink">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <div class="member-header__profile-container">
                 <!-- 기본 프로필 이미지는 default_profile.png, 
@@ -34,15 +35,37 @@
                 <button class="main__button2" id="changeProfileButton">변경</button>
                 <input type="file" id="profileImageInput" style="display: none;">
             </div>
+            <div class="mypage-profile-box">
+                <img id="chatbotImage" src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="챗봇 이미지">
+                <button class="main__button2" id="changeChatbotImageButton">변경</button>
+                <input type="file" id="chatbotImageInput" style="display: none;">
+            </div>
             <div class="main__input-group">
                 <input type="text" id="nicknameInput" class="input__password" placeholder="">
-                <label for="nicknameInput" class="floating-label">닉네임</label>
+                <label for="nicknameInput" class="floating-label">이름</label>
                 <button class="main__button2" id="saveNicknameButton">이름 저장</button>
             </div>
         </div>
-        <button class="main__button3" onclick="location.href='/pages/Mypage/Delete_Account.html'">회원 탈퇴하기</button>
+        <div class="main__input-group" style="margin-top: 100px;">
+            <select id="gender" name="gender">
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+            </select>
+        </div>
+        <div class="main__input-group">
+            <select id="age_group" name="age">
+                <option value="10s">10대 (13~19세)</option>
+                <option value="20s">20대 (20~29세)</option>
+                <option value="30s">30대 (30~39세)</option>
+                <option value="40s">40대 (40~49세)</option>
+                <option value="50s">50대 이상 (50세~)</option>
+            </select>
+        </div>
+            <button class="main__button3" onclick="location.href=`${window.config.BASE_FRONT_URL}/pages/Mypage/Delete_Account.html`;" style="margin-top: 100px;">회원 탈퇴하기</button>
+        </div>
+        
+        
     </div>
-
     <!-- ===== Footer 시작 ===== -->
     <div class="footer" style="color: white; font-size: 12px; display: flex; justify-content: center; align-items: center;">
         <div class="footer-left">
@@ -60,8 +83,16 @@
             <p>문의하기</p>
         </div>
     </div>
-
+    <script src="/src/utils/config.js"></script>
+    
     <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const homeLink = document.getElementById('memberHomeLink');
+            // config.js에서 세팅한 BASE_FRONT_URL 사용
+            homeLink.href = `${window.config.BASE_FRONT_URL}/pages/Home/Member_Home.html`;
+        });
+
+
         document.addEventListener('DOMContentLoaded', async function() {
             /**
              * 1) 로그인 토큰 확인
@@ -69,13 +100,14 @@
             const token = localStorage.getItem('token');
             if (!token) {
                 alert('로그인이 필요합니다.');
-                window.location.href = '/pages/Login/Login.html';
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                 return;
             }
 
             const nicknameElem = document.getElementById('nickname');
             const headerProfileImg = document.getElementById('headerProfileImage');
             const profileImg = document.getElementById('profileImage');
+            const chatbotImg = document.getElementById('chatbotImage');
             const defaultImagePath = '../../assets/images/User_images/default_profile.png';
 
             // (A) 먼저 로컬 캐시에 있는 프로필 정보를 즉시 표시 (느린 느낌 완화)
@@ -90,6 +122,7 @@
                     const imgSrc = parsedData.profile_image || defaultImagePath;
                     headerProfileImg.src = imgSrc;
                     profileImg.src = imgSrc;
+                    chatbotImg.src = parsedData.chatbot_image || '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
                 } catch (err) {
                     console.warn('cachedUserProfile 파싱 에러:', err);
                 }
@@ -98,7 +131,7 @@
             // (B) 이후 서버에서 최신 정보 가져오기 → 화면 갱신
             let userData = null;
             try {
-                const response = await fetch('/api/accounts/profile/', {
+                const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': 'Token ' + token
@@ -107,7 +140,7 @@
                 if (!response.ok) {
                     console.error('사용자 정보를 불러오지 못했습니다.');
                     // 필요한 경우: alert('다시 로그인해주세요.');
-                    // window.location.href = '/pages/Login/Login.html';
+                    // window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                     return;
                 }
                 userData = await response.json();
@@ -145,7 +178,7 @@
                 }
 
                 try {
-                    const patchRes = await fetch('/api/accounts/profile/update/', {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': 'Token ' + token,
@@ -190,7 +223,7 @@
                 formData.append('profile_image', file);
 
                 try {
-                    const patchRes = await fetch('/api/accounts/profile/update/', {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': 'Token ' + token
@@ -225,12 +258,62 @@
             });
 
             /**
-             * 4) 로그아웃 로직
+            * 4) 챗봇 이미지 변경 로직
+            */
+            const changeChatbotImageButton = document.getElementById('changeChatbotImageButton');
+            const chatbotImageInput = document.getElementById('chatbotImageInput');
+
+            changeChatbotImageButton.addEventListener('click', function() {
+                chatbotImageInput.click();
+            });
+
+            chatbotImageInput.addEventListener('change', async function() {
+                const file = chatbotImageInput.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('chatbot_image', file);
+
+                try {
+                    const patchRes = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Authorization': 'Token ' + token
+                            // FormData 사용 시 'Content-Type': 'multipart/form-data'를
+                            // 직접 지정하지 않아야 정상 동작(브라우저가 자동으로 헤더 설정)
+                        },
+                        body: formData
+                    });
+                    if (!patchRes.ok) {
+                        alert('챗봇 이미지 수정에 실패했습니다.');
+                        return;
+                    }
+                    const updatedChatbot = await patchRes.json();
+
+                    // 화면 갱신
+                    if (updatedChatbot.chatbot_image) {
+                        chatbotImg.src = updatedChatbot.chatbot_image;
+                    } else {
+                        chatbotImg.src = defaultImagePath;
+                    }
+
+                    // 최신 데이터 캐싱
+                    localStorage.setItem('cachedChatbotImage', updatedChatbot.chatbot_image);
+
+                    alert('챗봇 이미지가 변경되었습니다.');
+                } catch (err) {
+                    console.error('챗봇 이미지 변경 중 오류:', err);
+                    alert('서버와 통신 중 오류가 발생했습니다.');
+                }
+            });
+
+            /**
+             * 5) 로그아웃 로직
              */
             const logoutButton = document.getElementById('logoutButton');
             logoutButton.addEventListener('click', async function() {
                 try {
-                    const res = await fetch('/api/accounts/logout/', {
+                    const res = await fetch(`${window.config.BASE_API_URL}/api/accounts/logout/`, {
                         method: 'POST',
                         headers: {
                             'Authorization': 'Token ' + token
@@ -240,7 +323,7 @@
                         // 로그아웃 성공
                         localStorage.removeItem('token');
                         localStorage.removeItem('cachedUserProfile');
-                        window.location.href = '/pages/Login/Login.html';
+                        window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                     } else {
                         alert('로그아웃에 실패했습니다.');
                     }
@@ -249,6 +332,43 @@
                     alert('로그아웃 중 오류가 발생했습니다.');
                 }
             });
+
+
+        });
+        /**
+        * 6) 성별, 나이 저장 로직
+        */
+        document.addEventListener('DOMContentLoaded', function() {
+            const genderSelect = document.getElementById('gender');
+            const ageSelect = document.getElementById('age_group');
+
+            async function saveChanges() {
+                const gender = genderSelect.value;
+                const age_group = ageSelect.value;
+
+                try {
+                    const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/update/`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Authorization': 'Token ' + localStorage.getItem('token'),
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ gender, age_group })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('변경 사항 저장에 실패했습니다.');
+                    }
+
+                    alert('변경 사항이 저장되었습니다.');
+                } catch (error) {
+                    console.error('변경 사항 저장 중 오류 발생:', error);
+                    alert('변경 사항 저장 중 오류가 발생했습니다.');
+                }
+            }
+
+            genderSelect.addEventListener('change', saveChanges);
+            ageSelect.addEventListener('change', saveChanges);
         });
     </script>
 </body>

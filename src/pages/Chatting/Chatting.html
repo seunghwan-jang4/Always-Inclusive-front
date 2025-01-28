@@ -1,194 +1,254 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Always-Inclusive-OTT</title>
-    <link rel="stylesheet" href="../../assets/styles/Main.css">
-    <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
-    <link rel="stylesheet" href="../../assets/styles/Footer.css">
-    <link rel="stylesheet" href="../../assets/styles/Chatting.css">
-    
-    <!-- marked.js 추가 -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- DOMPurify 추가 -->
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.4/dist/purify.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Always-Inclusive-OTT</title>
+  <link rel="stylesheet" href="../../assets/styles/Main.css">
+  <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
+  <link rel="stylesheet" href="../../assets/styles/Footer.css">
+  <link rel="stylesheet" href="../../assets/styles/Chatting.css">
+  <link rel="icon" href="../../assets/images/Favorite_icon/Aio.webp" type="image/webp"> <!-- 파비콘 추가 -->
+
+  <!-- marked.js (마크다운) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- DOMPurify (XSS 방지) -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.4/dist/purify.min.js"></script>
 </head>
 <body>
-    <!-- 헤더 -->
-    <div class="guest-header__nav">
-        <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
-        <div class="guest-header__buttons">
-            <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
-            <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
-        </div>
+  <!-- 헤더 -->
+  <div class="guest-header__nav">
+    <a href="#" class="guest-header__logo">Always-Inclusive-OTT</a>
+    <div class="guest-header__buttons">
+      <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
+      <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>
     </div>
+  </div>
 
-    <!-- 메인 콘텐츠 래퍼 -->
-    <div id="wrapper_window">
-        <!-- 노트북 프레임 -->
-        <div class="laptop-frame">
-            <!-- 채팅 창 -->
-            <div class="chat-window">
-                <!-- 대화 내용 -->
-                <div class="conversation">
-                    <div class="conversation-header">
-                        <div>채팅창</div>
-                    </div>
-                    <!-- 대화 메시지가 쌓일 영역 -->
-                    <div class="conversation-messages">
-                        <!-- 예시 메시지(기본) -->
-                        <div class="message bot">
-                            <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
-                            <div class="message-content">
-                                챗봇: 안녕하세요! 원하시는 장르를 말씀해 주시면 각 OTT플랫폼을 구분하지 않고 추천해 드릴게요!
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 입력 영역 -->
-                    <div class="input-container">
-                        <form id="chatForm" style="display: flex; width: 100%;">
-                            <input type="text" id="chatInput" placeholder="입력하세요" style="flex: 1;">
-                            <button type="submit">확인</button>
-                        </form>
-                    </div>
-                </div>
+  <!-- 메인 콘텐츠 래퍼 -->
+  <div id="wrapper_window">
+    <!-- 노트북 프레임 -->
+    <div class="laptop-frame">
+      <!-- 채팅 창 -->
+      <div class="chat-window">
+        <!-- 대화 내용 -->
+        <div class="conversation">
+          <div class="conversation-header">
+            <div>채팅창</div>
+          </div>
+          <!-- 메시지가 쌓일 영역 -->
+          <div class="conversation-messages">
+            <!-- 기본 안내 메시지 -->
+            <div class="message bot">
+              <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
+              <div class="message-content">
+                챗봇: 안녕하세요! 궁금한 점을 말씀해 주세요.
+              </div>
             </div>
-        </div> <!-- laptop-frame 종료 -->
-    </div> <!-- wrapper_window 종료 -->
-
-    <!-- 푸터 -->
-    <div class="footer" style="color: white; display: flex;">
-        <div class="footer-left">
-            <!-- 왼쪽 영역 -->
-            <div class="footer__section">
-                <h4>팀 정보</h4>
-                <h1>Always-inclusive</h1>
-                <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
-                <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
-                <!-- <div class="language-selector">
-                    <label for="language">언어 설정:</label>
-                    <select id="language">
-                        <option value="ko">한국어</option>
-                        <option value="en">English</option>
-                        <option value="jp">日本語</option>
-                        <option value="zh">中文</option>
-                    </select>
-                </div> -->
-            </div>
+          </div>
+          <!-- 입력 영역 -->
+          <div class="input-container">
+            <form id="chatForm" style="display: flex; width: 100%;">
+              <input type="text" id="chatInput" placeholder="입력하세요" style="flex: 1;">
+              <button type="submit">확인</button>
+            </form>
+          </div>
         </div>
-        <!-- 오른쪽 영역 -->
-        <div class="footer-support">
-            <h1>고객지원</h1>
-            <p>FAQ</p>
-            <p>고객센터</p>
-            <p>문의하기</p>
-        </div>
+      </div>
     </div>
-    </footer>
+  </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 채팅 관련 요소
-            const chatForm = document.querySelector("#chatForm");
-            const chatInput = document.querySelector("#chatInput");
-            const conversationMessages = document.querySelector(".conversation-messages");
+  <!-- 푸터 -->
+  <div class="footer" style="color: white; display: flex;">
+    <div class="footer-left">
+      <div class="footer__section">
+        <h4>팀 정보</h4>
+        <h1>Always-inclusive</h1>
+        <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
+        <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
+      </div>
+    </div>
+    <div class="footer-support">
+      <h1>고객지원</h1>
+      <p>FAQ</p>
+      <p>고객센터</p>
+      <p>문의하기</p>
+    </div>
+  </div>
+  </footer>
+  <script src="/src/utils/config.js"></script>
 
-            // 사용자 메시지를 오른쪽 말풍선으로 추가
-            function appendUserMessage(userText) {
-                const userMessageDiv = document.createElement('div');
-                userMessageDiv.classList.add('message', 'user');
 
-                const userImg = document.createElement('img');
-                userImg.src = '../../assets/images/User_images/default_profile.png';
-                userImg.alt = 'User Profile';
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const homeLink = document.getElementById('guestHomeLink');
+        // config.js에서 세팅한 BASE_FRONT_URL 사용
+        homeLink.href = `${window.config.BASE_FRONT_URL}/pages/Home/Guest_Home.html`;
+    });
 
-                const messageContent = document.createElement('div');
-                messageContent.classList.add('message-content');
-                messageContent.textContent = userText;
+    document.addEventListener("DOMContentLoaded", function() {
+      // ----- Marked.js 옵션: breaks=true
+      marked.setOptions({ breaks: true });
 
-                userMessageDiv.appendChild(userImg);
-                userMessageDiv.appendChild(messageContent);
+      const chatForm = document.querySelector("#chatForm");
+      const chatInput = document.querySelector("#chatInput");
+      const conversationMessages = document.querySelector(".conversation-messages");
 
-                conversationMessages.appendChild(userMessageDiv);
+      // 1) 정규식 후처리: "n) " 앞에 줄바꿈, "즐거운 시청 되세요!" 앞에 줄바꿈 등
+      function enforceLineBreaks(str) {
+        let output = str;
 
-                // 스크롤 하단으로 이동
-                conversationMessages.scrollTop = conversationMessages.scrollHeight;
+        // 예: "1) ", "2) ", "3) " 등의 구분 앞에 줄바꿈
+        // \d\) 뒤에 스페이스가 있을 수도 없을 수도 있으니 처리
+        output = output.replace(/(\d\))(\s?)/g, "\n$1$2");
+
+        // "즐거운 시청 되세요!" 앞에 줄바꿈
+        output = output.replace(/(즐거운 시청 되세요\!)/g, "\n$1");
+
+        // 필요하면 ':' 뒤에 줄바꿈, etc...
+        // output = output.replace(/:\s*(\d\))/g, ":\n$1");
+
+        return output;
+      }
+
+      // 사용자 메시지(오른쪽)
+      function appendUserMessage(text) {
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.classList.add('message', 'user');
+
+        const userImg = document.createElement('img');
+        userImg.src = '../../assets/images/User_images/default_profile.png';
+        userImg.alt = 'User Profile';
+
+        const messageContent = document.createElement('div');
+        messageContent.classList.add('message-content');
+        messageContent.textContent = text; // 그냥 텍스트
+
+        userMessageDiv.appendChild(userImg);
+        userMessageDiv.appendChild(messageContent);
+        conversationMessages.appendChild(userMessageDiv);
+        conversationMessages.scrollTop = conversationMessages.scrollHeight;
+      }
+
+      // 챗봇(왼쪽) 메시지 컨테이너
+      function createBotMessageContainer() {
+        const botMessageDiv = document.createElement('div');
+        botMessageDiv.classList.add('message', 'bot');
+
+        const botImg = document.createElement('img');
+        botImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+        botImg.alt = 'Bot Profile';
+
+        const messageContent = document.createElement('div');
+        messageContent.classList.add('message-content');
+        messageContent.textContent = "응답 생성중...";
+
+        botMessageDiv.appendChild(botImg);
+        botMessageDiv.appendChild(messageContent);
+        conversationMessages.appendChild(botMessageDiv);
+        conversationMessages.scrollTop = conversationMessages.scrollHeight;
+
+        return messageContent;
+      }
+
+      // 마크다운 렌더링 ( + 정규식 후처리 )
+      function updateBotMessage(messageContentElem, newText) {
+        // 1) 정규식으로 줄바꿈 강제
+        const forcedLineText = enforceLineBreaks(newText);
+
+        // 2) 마크다운 파싱
+        const rawHtml = marked.parse(forcedLineText);
+
+        // 3) XSS 방지
+        const cleanHtml = DOMPurify.sanitize(rawHtml);
+
+        // 4) 적용
+        messageContentElem.innerHTML = cleanHtml;
+        conversationMessages.scrollTop = conversationMessages.scrollHeight;
+      }
+
+      // 스트리밍 요청
+      async function sendMessageToServer(userText) {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          alert('로그인이 필요합니다!');
+          return;
+        }
+
+        const botMessageContentElem = createBotMessageContainer();
+        let botTextAccum = "";
+
+        try {
+          const response = await fetch(`${window.config.BASE_API_URL}/api/chatbot/chat/`, {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Token ' + token,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: userText }),
+          });
+
+          if (!response.ok) {
+            const errMsg = await response.text();
+            console.error('서버 응답 오류:', errMsg);
+            updateBotMessage(botMessageContentElem, "오류가 발생했습니다.");
+            return;
+          }
+
+          const reader = response.body.getReader();
+          const decoder = new TextDecoder('utf-8');
+          let partialData = '';
+
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunk = decoder.decode(value, { stream: true });
+            partialData += chunk;
+
+            // SSE "data: ...\n\n"
+            const lines = partialData.split('\n\n');
+            partialData = lines.pop();
+
+            for (let line of lines) {
+              if (line.startsWith('data: ')) {
+                const text = line.replace('data: ', '');
+                if (text === '[DONE]') {
+                  console.log('스트리밍 완료');
+                  break;
+                }
+                // 스트리밍 누적
+                botTextAccum += text;
+                // 마크다운 렌더링( + 정규식 후처리 )
+                updateBotMessage(botMessageContentElem, botTextAccum);
+              }
             }
+          }
 
-            // 챗봇(서버) 메시지를 왼쪽 말풍선으로 추가
-            function appendBotMessage(botText) {
-                const botMessageDiv = document.createElement('div');
-                botMessageDiv.classList.add('message', 'bot');
+        } catch (error) {
+          console.error('스트리밍 중 오류:', error);
+          updateBotMessage(botMessageContentElem, "에러가 발생했습니다.");
+        }
+      }
 
-                const botImg = document.createElement('img');
-                botImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
-                botImg.alt = 'Bot Profile';
+      // 폼 전송
+      chatForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
 
-                const messageContent = document.createElement('div');
-                messageContent.classList.add('message-content');
-                
-                // 마크다운을 HTML로 변환
-                const rawHtml = marked.parse(botText);
-                // HTML 정리 (보안)
-                const cleanHtml = DOMPurify.sanitize(rawHtml);
-                messageContent.innerHTML = cleanHtml;
+        appendUserMessage(userMessage);
+        sendMessageToServer(userMessage);
+        chatInput.value = "";
+      });
 
-                botMessageDiv.appendChild(botImg);
-                botMessageDiv.appendChild(messageContent);
-
-                conversationMessages.appendChild(botMessageDiv);
-
-                // 스크롤 하단으로 이동
-                conversationMessages.scrollTop = conversationMessages.scrollHeight;
-            }
-
-            // 폼 submit(Enter 또는 버튼 클릭) 시 채팅 전송
-            chatForm.addEventListener("submit", function(event) {
-                event.preventDefault();
-                const message = chatInput.value.trim();
-                if (!message) return;
-
-                // 1) 사용자 메시지 출력
-                appendUserMessage(message);
-
-                // 2) 서버로 메시지 전송
-                fetch('/api/chatbot/chat/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: localStorage.getItem("email"),  // 예: 로그인 시 저장한 이메일
-                        message: message,
-                        timestamp: new Date().toISOString(),
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // 3) 서버 응답(챗봇 메시지) 출력
-                    appendBotMessage(data.responseMessage || "응답이 없습니다.");
-                })
-                .catch(error => {
-                    console.error('채팅 전송 중 오류 발생:', error);
-                    // 필요 시 에러 메시지 표시
-                    appendBotMessage("에러가 발생했습니다.");
-                });
-
-                // 4) 입력창 비우기
-                chatInput.value = "";
-            });
-        });
-
-        // 푸터 버튼 스크립트
-        document.getElementById('signupButton').addEventListener('click', function() {
-            window.location.href = '/pages/Register/Register.html'; // 회원가입 페이지로 이동.
-        });
-
-        document.getElementById('loginButton').addEventListener('click', function() {
-            window.location.href = '/pages/Login/Login.html'; // 로그인 페이지로 이동.
-        });
-    </script>
+      // 회원가입/로그인
+      document.getElementById('signupButton').addEventListener('click', function() {
+        window.location.href = `${window.config.BASE_FRONT_URL}/pages/Register/Register.html`;
+      });
+      document.getElementById('loginButton').addEventListener('click', function() {
+        window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
+      });
+    });
+  </script>
 </body>
 </html>
