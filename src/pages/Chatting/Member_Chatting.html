@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Chatting.css">
+      <link rel="icon" href="../../assets/images/Favorite_icon/Aio.webp" type="image/webp"> <!-- 파비콘 추가 -->
     
     <!-- marked.js 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -21,7 +22,7 @@
     </nav>
     <div class="member-header__nav">
         <!-- 로고 클릭 시 홈페이지로 이동 -->
-        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href="#" class="member-header__logo" id="memberHomeLink">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <!-- 프로필 이미지 클래스 수정 -->
             <div class="member-header__profile-container">
@@ -32,36 +33,36 @@
             <button class="member-header__button member-header__buttons--logout" id="logoutButton">로그아웃</button>
         </div>
     </div>
-    <!-- 메인 콘텐츠 래퍼 -->
-    <div id="wrapper_window">
-        <!-- 노트북 프레임 -->
-        <div class="laptop-frame">
-            <!-- 채팅 창 -->
-            <div class="chat-window">
-                <!-- 대화 내용 -->
-                <div class="conversation">
-                    <div class="conversation-header">
-                        <div>채팅창</div>
-                    </div>
-                    <!-- 대화 메시지가 쌓일 영역 -->
-                    <div class="conversation-messages">
-                        <!-- 예시 메시지(기본) -->
-                        <div class="message bot">
-                            <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
-                            <div class="message-content">
-                                챗봇: 안녕하세요! 원하시는 장르를 말씀해 주시면 각 OTT플랫폼을 구분하지 않고 추천해 드릴게요!
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 입력 영역 -->
-                    <div class="input-container">
-                        <form id="chatForm" style="display: flex; width: 100%;">
-                            <input type="text" id="chatInput" placeholder="입력하세요" style="flex: 1;">
-                            <button type="submit">확인</button>
-                        </form>
-                    </div>
-                </div>
+<!-- 메인 콘텐츠 래퍼 -->
+<div id="wrapper_window">
+    <!-- 노트북 프레임 -->
+    <div class="laptop-frame">
+      <!-- 채팅 창 -->
+      <div class="chat-window">
+        <!-- 대화 내용 -->
+        <div class="conversation">
+          <div class="conversation-header">
+            <div>채팅창</div>
+          </div>
+          <!-- 메시지가 쌓일 영역 -->
+          <div class="conversation-messages">
+            <!-- 기본 안내 메시지 -->
+            <div class="message bot">
+              <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
+              <div class="message-content">
+                챗봇: 안녕하세요! 궁금한 점을 말씀해 주세요.
+              </div>
             </div>
+          </div>
+          <!-- 입력 영역 -->
+          <div class="input-container">
+            <form id="chatForm" style="display: flex; width: 100%;">
+              <input type="text" id="chatInput" placeholder="입력하세요" style="flex: 1;">
+              <button type="submit">확인</button>
+            </form>
+          </div>
+        </div>
+      </div>
         </div> <!-- laptop-frame 종료 -->
     </div> <!-- wrapper_window 종료 -->
 
@@ -94,8 +95,83 @@
         </div>
     </div>
     </footer>
+    <script src="/src/utils/config.js"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const homeLink = document.getElementById('memberHomeLink');
+            // config.js에서 세팅한 BASE_FRONT_URL 사용
+            homeLink.href = `${window.config.BASE_FRONT_URL}/pages/Home/Member_Home.html`;
+
+            // 유저 정보 로드
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('로그인이 필요합니다.');
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
+                return;
+            }
+
+            const nicknameElem = document.getElementById('nickname');
+            const headerProfileImg = document.getElementById('headerProfileImage');
+            const chatbotImg = document.getElementById('chatbotImage');
+            const defaultImagePath = '../../assets/images/User_images/default_profile.png';
+
+            // (A) 먼저 로컬 캐시에 있는 프로필 정보를 즉시 표시 (느린 느낌 완화)
+            const cachedUserProfile = localStorage.getItem('cachedUserProfile');
+            if (cachedUserProfile) {
+                try {
+                    const parsedData = JSON.parse(cachedUserProfile);
+                    // 닉네임 표시 (없으면 email 사용)
+                    const nick = parsedData.nickname || parsedData.email || '이름';
+                    nicknameElem.textContent = nick;
+                    // 프로필 이미지 표시
+                    const imgSrc = parsedData.profile_image || defaultImagePath;
+                    headerProfileImg.src = imgSrc;
+                    chatbotImg.src = parsedData.chatbot_image || '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+                } catch (err) {
+                    console.warn('cachedUserProfile 파싱 에러:', err);
+                }
+            }
+
+            // (B) 이후 서버에서 최신 정보 가져오기 → 화면 갱신
+            let userData = null;
+            try {
+                const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Token ' + token
+                    }
+                });
+                if (!response.ok) {
+                    console.error('사용자 정보를 불러오지 못했습니다.');
+                    return;
+                }
+                userData = await response.json();
+
+                // 닉네임 / 프로필 이미지 업데이트
+                const nicknameText = userData.nickname || userData.email || '이름';
+                nicknameElem.textContent = nicknameText;
+
+                if (userData.profile_image) {
+                    headerProfileImg.src = userData.profile_image;
+                } else {
+                    headerProfileImg.src = defaultImagePath;
+                }
+
+                if (userData.chatbot_image) {
+                    chatbotImg.src = userData.chatbot_image;
+                } else {
+                    chatbotImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+                }
+
+                // 최신 데이터 캐싱
+                localStorage.setItem('cachedUserProfile', JSON.stringify(userData));
+
+            } catch (error) {
+                console.error('프로필 정보를 가져오는 중 에러:', error);
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", function() {
             // 채팅 관련 요소
             const chatForm = document.querySelector("#chatForm");
@@ -108,7 +184,7 @@
                 userMessageDiv.classList.add('message', 'user');
 
                 const userImg = document.createElement('img');
-                userImg.src = '../../assets/images/User_images/default_profile.png';
+                userImg.src = localStorage.getItem('profileImage') || '../../assets/images/User_images/default_profile.png';
                 userImg.alt = 'User Profile';
 
                 const messageContent = document.createElement('div');
@@ -130,7 +206,7 @@
                 botMessageDiv.classList.add('message', 'bot');
 
                 const botImg = document.createElement('img');
-                botImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+                botImg.src = localStorage.getItem('chatbotImage') || '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
                 botImg.alt = 'Bot Profile';
 
                 const messageContent = document.createElement('div');
@@ -151,6 +227,99 @@
                 conversationMessages.scrollTop = conversationMessages.scrollHeight;
             }
 
+            // 정규식 후처리: "n) " 앞에 줄바꿈, "즐거운 시청 되세요!" 앞에 줄바꿈 등
+            function enforceLineBreaks(str) {
+                let output = str;
+
+                // 예: "1) ", "2) ", "3) " 등의 구분 앞에 줄바꿈
+                output = output.replace(/(\d\))(\s?)/g, "\n$1$2");
+
+                // "즐거운 시청 되세요!" 앞에 줄바꿈
+                output = output.replace(/(즐거운 시청 되세요\!)/g, "\n$1");
+
+                return output;
+            }
+
+            // 마크다운 렌더링 ( + 정규식 후처리 )
+            function updateBotMessage(messageContentElem, newText) {
+                // 1) 정규식으로 줄바꿈 강제
+                const forcedLineText = enforceLineBreaks(newText);
+
+                // 2) 마크다운 파싱
+                const rawHtml = marked.parse(forcedLineText);
+
+                // 3) XSS 방지
+                const cleanHtml = DOMPurify.sanitize(rawHtml);
+
+                // 4) 적용
+                messageContentElem.innerHTML = cleanHtml;
+                conversationMessages.scrollTop = conversationMessages.scrollHeight;
+            }
+
+            // 스트리밍 요청
+            async function sendMessageToServer(userText) {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    alert('로그인이 필요합니다!');
+                    return;
+                }
+
+                const botMessageContentElem = createBotMessageContainer();
+                let botTextAccum = "";
+
+                try {
+                    const response = await fetch(`${window.config.BASE_API_URL}/api/chatbot/chat/`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Token ' + token,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ message: userText }),
+                    });
+
+                    if (!response.ok) {
+                        const errMsg = await response.text();
+                        console.error('서버 응답 오류:', errMsg);
+                        updateBotMessage(botMessageContentElem, "오류가 발생했습니다.");
+                        return;
+                    }
+
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder('utf-8');
+                    let partialData = '';
+
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+
+                        const chunk = decoder.decode(value, { stream: true });
+                        partialData += chunk;
+
+                        // SSE "data: ...\n\n"
+                        const lines = partialData.split('\n\n');
+                        partialData = lines.pop();
+
+                        for (let line of lines) {
+                            if (line.startsWith('data: ')) {
+                                const text = line.replace('data: ', '');
+                                if (text === '[DONE]') {
+                                    console.log('스트리밍 완료');
+                                    break;
+                                }
+                                // 스트리밍 누적
+                                botTextAccum += text;
+                                // 마크다운 렌더링( + 정규식 후처리 )
+                                updateBotMessage(botMessageContentElem, botTextAccum);
+                            }
+                        }
+                    }
+
+                } catch (error) {
+                    console.error('스트리밍 중 오류:', error);
+                    updateBotMessage(botMessageContentElem, "에러가 발생했습니다.");
+                }
+            }
+
             // 폼 submit(Enter 또는 버튼 클릭) 시 채팅 전송
             chatForm.addEventListener("submit", function(event) {
                 event.preventDefault();
@@ -161,7 +330,7 @@
                 appendUserMessage(message);
 
                 // 2) 서버로 메시지 전송
-                fetch('/api/chatbot/chat/', {
+                fetch(`${window.config.BASE_API_URL}/api/chatbot/chat/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -197,11 +366,11 @@
 
         // 헤더 버튼 스크립트
         document.getElementById('mypageButton').addEventListener('click', function() {
-            window.location.href = '/pages/Mypage/Mypage.html'; // 마이 페이지로 이동.
+            window.location.href = `${window.config.BASE_FRONT_URL}/pages/Mypage/Mypage.html`; // 마이 페이지로 이동.
         });
 
         document.getElementById('logoutButton').addEventListener('click', function() {
-            fetch('/api/accounts/logout/', { // 게스트 홈페이지로 이동
+            fetch(`${window.config.BASE_API_URL}/api/accounts/logout/`, { // 게스트 홈페이지로 이동
                 method: 'POST',
                 headers: {
                     'Authorization': 'Token ' + localStorage.getItem('token')
@@ -212,7 +381,7 @@
                 if (response.ok) {
                     alert('로그아웃 되었습니다.');
                     localStorage.removeItem('token');
-                    window.location.href = '/pages/Login/Login.html';
+                    window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                 } else {
                     alert('로그아웃에 실패했습니다.');
                 }

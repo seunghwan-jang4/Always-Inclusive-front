@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
+    <link rel="icon" href="../../assets/images/Favorite_icon/Aio.webp" type="image/webp"> <!-- 파비콘 추가 -->
 </head>
 <body class="member-homepage">
     <nav>
         <!-- 네비게이션 내용 -->
     </nav>
     <div class="member-header__nav">
-        <a href="/pages/Home/Member_Home.html" class="member-header__logo">Always-Inclusive-OTT</a>
+        <a href=#" class="member-header__logo" id="memberHomeLink">Always-Inclusive-OTT</a>
         <div class="member-header__buttons">
             <div class="member-header__profile-container">
                 <img id="headerProfileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지" loading="lazy">
@@ -33,7 +34,7 @@
                     <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
                         저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
                     </p>
-                    <button class="main__button main__button--large" onclick="window.location.href='/pages/Chatting/Member_Chatting.html'">채팅하러 가기</button>
+                    <button class="main__button main__button--large" onclick="window.location.href=`${window.config.BASE_FRONT_URL}/pages/Chatting/Member_Chatting.html`">채팅하러 가기</button>
                 </div>
                 <section>
                     <div class="main__section-title-container" style="padding-bottom: 20px;">
@@ -102,13 +103,20 @@
             <p>문의하기</p>
         </div>
     </div>
+    <script src="/src/utils/config.js"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const homeLink = document.getElementById('memberHomeLink');
+            // config.js에서 세팅한 BASE_FRONT_URL 사용
+            homeLink.href = `${window.config.BASE_FRONT_URL}/pages/Home/Member_Home.html`;
+        });
+
         document.addEventListener('DOMContentLoaded', async function() {
             const token = localStorage.getItem('token');
             if (!token) {
                 alert('로그인이 필요합니다.');
-                window.location.href = '/pages/Login/Login.html';
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                 return;
             }
 
@@ -135,7 +143,7 @@
              * 2) 서버에서 최신 데이터 가져와서 갱신
              */
             try {
-                const response = await fetch('/api/accounts/profile/', {
+                const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/profile/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': 'Token ' + token
@@ -160,7 +168,7 @@
              * 3) 마이페이지 버튼
              */
             document.getElementById('mypageButton').addEventListener('click', function() {
-                window.location.href = '/pages/Mypage/Mypage.html';
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Mypage/Mypage.html`;
             });
 
             /**
@@ -168,7 +176,7 @@
              */
             document.getElementById('logoutButton').addEventListener('click', async function() {
                 try {
-                    const response = await fetch('/api/accounts/logout/', {
+                    const response = await fetch(`${window.config.BASE_API_URL}/api/accounts/logout/`, {
                         method: 'POST',
                         headers: {
                             'Authorization': 'Token ' + token
@@ -178,7 +186,7 @@
                         alert('로그아웃 되었습니다.');
                         localStorage.removeItem('token');
                         localStorage.removeItem('cachedUserProfile');
-                        window.location.href = '/pages/Login/Login.html';
+                        window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
                     } else {
                         alert('로그아웃에 실패했습니다.');
                     }

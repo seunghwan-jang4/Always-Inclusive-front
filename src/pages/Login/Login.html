@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Guest_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
+    <link rel="icon" href="../../assets/images/Favorite_icon/Aio.webp" type="image/webp"> <!-- 파비콘 추가 -->
 </head>
 
 <body>
     <body class="guest-homepage"> 
     <header class="guest-header__nav">
-        <a href="/pages/Home/Guest_Home.html" class="guest-header__logo">Always-Inclusive-OTT</a>
+        <a href="#" class="guest-header__logo" id="guestHomeLink">Always-Inclusive-OTT</a>
         <div class="guest-header__buttons">
             <button id="headerSignupButton" class="guest-button guest-header__buttons--explore">회원가입</button>
             <button id="headerLoginButton" class="guest-button guest-header__buttons--login">로그인</button>
@@ -37,7 +38,7 @@
             <button onclick="login()" class="main__button">로그인</button>
         </div>
         <div class="main__input-group">
-        <!-- <button id="findPasswordButton" class="main__button2">비밀번호 찾기</button> -->
+        <button id="findPasswordButton" class="main__button2">비밀번호 재설정</button>
         <button onclick="goRegister()" class="main__button2">회원가입</button>
         <button onclick="goHomepage()" class="main__button2">홈페이지</button>
         </div>
@@ -70,7 +71,15 @@
             <p>문의하기</p>
         </div>
     </div>
+    <script src="/src/utils/config.js"></script>
+
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const homeLink = document.getElementById('guestHomeLink');
+            // config.js에서 세팅한 BASE_FRONT_URL 사용
+            homeLink.href = `${window.config.BASE_FRONT_URL}/pages/Home/Guest_Home.html`;
+        });
+
         // 페이지 로드 시, localStorage에 저장된 아이디/비번이 있으면 자동 입력
         // 페이지가 로드되면 localStorage에 저장된 이메일이 있으면 자동 입력
         document.addEventListener('DOMContentLoaded', function() {
@@ -83,11 +92,11 @@
 
             // 헤더에서 회원가입 페이지로 이동
             document.getElementById('headerSignupButton').addEventListener('click', function() {
-                window.location.href = '/pages/Register/Register.html'; // 회원가입 페이지로 이동.
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Register/Register.html`; // 회원가입 페이지로 이동.
             });
 
             document.getElementById('headerLoginButton').addEventListener('click', function() {
-                window.location.href = '/pages/Login/Login.html'; // 로그인 페이지로 이동.
+                window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`; // 로그인 페이지로 이동.
             });
         });
 
@@ -100,7 +109,7 @@
         });
 
         document.getElementById('findPasswordButton').addEventListener('click', function() {
-            window.location.href = '/pages/Mypage/Change_password.html';
+            window.location.href = `${window.config.BASE_FRONT_URL}/pages/Mypage/Change_password.html`;
         });
 
         function login() {
@@ -115,7 +124,7 @@
             }
 
             // 서버로 로그인 요청 보내기
-            fetch('/api/accounts/login/', {
+            fetch(`${window.config.BASE_API_URL}/api/accounts/login/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -136,7 +145,7 @@
 
                     localStorage.setItem('token', data.token);
                     // 로그인 성공 시, My page로 리다이렉트
-                    window.location.href = '/pages/Home/Member_Home.html';
+                    window.location.href = `${window.config.BASE_FRONT_URL}/pages/Home/Member_Home.html`;
                 } else {
                     alert('로그인 실패: ' + data.message);
                 }
@@ -149,12 +158,12 @@
 
         // 회원가입 페이지로 이동
         function goRegister() {
-            window.location.href = '/pages/Register/Register.html';
+            window.location.href = `${window.config.BASE_FRONT_URL}/pages/Register/Register.html`;
         }
 
         // 홈페이지(게스트 홈)로 이동
         function goHomepage() {
-            window.location.href = '/pages/Home/Guest_Home.html';
+            window.location.href = `${window.config.BASE_FRONT_URL}/pages/Home/Guest_Home.html`;
         }
     </script>
 </body>
