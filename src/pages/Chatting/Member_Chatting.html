@@ -48,7 +48,7 @@
           <div class="conversation-messages">
             <!-- 기본 안내 메시지 -->
             <div class="message bot">
-              <img src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
+              <img id="initialBotImage" src="../../assets/images/Chatbot_image/Chatbot Chat Message.jpg" alt="Bot Profile">
               <div class="message-content">
                 챗봇: 안녕하세요! 궁금한 점을 말씀해 주세요.
               </div>
@@ -113,7 +113,7 @@
 
             const nicknameElem = document.getElementById('nickname');
             const headerProfileImg = document.getElementById('headerProfileImage');
-            const chatbotImg = document.getElementById('chatbotImage');
+            const initialBotImg = document.getElementById('initialBotImage');
             const defaultImagePath = '../../assets/images/User_images/default_profile.png';
 
             // (A) 먼저 로컬 캐시에 있는 프로필 정보를 즉시 표시 (느린 느낌 완화)
@@ -127,7 +127,7 @@
                     // 프로필 이미지 표시
                     const imgSrc = parsedData.profile_image || defaultImagePath;
                     headerProfileImg.src = imgSrc;
-                    chatbotImg.src = parsedData.chatbot_image || '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+                    initialBotImg.src = parsedData.chatbot_image || '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
                 } catch (err) {
                     console.warn('cachedUserProfile 파싱 에러:', err);
                 }
@@ -159,9 +159,9 @@
                 }
 
                 if (userData.chatbot_image) {
-                    chatbotImg.src = userData.chatbot_image;
+                    initialBotImg.src = userData.chatbot_image;
                 } else {
-                    chatbotImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+                    initialBotImg.src = '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
                 }
 
                 // 최신 데이터 캐싱
@@ -184,7 +184,7 @@
                 userMessageDiv.classList.add('message', 'user');
 
                 const userImg = document.createElement('img');
-                userImg.src = localStorage.getItem('profileImage') || '../../assets/images/User_images/default_profile.png';
+                userImg.src = JSON.parse(localStorage.getItem('cachedUserProfile')).profile_image || '../../assets/images/User_images/default_profile.png';
                 userImg.alt = 'User Profile';
 
                 const messageContent = document.createElement('div');
@@ -206,7 +206,7 @@
                 botMessageDiv.classList.add('message', 'bot');
 
                 const botImg = document.createElement('img');
-                botImg.src = localStorage.getItem('chatbotImage') || '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
+                botImg.src = JSON.parse(localStorage.getItem('cachedUserProfile')).chatbot_image || '../../assets/images/Chatbot_image/Chatbot Chat Message.jpg';
                 botImg.alt = 'Bot Profile';
 
                 const messageContent = document.createElement('div');
