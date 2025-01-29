@@ -14,10 +14,12 @@
   <!-- DOMPurify (XSS 방지) -->
   <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.4/dist/purify.min.js"></script>
 </head>
+<body class="guest-homepage"></body>
+
 <body>
   <!-- 헤더 -->
   <div class="guest-header__nav">
-    <a href="#" class="guest-header__logo">Always-Inclusive-OTT</a>
+    <a href="#" class="guest-header__logo" id="guestHomeLink">Always-Inclusive-OTT</a>
     <div class="guest-header__buttons">
       <button class="guest-button guest-header__buttons--explore" id="signupButton">회원가입</button>
       <button class="guest-button guest-header__buttons--login" id="loginButton">로그인</button>

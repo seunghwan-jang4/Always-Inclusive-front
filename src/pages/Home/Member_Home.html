@@ -27,80 +27,132 @@
 
     <!-- 래퍼 인트로 -->
     <div id="wrapper_intro">
-        <div class="vertical-sections">
+        <div class="vertical-sections" style="margin: 500px;">
             <section>
-                <div class="main__intro-container" style="color:white; padding-bottom: 100px;">
-                    <h2>Always-Inclusive-OTT에 오신 것을 환영합니다!</h2>
-                    <p>여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
+                <div class="main__intro-container" style="color:white; height: 0vh; text-align: center;" >
+                    <h1 style="font-size: 2.2em;">Always-Inclusive-OTT에 오신 것을 환영합니다!</h1>
+                    <p style="font-size: 1.25em;">여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
                         저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
                     </p>
-                    <button class="main__button main__button--large" onclick="window.location.href=`${window.config.BASE_FRONT_URL}/pages/Chatting/Member_Chatting.html`">채팅하러 가기</button>
+                    <div class="vertical-sections" style="margin: 120px;">
+                    <button class="main__button main__button--large" onclick="window.location.href=`${window.config.BASE_FRONT_URL}/pages/Chatting/Member_Chatting.html`">추천 받기</button>
+                    </div>
                 </div>
-                <section>
-                    <div class="main__section-title-container" style="padding-bottom: 20px;">
-                        <button class="main__section-title" onclick="window.open('https://www.netflix.com', '_blank')">넷플릭스</button>
-                    </div>
-                    <div class="content-grid" style="color:white;">
-                        <div class="content-item">
-                            <img src="../../assets/images/Netflix/image.png" alt="넷플릭스 이미지 1" style="width: 350px; height: 280px;" loading="lazy">
-                            <h3>고스트버스터즈: 오싹한 뉴욕</h3>
-                        </div>
-                        <div class="content-item">
-                            <img src="../../assets/images/Netflix/image (1).png" alt="넷플릭스 이미지 2" style="width: 350px; height: 280px;" loading="lazy">
-                            <h3>그녀가 죽었다</h3>
-                        </div>
-                        <div class="content-item">
-                            <img src="../../assets/images/Netflix/image (2).png" alt="넷플릭스 이미지 3" style="width: 350px; height: 280px;" loading="lazy">
-                            <h3>우리가 끝이야</h3>
-                        </div>
-                        <div class="content-item">
-                            <img src="../../assets/images/Netflix/image (3).png" alt="넷플릭스 이미지 4" style="width: 350px; height: 280px;" loading="lazy">
-                            <h3>퍼펙트 데이즈</h3>
+            </section>
+            <!-- 넷플릭스 섹션 -->
+            <section style="margin-top: 500px;">
+                <div class="main__section-title-container" style="padding-bottom: 20px; display: flex; align-items: center;">
+                    <a href="https://www.netflix.com" target="_blank">
+                        <img src="../../assets/images/Netflix/Netflix_Logo.png" alt="넷플릭스 로고" style="width: 150px;">
+                    </a>
+                    <span style="margin-left: 10px; color: white; font-size: 24px;">인기 컨텐츠</span>
+                </div>
+                <div class="content-grid" style="color:white;">
+                    <div class="content-item">
+                        <div class="main__image-container">
+                            <a href="https://www.netflix.com/search?q=%EA%B3%A0%EC%8A%A4%ED%8A%B8%EB%B2%84%EC%8A%A4%ED%84%B0%EC%A6%88&suggestionId=Video%3A541018&jbv=81762779" target="_blank">
+                                <img src="../../assets/images/Netflix/image.png" alt="넷플릭스 이미지 1" loading="lazy">
+                                <div class="main__info">고스트버스터즈: 오싹한 뉴욕</div>
+                            </a>
                         </div>
                     </div>
-                </section>
-                <section>
-                    <div class="main__section-title-container" style="padding-bottom: 20px;">
-                        <button class="main__section-title" onclick="window.open('https://www.disneyplus.com', '_blank')">디즈니 플러스</button>
-                    </div>
-                    <div class="content-grid" style="color:white;">
-                        <div class="content-item">
-                            <img src="../../assets/images/Disneyplus/image.png" alt="디즈니 플러스 이미지 1" style="width: 350px; height: 280px;" loading="lazy">
-                            <h3>범죄도시 4</h3>
-                        </div>
-                        <div class="content-item">
-                            <img src="../../assets/images/Disneyplus/image (1).png" alt="디즈니 플러스 이미지 2" style="width: 350px; height: 280px;" loading="lazy">
-                            <h3>인사이드 아웃 2</h3>
-                        </div>
-                        <div class="content-item">
-                            <img src="../../assets/images/Disneyplus/image (2).png" alt="디즈니 플러스 이미지 3" style="width: 350px; height: 280px;" loading="lazy">
-                            <h3>에이리언: 로물루스</h3>
-                        </div>
-                        <div class="content-item">
-                            <img src="../../assets/images/Disneyplus/image (3).png" alt="디즈니 플러스 이미지 4" style="width: 350px; height: 280px;" loading="lazy">
-                            <h3>데드풀과 울버린</h3>
+                    <div class="content-item">
+                        <div class="main__image-container">
+                            <a href="https://www.netflix.com/search?q=%EA%B7%B8%EB%85%80%EA%B0%80%20%EC%A3%BD%EC%97%88%EB%8B%A4&jbv=81927735" target="_blank">
+                                <img src="../../assets/images/Netflix/image (1).png" alt="넷플릭스 이미지 2" loading="lazy">
+                                <div class="main__info">그녀가 죽었다</div>
+                            </a>
                         </div>
                     </div>
-                </section>
+                    <div class="content-item">
+                        <div class="main__image-container">
+                            <a href="https://www.netflix.com/search?q=%EC%9A%B0%EB%A6%AC%EA%B0%80%20%EB%81%9D%EC%9D%B4%EC%95%BC&jbv=81762778" target="_blank">
+                                <img src="../../assets/images/Netflix/image (2).png" alt="넷플릭스 이미지 3" loading="lazy">
+                                <div class="main__info">우리가 끝이야</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="main__image-container">
+                            <a href="https://www.netflix.com/search?q=%ED%8D%BC%ED%8E%99%ED%8A%B8%20%EB%8D%B0%EC%9D%B4%EC%A6%88&jbv=81716892" target="_blank">
+                                <img src="../../assets/images/Netflix/image (3).png" alt="넷플릭스 이미지 4" loading="lazy">
+                                <div class="main__info">퍼펙트 데이즈</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section style="margin-top: 100px;">
+                <div class="main__section-title-container" style="padding-bottom: 20px; display: flex; align-items: center;">
+                    <a href="https://www.disneyplus.com" target="_blank">
+                        <img src="../../assets/images/Disneyplus/disney-plus-logo.png" alt="디즈니 플러스 로고" style="width: 150px;">
+                    </a>
+                    <span style="margin-left: 10px; color: white; font-size: 24px;">인기 컨텐츠</span>
+                </div>
+                <div class="content-grid" style="color:white;">
+                    <div class="content-item">
+                        <div class="main__image-container">
+                            <a href="https://www.disneyplus.com/ko-kr/movies/the-roundup-punishment/7XrDTiHactHK" target="_blank">
+                                <img src="../../assets/images/Disneyplus/image.png" alt="디즈니 플러스 이미지 1" loading="lazy">
+                                <div class="main__info">범죄도시 4</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="main__image-container">
+                            <a href="https://www.disneyplus.com/ko-kr/movies/inside-out-2/6MeZYf9JkFii" target="_blank">
+                                <img src="../../assets/images/Disneyplus/image (1).png" alt="디즈니 플러스 이미지 2" loading="lazy">
+                                <div class="main__info">인사이드 아웃 2</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="main__image-container">
+                            <a href="https://www.disneyplus.com/ko-kr/movies/alien-romulus/6cobRNwgyt6H" target="_blank">
+                                <img src="../../assets/images/Disneyplus/image (2).png" alt="디즈니 플러스 이미지 3" loading="lazy">
+                                <div class="main__info">에이리언: 로물루스</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="main__image-container">
+                            <a href="https://www.disneyplus.com/ko-kr/movies/deadpool-wolverine/4TQTHo9Qto2m" target="_blank">
+                                <img src="../../assets/images/Disneyplus/image (3).png" alt="디즈니 플러스 이미지 4" loading="lazy">
+                                <div class="main__info">데드풀과 울버린</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </div> <!-- #wrapper_intro 종료 -->
 
     <!-- ===== Footer 시작 ===== -->
-    <div class="footer" style="color: white; display: flex;  align-items: center;">
-        <div class="footer-left">
+    <div class="footer" style="color: white; padding: 20px 0;">
+        <div class="footer-container" style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <div class="footer__section">
+                <h4>고객지원</h4>
+                <div class="footer__links">
+                    <a href="faq.html" style="color: white;">FAQ</a>
+                    <a href="support.html" style="color: white;">고객센터</a>
+                    <a href="contact.html" style="color: white;">문의하기</a>
+                </div>
+            </div>
+            <div class="footer__section">
+                <h4>팔로우</h4>
+                <div class="footer__links">
+                    <a href="https://facebook.com" style="color: white;">Facebook</a>
+                    <a href="https://twitter.com" style="color: white;">Twitter</a>
+                    <a href="https://instagram.com" style="color: white;">Instagram</a>
+                </div>
+            </div>
             <div class="footer__section">
                 <h4>팀 정보</h4>
-                <h1>Always-inclusive</h1>
+                <p>Always-inclusive</p>
                 <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
                 <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
             </div>
-        </div>
-        <div class="footer-support">
-            <h1>고객지원</h1>
-            <p>FAQ</p>
-            <p>고객센터</p>
-            <p>문의하기</p>
         </div>
     </div>
     <script src="/src/utils/config.js"></script>
