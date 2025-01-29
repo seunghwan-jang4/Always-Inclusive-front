@@ -30,11 +30,13 @@
         <div class="vertical-sections" style="margin: 500px;">
             <section>
                 <div class="main__intro-container" style="color:white; height: 0vh; text-align: center;" >
-                    <h2>Always-Inclusive-OTT에 오신 것을 환영합니다!</h2>
+                    <h1 style="font-size: 2.2em;">Always-Inclusive-OTT에 오신 것을 환영합니다!</h1>
                     <p style="font-size: 1.25em;">여기서 다양한 OTT 플랫폼의 콘텐츠를 한 곳에서 추천받으세요!
                         저희는 현재 작년 기준으로, 넷플릭스와 디즈니 플러스의 콘텐츠를 추천 드리고 있습니다!
                     </p>
-                    <button class="main__button main__button--large" onclick="window.location.href=`${window.config.BASE_FRONT_URL}/pages/Chatting/Member_Chatting.html`">채팅하러 가기</button>
+                    <div class="vertical-sections" style="margin: 120px;">
+                    <button class="main__button main__button--large" onclick="window.location.href=`${window.config.BASE_FRONT_URL}/pages/Chatting/Member_Chatting.html`">추천 받기</button>
+                    </div>
                 </div>
             </section>
             <!-- 넷플릭스 섹션 -->
@@ -127,20 +129,30 @@
     </div> <!-- #wrapper_intro 종료 -->
 
     <!-- ===== Footer 시작 ===== -->
-    <div class="footer" style="color: white; display: flex;  align-items: center;">
-        <div class="footer-left">
+    <div class="footer" style="color: white; padding: 20px 0;">
+        <div class="footer-container" style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <div class="footer__section">
+                <h4>고객지원</h4>
+                <div class="footer__links">
+                    <a href="faq.html" style="color: white;">FAQ</a>
+                    <a href="support.html" style="color: white;">고객센터</a>
+                    <a href="contact.html" style="color: white;">문의하기</a>
+                </div>
+            </div>
+            <div class="footer__section">
+                <h4>팔로우</h4>
+                <div class="footer__links">
+                    <a href="https://facebook.com" style="color: white;">Facebook</a>
+                    <a href="https://twitter.com" style="color: white;">Twitter</a>
+                    <a href="https://instagram.com" style="color: white;">Instagram</a>
+                </div>
+            </div>
             <div class="footer__section">
                 <h4>팀 정보</h4>
-                <h1>Always-inclusive</h1>
+                <p>Always-inclusive</p>
                 <p>팀 구성원: 장승환, 김건태, 박수호, 이명혜</p>
                 <p>2025 내일배움캠프 스파르타 최종프로젝트 Always-inclusive. All rights reserved</p>
             </div>
-        </div>
-        <div class="footer-support">
-            <h1>고객지원</h1>
-            <p>FAQ</p>
-            <p>고객센터</p>
-            <p>문의하기</p>
         </div>
     </div>
     <script src="/src/utils/config.js"></script>
