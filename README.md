@@ -52,7 +52,8 @@ OTT에서 제공하는 콘텐츠를 분석 및 분류하여 **사용자 맞춤�
 <details>
 <summary>내용 보기</summary>
 
-![프로젝트구조(12조)_2](https://github.com/user-attachments/assets/0555f520-f07c-4bb7-8327-26f54e4eee52)
+![프로젝트구조(12조)_2]![image](https://github.com/user-attachments/assets/fab1a391-d47c-4d01-bc41-39d668450613)
+
 
 
 </details>
