@@ -29,6 +29,7 @@
     </div>
 
     <div class="main__container">
+        <h1>프로필</h1>
         <div class="mypage-info-container">
             <div class="mypage-profile-box">
                 <img id="profileImage" src="../../assets/images/User_images/default_profile.png" alt="프로필 이미지">
@@ -43,9 +44,12 @@
             <div class="main__input-group">
                 <input type="text" id="nicknameInput" class="input__password" placeholder="">
                 <label for="nicknameInput" class="floating-label">이름</label>
-                <button class="main__button2" id="saveNicknameButton">이름 저장</button>
+                <button class="main__button2" id="saveNicknameButton" style="margin-top: 45px;">이름 저장</button>
             </div>
         </div>
+        <p class="image-requirements" style="font-size: 12px; color: white; margin-top: 20px;">
+            이미지 형식: JPG, PNG | 최대 크기: 2MB
+        </p>
         <div class="main__input-group" style="margin-top: 100px;">
             <select id="gender" name="gender">
                 <option value="male">남성</option>
@@ -61,7 +65,7 @@
                 <option value="50s">50대 이상 (50세~)</option>
             </select>
         </div>
-            <button class="main__button3" onclick="location.href=`${window.config.BASE_FRONT_URL}/pages/Mypage/Delete_Account.html`;" style="margin-top: 100px;">회원 탈퇴하기</button>
+            <button class="main__button3" onclick="location.href=`${window.config.BASE_FRONT_URL}/pages/Mypage/Delete_Account.html`;" style="margin-top: 50px;">회원 탈퇴하기</button>
         </div>
         
         

@@ -19,7 +19,7 @@ body {
     width: 100%; /* 화면 전체 너비 */
     box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* 가운데 정렬 */
     align-items: center;
 }
 .footer-left {
@@ -52,12 +52,13 @@ body {
 .footer__section {
     flex: 1; /* 모든 섹션이 동일한 너비를 차지 */
     padding: 10px; /* 내부 여백 */
+    text-align: center; /* 텍스트 가운데 정렬 */
 }
 
 /* Footer Container */
 .footer__container {
     display: flex; /* footer 내부를 Flexbox로 배치 */
-    justify-content: space-between; /* 각 섹션을 좌우로 균등 분배 */
+    justify-content: center; /* 가운데 정렬 */
     padding: 0 20px 20px; /* 위쪽에는 패딩이 없고, 왼쪽/오른쪽/아래쪽만 20px씩 내부 여백 */
     align-items: flex-start; /* 상단 정렬 */
 }
@@ -67,6 +68,21 @@ body {
     text-align: center; /* 텍스트 가운데 정렬 */
     padding: 10px; /* 내부 여백 */
     background-color: #444; /* 배경 색상 */
+}
+
+.footer__links {
+    display: flex;
+    justify-content: center; /* 링크들을 가로로 가운데 정렬 */
+    gap: 20px; /* 링크들 사이의 간격 */
+}
+
+.footer__links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer__links a:hover {
+    text-decoration: underline;
 }
 
 /* Wrapper 스타일 */
