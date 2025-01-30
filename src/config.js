@@ -1,3 +1,5 @@
+console.log("config.js is loaded and executing");  // 실행 여부 확인
+
 (function () {
   /**
    * 환경 구분:
@@ -19,8 +21,8 @@
     // 배포 환경
     config = {
       isDevelopment: false,
-      BASE_API_URL: '',            // 실제 배포 API 주소
-      BASE_FRONT_URL: '', // 실제 운영 도메인
+      BASE_API_URL: 'http://13.209.47.60',            // 실제 배포 API 주소
+      BASE_FRONT_URL: 'http://whatever-ott.com', // 실제 운영 도메인
     };
   }
 
