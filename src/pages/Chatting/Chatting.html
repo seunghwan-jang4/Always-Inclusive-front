@@ -170,20 +170,13 @@
 
       // 스트리밍 요청
       async function sendMessageToServer(userText) {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          alert('로그인이 필요합니다!');
-          return;
-        }
-
         const botMessageContentElem = createBotMessageContainer();
         let botTextAccum = "";
 
         try {
-          const response = await fetch(`${window.config.BASE_API_URL}/api/chatbot/chat/`, {
+          const response = await fetch(`${window.config.BASE_API_URL}/api/chatbot/chat/anonymous/`, {
             method: 'POST',
             headers: {
-              'Authorization': 'Token ' + token,
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ message: userText }),
