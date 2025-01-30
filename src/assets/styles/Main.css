@@ -406,3 +406,34 @@ html, body {
 .main__image-container:hover .main__info {
     opacity: 1;
 }
+
+@media (max-width: 600px) {
+    .main__input-group label {
+        font-size: 12px;
+    }
+    .input__email, .input__password, .input__code {
+        font-size: 14px;
+        padding: 8px;
+    }
+    .main__intro-container {
+        padding: 20px;
+        font-size: 1em;
+    }
+    .main__button--large {
+        width: 100%;
+        font-size: 1em;
+    }
+    .welcome-text {
+        text-align: center;
+        font-size: 1.5em;
+    }
+    .signup-ui {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .background-design {
+        background-size: cover;
+        background-position: center;
+    }
+}
