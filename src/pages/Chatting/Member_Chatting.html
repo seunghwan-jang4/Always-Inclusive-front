@@ -212,20 +212,17 @@
 
                 const messageContent = document.createElement('div');
                 messageContent.classList.add('message-content');
-                
-                // 마크다운을 HTML로 변환
-                const rawHtml = marked.parse(botText);
-                // HTML 정리 (보안)
-                const cleanHtml = DOMPurify.sanitize(rawHtml);
-                messageContent.innerHTML = cleanHtml;
+                messageContent.textContent = "응답 생성중...";
 
                 botMessageDiv.appendChild(botImg);
                 botMessageDiv.appendChild(messageContent);
-
                 conversationMessages.appendChild(botMessageDiv);
+                conversationMessages.scrollTop = conversationMessages.scrollHeight;
 
                 // 스크롤 하단으로 이동
                 conversationMessages.scrollTop = conversationMessages.scrollHeight;
+
+                return messageContent;
             }
 
             // 정규식 후처리: "n) " 앞에 줄바꿈, "즐거운 시청 되세요!" 앞에 줄바꿈 등
@@ -265,7 +262,7 @@
                     return;
                 }
 
-                const botMessageContentElem = createBotMessageContainer();
+                const botMessageContentElem = appendBotMessage();
                 let botTextAccum = "";
 
                 try {
@@ -329,29 +326,7 @@
 
                 // 1) 사용자 메시지 출력
                 appendUserMessage(message);
-
-                // 2) 서버로 메시지 전송
-                fetch(`${window.config.BASE_API_URL}/api/chatbot/chat/`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: localStorage.getItem("email"),  // 예: 로그인 시 저장한 이메일
-                        message: message,
-                        timestamp: new Date().toISOString(),
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // 3) 서버 응답(챗봇 메시지) 출력
-                    appendBotMessage(data.responseMessage || "응답이 없습니다.");
-                })
-                .catch(error => {
-                    console.error('채팅 전송 중 오류 발생:', error);
-                    // 필요 시 에러 메시지 표시
-                    appendBotMessage("에러가 발생했습니다.");
-                });
+                sendMessageToServer(message);
 
                 // 4) 입력창 비우기
                 chatInput.value = "";
