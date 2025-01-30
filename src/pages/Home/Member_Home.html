@@ -155,8 +155,17 @@
             </div>
         </div>
     </div>
-    <script src="/src/utils/config.js"></script>
+    <script src="../../config.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.config || !window.config.BASE_FRONT_URL) {
+                console.error('config.js 파일이 로드되지 않았거나 BASE_FRONT_URL이 설정되지 않았습니다.');
+            } else {
+                console.log('config.js 파일이 성공적으로 로드되었습니다.');
+            }
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', async function() {
             const homeLink = document.getElementById('memberHomeLink');
