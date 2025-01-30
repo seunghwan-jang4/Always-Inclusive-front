@@ -4,7 +4,7 @@
    * 1 => 개발 (Development)
    * 2 => 배포 (Production)
    */
-  const environment = 1;  // 필요한 경우 1 또는 2로 수정
+  const environment = 2;  // 필요한 경우 1 또는 2로 수정
 
   let config = {};
 
