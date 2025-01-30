@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Always-Inclusive-OTT</title>
+    <title>Delete Account</title>
     <link rel="stylesheet" href="../../assets/styles/Member_Header.css">
     <link rel="stylesheet" href="../../assets/styles/Main.css">
     <link rel="stylesheet" href="../../assets/styles/Footer.css">
@@ -78,6 +78,7 @@
             const nicknameElem = document.getElementById('nickname');
             const headerProfileImg = document.getElementById('headerProfileImage');
             const defaultImagePath = '../../assets/images/User_images/default_profile.png';
+            
 
             // (A) 먼저 로컬 캐시에 있는 프로필 정보를 즉시 표시 (느린 느낌 완화)
             const cachedUserProfile = localStorage.getItem('cachedUserProfile');
@@ -104,6 +105,8 @@
                         'Authorization': 'Token ' + token
                     }
                 });
+
+                
                 if (!response.ok) {
                     console.error('사용자 정보를 불러오지 못했습니다.');
                     return;
@@ -155,6 +158,46 @@
                 alert('로그아웃 중 오류가 발생했습니다.');
             });
         });
+
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+            if (!password || !confirmPassword) {
+                alert('비밀번호를 입력해주세요.');
+                return;
+            }
+            if (password !== confirmPassword) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+
+            fetch(`${window.config.BASE_API_URL}/api/accounts/delete/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify({ password: password })
+            })
+            .then(response => response.json().then(data => ({ status: response.status, body: data })))
+            .then(({ status, body }) => {
+                if (status >= 200 && status < 300) {
+                    alert('회원 탈퇴가 완료되었습니다.');
+                    localStorage.removeItem('token');
+                    window.location.href = `${window.config.BASE_FRONT_URL}/pages/Login/Login.html`;
+                } else {
+                    alert('회원 탈퇴 실패: ' + (body.message || body.detail || '알 수 없는 오류'));
+                }
+            })
+            .catch(error => {
+                console.error('회원탈퇴 중 오류:', error);
+                alert('오류가 발생했습니다.');
+            });
+        });
+
+        function cancelDelete() {
+            window.location.href = `${window.config.BASE_FRONT_URL}/pages/Mypage/Mypage.html`;
+        }
     </script>
 </body>
 </html>
